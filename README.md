@@ -29,31 +29,6 @@ This project automatically generates SQL queries from natural language using **G
 
 ---
 
-## 🧰 Project Structure
-LLM-Project-SQL-Query-Generator/
-│
-├── backend/ # NestJS backend (API, Prisma, Embedding logic)
-│ ├── src/
-│ ├── prisma/
-│ ├── .env
-│ ├── package.json
-│ └── tsconfig.json
-│
-├── frontend/ # React Vite frontend
-│ ├── src/
-│ ├── public/
-│ ├── package.json
-│ └── vite.config.js
-│
-├── database/ # Docker PostgreSQL setup
-├── knowledge-base/ # JSON knowledge base (embeddings)
-├── docker-compose.yml
-└── README.md
-
-makefile
-Salin kode
-
----
 
 ## 🌍 Environment Setup
 
@@ -81,54 +56,38 @@ PORT=3000
 FRONTEND_URL="http://localhost:5173"
 🐳 Running the Project
 1️⃣ Clone the Repository
-bash
-Salin kode
 git clone https://github.com/Dindamaharn/LLM-Project-SQL-Query-Generator.git
 cd LLM-Project-SQL-Query-Generator
+
 2️⃣ Setup the Database (Docker)
-bash
-Salin kode
 docker compose up -d
 Database runs on:
-
-makefile
-Salin kode
 localhost:5433
+
 3️⃣ Backend Setup
-bash
-Salin kode
 cd backend
 npm install
+
 Initialize Prisma:
-
-bash
-Salin kode
 npx prisma migrate dev --name init
-Run the backend:
 
-bash
-Salin kode
+Run the backend:
 npm run start:dev
 Backend should run at:
-
-arduino
-Salin kode
 http://localhost:3000
+
 4️⃣ Frontend Setup
-bash
-Salin kode
 cd ../frontend
 npm install
 npm run dev
 Frontend will start at:
-
-arduino
-Salin kode
 http://localhost:5173
+
+
 🧩 Example Workflow
 1️⃣ User inputs a natural language query, e.g.:
 
-“Show all books borrowed in July.”
+“Show all patient in december 2023”
 
 2️⃣ The system:
 
