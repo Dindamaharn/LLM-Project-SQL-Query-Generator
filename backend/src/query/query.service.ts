@@ -104,24 +104,45 @@ export class QueryService {
       body: JSON.stringify({
         model: this.OPENROUTER_MODEL,
         messages: [
-          { role: 'system', content: 'Kamu adalah AI yang ahli SQL PostgreSQL.' },
-          { role: 'user', content: `
-            Gunakan schema dan konteks berikut untuk membuat query SQL valid.
+          {
+            role: 'system',
+            content: `
+      Kamu adalah asisten AI ahli SQL PostgreSQL. 
+      Tugasmu adalah membuat query SQL yang *benar, efisien, dan relevan* berdasarkan pertanyaan user.
+      Selalu gunakan sintaks SQL PostgreSQL yang valid dan hindari kesalahan sintaks.`,
+          },
+          {
+            role: 'user',
+            content: `
+      Berikut ini adalah schema dan konteks pengetahuan untuk membantu memahami struktur database.
 
-            📘 Schema:
-            ${schemaDescription}
+      🧱 SCHEMA DATABASE:
+      ${schemaDescription}
 
-            📚 Konteks:
-            ${contextTexts}
+      📚 KONTEKS TAMBAHAN:
+      ${contextTexts}
 
-            Pertanyaan:
-            "${question}"
+      Instruksi penting:
+      1. Pahami relasi antar tabel berdasarkan foreign key dan nama kolom.
+      2. Jika pertanyaan melibatkan beberapa tabel, gunakan JOIN yang sesuai (INNER JOIN, LEFT JOIN, dll).
+      3. Gunakan alias tabel agar query mudah dibaca.
+      4. Gunakan nama tabel dan kolom persis seperti yang ada di schema.
+      5. Jika ada keraguan, gunakan konteks untuk menebak tabel yang paling relevan.
+      6. Jangan gunakan kolom atau tabel yang tidak ada di schema.
+      7. Jangan ubah atau manipulasi data — hanya query SELECT yang aman.
+      8. Output **hanya** query SQL tanpa penjelasan, dalam format:
+        \`\`\`sql
+        SELECT ...
+        \`\`\`
 
-            Keluarkan hanya query SQL tanpa penjelasan tambahan.
-                    ` },
-                ],
-            }),
-        });
+      Pertanyaan user:
+      "${question}"
+      `,
+          },
+        ],
+      }),
+
+    });
 
     const rawText = await response.text();
     let data: any;
@@ -136,7 +157,7 @@ export class QueryService {
     sql = sql.replace(/```(sql)?/g, '').trim();
     console.log(`\n🧾 [Generated SQL]\n${sql}`);
 
-    // 7️Validasi agar aman
+    // Validasi agar aman
     const dangerousKeywords = ['DROP', 'DELETE', 'ALTER', 'UPDATE', 'INSERT'];
     if (dangerousKeywords.some((kw) => sql.toUpperCase().includes(kw))) {
       console.log('⚠️  Query mengandung kata berbahaya, tidak dijalankan otomatis.');
