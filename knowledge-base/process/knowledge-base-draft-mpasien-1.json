@@ -1,0 +1,899 @@
+{
+  "database_info": {
+    "name": "Healthcare Management System",
+    "description": "Comprehensive Indonesian healthcare database for managing patient registration, medical records, appointments, medications, and healthcare operations",
+    "version": "1.0",
+    "domain": "Healthcare/Medical - Indonesian Hospital System"
+  },
+  "tables": {
+    "m_kota": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "kota_id": "",
+        "kota_kode": "Kode Kota",
+        "m_propinsi_id": "Propinsi, ref ke Tabel Propinsi",
+        "kota_nama": "Nama propinsi",
+        "kota_aktif": "",
+        "kota_created_by": "",
+        "kota_created_date": "",
+        "kota_updated_by": "",
+        "kota_updated_date": "",
+        "kota_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": ""
+      },
+      "foreign_keys": []
+    },
+    "m_pasien": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "pasien_id": "",
+        "pasien_norm": "Nomer Rekam Medis",
+        "pasien_nik": "NIK/ No identitas lainnya",
+        "pasien_sebut": "Sebutan Pasien, \"Tuan/Nona/Nyonya/Anak\"",
+        "pasien_nama": "Nama Pasien",
+        "pasien_kelamin": "Jenis Kelamin Pasien; L/P",
+        "pasien_alamat": "Alamat",
+        "m_kecamatan_id": "Kecamatan, ref ke tabel m_kecamatan",
+        "m_kota_id": "Kota domisili, ref ke Tabel m_kota",
+        "m_propinsi_id": "Propinsi",
+        "m_negara_id": "Negara domisili pasien, ref ke tabel m_negara",
+        "pasien_notelp": "No telp pasien",
+        "pasien_nohp": "",
+        "pasien_goldarah": "Golongan darah : \"A+\",\"A-\",\"B+\",\"B-\", \"AB+\",\"AB-\",\"O+\",\"O-\"",
+        "pasien_bb": "Berat Badan",
+        "pasien_tb": "Tinggi Badan",
+        "pasien_aktif": "",
+        "pasien_created_by": "",
+        "pasien_created_date": "",
+        "pasien_updated_by": "",
+        "pasien_updated_date": "",
+        "pasien_revised": "",
+        "m_kota_id_tempatlahir": "Tempat Lahir Pasien, ref ke tabel Kota",
+        "pasien_tanggallahir": "Tanggal Lahir",
+        "m_kelurahan_id": "Kelurahan domisili Pasien, ref ke tabel m_kelurahan",
+        "m_jenispasien_id": "Jenis Pasien",
+        "m_status_id": "",
+        "pasien_valid": "",
+        "pasien_norm_aktif": "Flek untuk info rm yang aktif setelah digabungkan",
+        "pasien_keterangan": "",
+        "pasien_kelurahan": "",
+        "pasien_kecamatan": "",
+        "pasien_domisili": "",
+        "pasien_nokk": "",
+        "pasien_pekerjaan": "",
+        "pasien_noasuransi": "",
+        "pasien_statusnikah": "",
+        "pasien_rt": "",
+        "pasien_rw": "",
+        "pasien_rfid": "",
+        "m_agama_id": "",
+        "m_pendidikan_id": "",
+        "pasien_pendidikan": "",
+        "m_pekerjaan_id": "",
+        "pasien_tempatlahir": "",
+        "pasien_kota": "",
+        "pasien_propinsi": "",
+        "pasien_negara": "",
+        "pasien_agama": "",
+        "pasien_foto": "",
+        "mobile_file": "",
+        "lemari_file": "",
+        "shaf_file": "",
+        "pasien_alergi": "",
+        "reg_company_id": "",
+        "reg_apps_id": "",
+        "pasien_norm_lama": "",
+        "pasien_email": "",
+        "pasien_suku": "",
+        "pasien_nip": "",
+        "pasien_jabatan": "reff ke m_jabatan",
+        "pasien_karyawan": "pasien karyawan ya atau tidak",
+        "pasien_dept": "",
+        "pasien_keluarga_nama": "",
+        "pasien_keluarga_hubungan": "",
+        "pasien_keluarga_no_hp": "",
+        "pasien_departemen_id": "",
+        "pasien_jenis_layanan": "PRB,PROLANIS,PRB-PROLANIS,NON KRONIS",
+        "pasien_member": "",
+        "pasien_bahasa": "",
+        "pasien_kewarganegaraan": "",
+        "pasien_identitas": "KTP,SIM,NO. PEGAWAI,PASPORT",
+        "pasien_sehatq_patient_id": "",
+        "pasien_m_id": "relasi ke m_id",
+        "pasien_kode_pos": "",
+        "pasien_domisili_json": "untuk menyimpan data dimisili lengkap berupa json",
+        "pasien_status_doctugo": "",
+        "pasien_fhir_id": "",
+        "pasien_pegawai_id": "",
+        "pasien_insurance_company": "",
+        "pasien_travel_insurance": "",
+        "pasien_departemen_detail_id": "",
+        "pasien_fhir_nama": "Nama dari synchronize satu sehat"
+      },
+      "foreign_keys": []
+    },
+    "m_status": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "status_id": "",
+        "status_kode": "Kode status",
+        "status_nama": "Nama status",
+        "status_aktif": "",
+        "status_created_by": "",
+        "status_created_date": "",
+        "status_updated_by": "",
+        "status_updated_date": "",
+        "status_revised": "",
+        "status_urut": "",
+        "status_filter": "",
+        "reg_company_id": "",
+        "reg_apps_id": "",
+        "status_keterangan": ""
+      },
+      "foreign_keys": []
+    },
+    "m_kecamatan": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "kecamatan_id": "",
+        "kecamatan_kode": "Kode Kecamatan",
+        "m_kota_id": "Kota, ref ke Tabel m_kota",
+        "kecamatan_nama": "Nama Kecamatan",
+        "kecamatan_aktif": "",
+        "kecamatan_created_by": "",
+        "kecamatan_created_date": "",
+        "kecamatan_updated_by": "",
+        "kecamatan_updated_date": "",
+        "kecamatan_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": ""
+      },
+      "foreign_keys": []
+    },
+    "m_propinsi": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "propinsi_id": "",
+        "propinsi_kode": "Kode Propinsi",
+        "propinsi_nama": "Nama Propinsi",
+        "propinsi_aktif": "",
+        "propinsi_created_by": "",
+        "propinsi_created_date": "",
+        "propinsi_updated_by": "",
+        "propinsi_updated_date": "",
+        "propinsi_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": ""
+      },
+      "foreign_keys": []
+    },
+    "m_agama": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "agama_id": "pk",
+        "agama_nama": "Nama Agama",
+        "agama_keterangan": "Keterangan Agama",
+        "agama_aktif": "",
+        "agama_created_by": "",
+        "agama_created_date": "",
+        "agama_updated_by": "",
+        "agama_updated_date": "",
+        "agama_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": ""
+      },
+      "foreign_keys": []
+    },
+    "m_departemen": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "departemen_id": "pk",
+        "departemen_nama": "Nama departemen",
+        "departemen_keterangan": "Keterangan departemen",
+        "departemen_aktif": "",
+        "departemen_created_by": "",
+        "departemen_created_date": "",
+        "departemen_updated_by": "",
+        "departemen_updated_date": "",
+        "departemen_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": "",
+        "m_perusahaan_id": "referensi ke m_departemen",
+        "departemen_kode": ""
+      },
+      "foreign_keys": []
+    },
+    "m_departemen_detail": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "departemendetail_id": "",
+        "m_departemen_id": "",
+        "departemendetail_kode": "",
+        "departemendetail_nama": "",
+        "departemendetail_keterangan": "",
+        "departemendetail_aktif": "",
+        "reg_company_id": "",
+        "reg_apps_id": "",
+        "departemendetail_created_by": "",
+        "departemendetail_created_date": "",
+        "departemendetail_updated_by": "",
+        "departemendetail_updated_date": ""
+      },
+      "foreign_keys": []
+    },
+    "m_id": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "mid_id": "",
+        "mid_nama": "",
+        "mid_urutan": "",
+        "mid_created_date": "",
+        "mid_created_by": "",
+        "mid_updated_date": "",
+        "mid_updated_by": "",
+        "mid_aktif": "",
+        "mid_keterangan": ""
+      },
+      "foreign_keys": []
+    },
+    "m_jenis_pasien": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "jenispasien_id": "",
+        "jenispasien_kode": "",
+        "jenispasien_parent_id": "",
+        "jenispasien_parent_kode": "",
+        "jenispasien_nama": "",
+        "jenispasien_aktif": "",
+        "jenispasien_created_by": "",
+        "jenispasien_created_date": "",
+        "jenispasien_updated_by": "",
+        "jenispasien_updated_date": "",
+        "jenispasien_revised": "",
+        "m_bayar_id": "untuk default pembayaran jenis pasien",
+        "m_kelas_id": "",
+        "reg_company_id": "",
+        "reg_apps_id": ""
+      },
+      "foreign_keys": []
+    },
+    "m_keluarga": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "keluarga_id": "",
+        "keluarga_pasien_id1": "",
+        "keluarga_pasien_norm1": "",
+        "keluarga_pasien_id2": "",
+        "keluarga_pasien_norm2": "",
+        "keluarga_hubungan": "Hubungan Keluarga :\n- Suami\n- Istri\n- Ayah\n- Ibu\n- Anak\n- Saudara",
+        "keluarga_keterangan": "",
+        "keluarga_aktif": "",
+        "keluarga_created_by": "",
+        "keluarga_created_date": "",
+        "keluarga_updated_by": "",
+        "keluarga_updated_date": "",
+        "keluarga_revised": ""
+      },
+      "foreign_keys": []
+    },
+    "m_kelurahan": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "kelurahan_id": "",
+        "kelurahan_kode": "Kode Kelurahan/Desa",
+        "m_kecamatan_id": "Kecamatan, ref ke tabel m_kecamatan",
+        "kelurahan_nama": "Nama Kelurahan",
+        "kelurahan_aktif": "",
+        "kelurahan_created_by": "",
+        "kelurahan_created_date": "",
+        "kelurahan_updated_by": "",
+        "kelurahan_updated_date": "",
+        "kelurahan_revised": "",
+        "kelurahan_kodepos": "",
+        "reg_company_id": "",
+        "reg_apps_id": ""
+      },
+      "foreign_keys": []
+    },
+    "m_negara": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "negara_id": "",
+        "negara_kode": "Kode Negara",
+        "negara_nama": "Nama Negara",
+        "negara_aktif": "",
+        "negara_created_by": "",
+        "negara_created_date": "",
+        "negara_updated_by": "",
+        "negara_updated_date": "",
+        "negara_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": ""
+      },
+      "foreign_keys": []
+    },
+    "m_pasien_identitas": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "pasienidentitas_id": "",
+        "m_pasien_id": "",
+        "m_id_id": "",
+        "pasienidentitas_nomor": "",
+        "pasienidentitas_aktif": "",
+        "pasienidentitas_created_by": "",
+        "pasienidentitas_created_date": "",
+        "pasienidentitas_updated_by": "",
+        "pasienidentitas_updated_date": ""
+      },
+      "foreign_keys": []
+    },
+    "m_pasien_kontak": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "pasienkontak_id": "",
+        "m_pasien_id": "",
+        "pasienkontak_provider": "",
+        "pasienkontak_data": "",
+        "pasienkontak_jenis": "0:telp;1:surel",
+        "pasienkontak_aktif": "",
+        "pasienkontak_created_by": "",
+        "pasienkontak_created_date": "",
+        "pasienkontak_updated_by": "",
+        "pasienkontak_updated_date": "",
+        "pasienkontak_is_primary": "status kontak 1:primary; 0:secondary;"
+      },
+      "foreign_keys": []
+    },
+    "m_pasien_pekerjaan": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "pasienpekerjaan_id": "",
+        "m_pasien_id": "",
+        "m_pekerjaan_id": "",
+        "pasienpekerjaan_instansi": "",
+        "pasienpekerjaan_jabatan": "",
+        "pasienpekerjaan_masuk": "",
+        "pasienpekerjaan_keluar": "",
+        "pasienpekerjaan_keterangan": "",
+        "pasienpekerjaan_aktif": "",
+        "pasienpekerjaan_created_by": "",
+        "pasienpekerjaan_created_date": "",
+        "pasienpekerjaan_updated_by": "",
+        "pasienpekerjaan_updated_date": "",
+        "pasienpekerjaan_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": "",
+        "pasienpekerjaan_status": "Status ;\n- Tetap\n- PKWT\n- Kontrak\n- Lepas",
+        "pasienpekerjaan_lama": ""
+      },
+      "foreign_keys": []
+    },
+    "m_pasien_pendidikan": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "pasienpendidikan_id": "",
+        "m_pasien_id": "",
+        "m_pendidikan_id": "",
+        "pasienpendidikan_masuk": "",
+        "pasienpendidikan_keluar": "",
+        "pasienpendidikan_no": "",
+        "pasienpendidikan_lembaga": "",
+        "pasienpendidikan_status": "Status : Lulus, Pindah, Droupout",
+        "pasienpendidikan_aktif": "",
+        "pasienpendidikan_created_by": "",
+        "pasienpendidikan_created_date": "",
+        "pasienpendidikan_updated_by": "",
+        "pasienpendidikan_updated_date": "",
+        "pasienpendidikan_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": "",
+        "pasienpendidikan_nama_jurusan": "",
+        "pasienpendidikan_akreditasi": "",
+        "pasienpendidikan_nilai_ijasah": "",
+        "pasienpendidikan_tahun_lulus": ""
+      },
+      "foreign_keys": []
+    },
+    "m_pasien_wali": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "pasienwali_id": "",
+        "m_pasien_id": "",
+        "pasienwali_kode": "",
+        "pasienwali_nama": "",
+        "pasienwali_kelamin": "",
+        "pasienwali_nomor_kontak": "",
+        "pasienwali_alamat": "",
+        "pasienwali_hubungan": "",
+        "pasienwali_tgllahir": "",
+        "pasienwali_aktif": "",
+        "pasienwali_created_by": "",
+        "pasienwali_created_date": "",
+        "pasienwali_updated_by": "",
+        "pasienwali_updated_date": "",
+        "pasienwali_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": "",
+        "pasienwali_wali_pasien_id": ""
+      },
+      "foreign_keys": []
+    },
+    "m_pekerjaan": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "pekerjaan_id": "",
+        "pekerjaan_kode": "",
+        "pekerjaan_nama": "",
+        "pekerjaan_aktif": "",
+        "pekerjaan_created_by": "",
+        "pekerjaan_created_date": "",
+        "pekerjaan_updated_by": "",
+        "pekerjaan_updated_date": "",
+        "pekerjaan_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": "",
+        "pekerjaan_keterangan": ""
+      },
+      "foreign_keys": []
+    },
+    "m_pendidikan": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "pendidikan_id": "",
+        "pendidikan_kode": "Kode Pendidikan",
+        "pendidikan_nama": "Nama Jenjang Pendidikan",
+        "pendidikan_urut": "Urutan index",
+        "pendidikan_aktif": "",
+        "pendidikan_created_by": "",
+        "pendidikan_created_date": "",
+        "pendidikan_updated_by": "",
+        "pendidikan_updated_date": "",
+        "pendidikan_revised": "",
+        "reg_company_id": "",
+        "reg_apps_id": "",
+        "pendidikan_keterangan": ""
+      },
+      "foreign_keys": []
+    },
+    "t_askep_riwayat_persalinan": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "riwayatpersalinan_id": "",
+        "riwayatpersalinan_tahun_partus": "",
+        "riwayatpersalinan_tempat_partus": "",
+        "riwayatpersalinan_umur_hamil": "",
+        "riwayatpersalinan_jenis_persalinan": "",
+        "riwayatpersalinan_penolong_persalinan": "",
+        "riwayatpersalinan_penyulit_persalinan": "",
+        "riwayatpersalinan_jenis_kelamin_berat_lahir": "",
+        "riwayatpersalinan_keadaan_anak": "",
+        "riwayatpersalinan_created_date": "",
+        "riwayatpersalinan_created_by": "",
+        "riwayatpersalinan_updated_date": "",
+        "riwayatpersalinan_updated_by": "",
+        "m_pasien_id": "",
+        "t_askep_id": "",
+        "riwayatpersalinan_aktif": ""
+      },
+      "foreign_keys": []
+    },
+    "t_general_consent": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "general_consent_id": "",
+        "general_consent_tgl": "",
+        "general_consent_no": "",
+        "m_pasien_id": "",
+        "general_consent_saksi": "Berisi id pegawai multiple",
+        "general_consent_aktif": "",
+        "general_consent_created_by": "",
+        "general_consent_created_date": "",
+        "general_consent_updated_by": "",
+        "general_consent_updated_date": "",
+        "general_consent_revised": "",
+        "general_consent_wali_nama": "",
+        "general_consent_wali_alamat": "",
+        "general_consent_wali_telp": "",
+        "general_consent_pendaftaran_id": "",
+        "general_consent_pasien_iswali": "data wali mengambil data pasien saat input di form",
+        "general_consent_wali_signature": "base64",
+        "general_consent_agreement_satusehat": "OPTIN=ya, OPTOUT=tidak request ini akan dikirim saat kirim ke satu sehat",
+        "general_consent_aggrement_satusehat_id": "id setelah pengiriman persetujuan ke satu sehat"
+      },
+      "foreign_keys": []
+    },
+    "t_riwayat_operasi": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "operasi_id": "",
+        "operasi_pasien_id": "",
+        "operasi_keterangan": "",
+        "operasi_tempat": "",
+        "operasi_waktu": "",
+        "operasi_pasien_norm": "",
+        "operasi_aktif": "",
+        "operasi_created_date": "",
+        "operasi_created_by": "",
+        "operasi_updated_date": "",
+        "operasi_updated_by": "",
+        "operasi_revised": ""
+      },
+      "foreign_keys": []
+    },
+    "t_riwayat_penyakit": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "penyakit_id": "",
+        "penyakit_pasien_id": "",
+        "penyakit_pasien_norm": "",
+        "penyakit_nama": "",
+        "penyakit_menular": "",
+        "penyakit_aktif": "",
+        "penyakit_created_by": "",
+        "penyakit_created_date": "",
+        "penyakit_updated_by": "",
+        "penyakit_updated_date": "",
+        "penyakit_revised": "",
+        "penyakit_mulai": ""
+      },
+      "foreign_keys": []
+    },
+    "t_satusehat_sync": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "satusehat_sync_id": "",
+        "satusehat_sync_uuid": "",
+        "m_pasien_id": "",
+        "satusehat_sync_status": "0 = pending, 1= diproses, 2 = berhasil, 3 = gagal",
+        "satusehat_created_by": "",
+        "satusehat_created_date": "",
+        "satusehat_updated_by": "",
+        "satusehat_updated_date": "",
+        "satusehat_revised": "",
+        "satusehat_job_uuid": ""
+      },
+      "foreign_keys": []
+    }
+  },
+  "domainMappings": {
+    "patient_identification": {
+      "keywords": [
+        "patient",
+        "pasien",
+        "patient name",
+        "patient data",
+        "norm",
+        "mr",
+        "medical record",
+        "medical record number",
+        "no rm",
+        "person name",
+        "demographic"
+      ],
+      "target_table": "m_pasien",
+      "primary_key": "pasien_id",
+      "display_column": "pasien_nama",
+      "identifier_column": "pasien_norm",
+      "sql_pattern": "m_pasien.pasien_nama ILIKE '%{value}%' OR m_pasien.pasien_norm = '{value}'",
+      "rule": "ALWAYS use m_pasien for any query mentioning 'patient'. Use pasien_norm for exact identification searches."
+    },
+    "doctor_identification": {
+      "keywords": [
+        "doctor",
+        "dokter",
+        "dr.",
+        "doctor on duty",
+        "doctor schedule",
+        "specialist",
+        "medical specialist",
+        "doctor name",
+        "polyclinic doctor",
+        "unit doctor"
+      ],
+      "target_table": "m_pegawai",
+      "primary_key": "pegawai_id",
+      "display_column": "pegawai_nama",
+      "sql_pattern": "m_pegawai.pegawai_nama ILIKE '%{value}%'",
+      "rule": "You MUST ensure the condition WHERE m_pegawai.pegawai_dokter_pelayanan = 1 to filter only doctors who provide services."
+    },
+    "unit_identification": {
+      "keywords": [
+        "unit",
+        "poli",
+        "polyclinic",
+        "clinic",
+        "ward",
+        "inpatient",
+        "igd",
+        "ugd",
+        "emergency",
+        "er",
+        "installation",
+        "room",
+        "department"
+      ],
+      "target_table": "m_unit",
+      "primary_key": "unit_id",
+      "display_column": "unit_nama",
+      "sql_pattern": "m_unit.unit_nama ILIKE '%{value}%'"
+    },
+    "registration_event": {
+      "keywords": [
+        "registration",
+        "pendaftaran",
+        "daftar",
+        "visit",
+        "kunjungan",
+        "admission",
+        "admisi",
+        "polyclinic visit",
+        "unit visit"
+      ],
+      "target_table": "t_pendaftaran",
+      "primary_key": "pendaftaran_id",
+      "foreign_keys": {
+        "patient": "m_pasien_id",
+        "unit": "m_unit_id",
+        "doctor": "m_pegawai_id"
+      },
+      "sql_pattern": "t_pendaftaran.tanggal_daftar BETWEEN '{start_date}' AND '{end_date}'",
+      "rule": "FOR ALL REGISTRATION QUERIES, YOU MUST JOIN to m_pasien and m_unit. Use t_pendaftaran.tanggal_daftar for any date filtering."
+    },
+    "doctor_schedule_event": {
+      "keywords": [
+        "schedule",
+        "doctor schedule",
+        "jadwal",
+        "practice hours",
+        "doctor on duty",
+        "duty schedule",
+        "polyclinic schedule"
+      ],
+      "target_table": "t_jadwal_dokter",
+      "primary_key": "tjadwaldokter_id",
+      "foreign_keys": {
+        "doctor": "tjadwaldokter_mdokter_id",
+        "unit": "tjadwaldokter_unit_id"
+      },
+      "sql_pattern": "t_jadwal_dokter.tjadwaldokter_tanggal = '{date}'",
+      "rule": "Always JOIN to m_pegawai and m_unit to display the doctor's name and unit name."
+    },
+    "pharmacy_medication": {
+      "keywords": [
+        "medicine",
+        "obat",
+        "medication",
+        "drug",
+        "prescription",
+        "resep",
+        "pharmacy",
+        "farmasi",
+        "apotek",
+        "pill",
+        "tablet",
+        "syrup",
+        "infusion"
+      ],
+      "target_table": "m_barang",
+      "primary_key": "barang_id",
+      "display_column": "barang_nama",
+      "sql_pattern": "m_barang.barang_jenis = 'obat' AND m_barang.barang_nama ILIKE '%{value}%'",
+      "rule": "Only items where barang_jenis = 'obat' (medicine) belong to this category."
+    },
+    "bpjs_insurance": {
+      "keywords": [
+        "bpjs",
+        "jkn",
+        "insurance",
+        "asuransi",
+        "jaminan",
+        "kis",
+        "bpjs participant",
+        "bpjs number",
+        "bpjs card",
+        "health insurance"
+      ],
+      "target_table": "t_asuransi",
+      "primary_key": "tasuransi_id",
+      "identifier_column": "asuransi_no",
+      "sql_pattern": "t_asuransi.asuransi_no = '{value}' OR t_asuransi.asuransi_jenis ILIKE '%bpjs%'",
+      "rule": "Insurance data is usually tied to a specific registration. JOIN to t_pendaftaran using tasuransi_pendaftaran_id."
+    },
+    "queue_information": {
+      "keywords": [
+        "queue",
+        "antrian",
+        "queue number",
+        "panggil antrian",
+        "call queue",
+        "waiting list",
+        "urut",
+        "queue status",
+        "being served",
+        "dilayani",
+        "selesai",
+        "done"
+      ],
+      "target_table": "t_noantrian",
+      "primary_key": "noantrian_id",
+      "display_column": "noantrian_urut",
+      "foreign_keys": {
+        "registration": "noantrian_pendaftaran_id"
+      },
+      "sql_pattern": "t_noantrian.noantrian_status = '{status}'",
+      "rule": "Queue status must match existing codes: 'menunggu' (waiting), 'dipanggil' (called), 'dilayani' (served), 'selesai' (done), 'batal' (canceled)."
+    },
+    "inpatient_event": {
+      "keywords": [
+        "inpatient",
+        "rawat inap",
+        "ranap",
+        "inap",
+        "room",
+        "kamar",
+        "bed",
+        "tempat tidur",
+        "inpatient room",
+        "ward",
+        "bangsal"
+      ],
+      "target_table": "t_kamar_pasien",
+      "primary_key": "kamarpasien_id",
+      "foreign_keys": {
+        "registration": "t_pendaftaran_id"
+      },
+      "sql_pattern": "t_kamar_pasien.kamarpasien_status = 'isi' AND t_kamar_pasien.kamarpasien_keluar IS NULL",
+      "rule": "For patients who are still admitted (inpatient), kamarpasien_keluar MUST BE NULL."
+    },
+    "hemodialysis_event": {
+      "keywords": [
+        "hemodialysis",
+        "hemodialisa",
+        "hd",
+        "cuci darah",
+        "dialysis"
+      ],
+      "target_table": "t_kamar_pasien_hemodialisa",
+      "primary_key": "kamarpasienhemodialisa_id",
+      "foreign_keys": {
+        "registration": "t_pendaftaran_id"
+      },
+      "sql_pattern": "t_kamar_pasien_hemodialisa.kamarpasienhemodialisa_tanggal = '{date}'"
+    },
+    "date_time_queries": {
+      "keywords": [
+        "today",
+        "hari ini",
+        "tomorrow",
+        "besok",
+        "yesterday",
+        "kemarin",
+        "this week",
+        "minggu ini",
+        "this month",
+        "bulan ini",
+        "this year",
+        "tahun ini",
+        "january",
+        "february",
+        "2024",
+        "2025"
+      ],
+      "column_mapping": "tanggal_daftar",
+      "patterns": {
+        "today": "t_pendaftaran.tanggal_daftar::DATE = CURRENT_DATE",
+        "january": "EXTRACT(MONTH FROM t_pendaftaran.tanggal_daftar) = 1 AND EXTRACT(YEAR FROM t_pendaftaran.tanggal_daftar) = EXTRACT(YEAR FROM CURRENT_DATE)",
+        "january 2025": "EXTRACT(MONTH FROM t_pendaftaran.tanggal_daftar) = 1 AND EXTRACT(YEAR FROM t_pendaftaran.tanggal_daftar) = 2025",
+        "this week": "t_pendaftaran.tanggal_daftar >= DATE_TRUNC('week', CURRENT_DATE) AND t_pendaftaran.tanggal_daftar < DATE_TRUNC('week', CURRENT_DATE) + INTERVAL '1 week'"
+      }
+    }
+  },
+  "relationships": {
+    "patient_registrations": {
+      "description": "Patients can have multiple registration records",
+      "join_pattern": "m_pasien.pasien_id = t_pendaftaran.m_pasien_id",
+      "cardinality": "one-to-many"
+    },
+    "registration_orders": {
+      "description": "Each registration can have multiple medical orders",
+      "join_pattern": "t_pendaftaran.pendaftaran_id = t_order.t_pendaftaran_id",
+      "cardinality": "one-to-many"
+    },
+    "order_details": {
+      "description": "Each order contains multiple order details",
+      "join_pattern": "t_order.order_id = t_orderdet.orderdet_order_id",
+      "cardinality": "one-to-many"
+    },
+    "registration_queues": {
+      "description": "Each registration can have queue records",
+      "join_pattern": "t_pendaftaran.pendaftaran_id = t_noantrian.noantrian_pendaftaran_id",
+      "cardinality": "one-to-many"
+    },
+    "unit_schedules": {
+      "description": "Each unit can have multiple doctor schedules",
+      "join_pattern": "m_unit.unit_id = t_jadwal_dokter.tjadwaldokter_unit_id",
+      "cardinality": "one-to-many"
+    },
+    "doctor_schedules": {
+      "description": "Each doctor can have multiple schedules",
+      "join_pattern": "m_pegawai.pegawai_id = t_jadwal_dokter.tjadwaldokter_mdokter_id",
+      "cardinality": "one-to-many"
+    },
+    "patient_insurance": {
+      "description": "Each patient can have multiple insurance policies",
+      "join_pattern": "m_pasien.pasien_id = m_asuransi.m_pasien_id",
+      "cardinality": "one-to-many"
+    },
+    "registration_insurance": {
+      "description": "Each registration can use insurance",
+      "join_pattern": "t_pendaftaran.pendaftaran_id = t_asuransi.tasuransi_pendaftaran_id",
+      "cardinality": "one-to-many"
+    },
+    "hemodialysis_room_patient_admission": {
+      "description": "Links hemodialysis room stays to patient admissions",
+      "join_pattern": "t_kamar_pasien_hemodialisa.t_pendaftaran_id = t_pendaftaran.pendaftaran_id",
+      "cardinality": "many-to-one"
+    },
+    "hemodialysis_room_bed": {
+      "description": "Links hemodialysis room stays to specific hemodialysis beds",
+      "join_pattern": "t_kamar_pasien_hemodialisa.m_bedhemodialisa_id = m_bedhemodialisa.bedhemodialisa_id",
+      "cardinality": "many-to-one"
+    },
+    "hemodialysis_room_doctor": {
+      "description": "Links hemodialysis room stays to the overseeing doctor",
+      "join_pattern": "t_kamar_pasien_hemodialisa.m_pegawai_id_dokter = m_pegawai.pegawai_id",
+      "cardinality": "many-to-many"
+    }
+  }
+}

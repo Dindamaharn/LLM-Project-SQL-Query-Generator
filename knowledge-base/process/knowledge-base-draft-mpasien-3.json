@@ -1,0 +1,400 @@
+{
+  "database_info": {
+    "name": "Healthcare Management System",
+    "description": "Comprehensive Indonesian healthcare database for managing patient registration, medical records, appointments, medications, and healthcare operations",
+    "version": "1.0",
+    "domain": "Healthcare/Medical - Indonesian Hospital System"
+  },
+  "tables": {
+    "t_pendaftaran": {
+      "description": "",
+      "business_context": "",
+      "common_queries": [],
+      "key_columns": {
+        "pendaftaran_id": "",
+        "pendaftaran_no": "",
+        "pendaftaran_nourut": "",
+        "m_unit_id": "",
+        "pendaftaran_mrs": "",
+        "pendaftaran_shift": "",
+        "m_pasien_id": "",
+        "m_bayar_id": "jenis pembayaran",
+        "m_asuransi_id": "asuransi jika bukan biaya sendiri",
+        "m_kondisi_id": "Ref ke tabel m_kondisi; kondisi keluar",
+        "pendaftaran_darurat": "status dengan filter darurat",
+        "pendaftaran_krs": "",
+        "m_status_id": "Ref m_status, cara pasien keluar",
+        "m_rujuk_id_keluar": "Ref, ke m_rujukan jika dirujuk keluar",
+        "pendaftaran_aktif": "",
+        "pendaftaran_created_by": "",
+        "pendaftaran_created_date": "",
+        "pendaftaran_updated_by": "",
+        "pendaftaran_updated_date": "",
+        "pendaftaran_revised": "",
+        "m_kondisi_id_keluar": "kondisi keluar pasien",
+        "pendaftaran_keterangan": "",
+        "pendaftaran_tarif": "",
+        "m_status_id_masuk": "Ref ke m_status, cara masuk pasien",
+        "m_status_id_pelayanan": "Ref ke m_status, status pasien sudah dilayani atau belum",
+        "pendaftaran_status_kunjungan": "Status Kunjungan Pasien : B = Baru, L= Lama",
+        "m_kondisi_id_masuk": "kondisi masuk pasien",
+        "m_rujukan_id": "rujukan asal pasien jika cara masuk rujukan",
+        "pendaftaran_jenis": "Jenis Pendaftaran, IRJ = Rawat Jalan, IRI = Rawat Inap, IGD = IRD, PM = Penunjang Medis, FAR = penjualan pada modul farmasi untuk pasien tanpa transaksi pelayanan, non pasien & karyawan",
+        "pendaftaran_status_konsul": "",
+        "m_unit_id_asal": "",
+        "pendaftaran_id_asal": "",
+        "pendaftaran_m_pasien_norm": "",
+        "m_kelas_id_standar": "",
+        "pendaftaran_dokter": "",
+        "pendaftaran_tarif_cover": "",
+        "pendaftaran_jenislayanan_id": "",
+        "pendaftaran_pasien_nama": "",
+        "pendaftaran_pasien_alamat": "",
+        "pendaftaran_pasien_tgllahir": "",
+        "pendaftaran_pasien_kelamin": "",
+        "reg_company_id": "",
+        "reg_apps_id": "",
+        "pendaftaran_pasien_notelp": "",
+        "pendaftaran_diskon": "",
+        "pendaftaran_diskon_bhp": "",
+        "pendaftaran_diskon_obat": "",
+        "pendaftaran_diskon_gizi": "",
+        "status_history_rm_icd_9": "0 : Blank, 1 : Belum Verifikasi, 2 : Verifikasi",
+        "status_history_rm_icd_10": "0 : Blank, 1 : Belum Verifikasi, 2 : Verifikasi",
+        "pendaftaran_no_sep": "",
+        "pendaftaran_nilai_cover": "",
+        "pendaftaran_biaya_administrasi": "y = selesai\nt  = tidak\n(kosong) = belum ada transaksi kasir central\nketika dipilih ya maka tagihan adminstrasi 10% ditambahkan\n\n/*Feature #16215*/",
+        "pendaftaran_cito": "Pada pelayanan bedah terdapat opsi apakah cito atau tidak\nBug #16551",
+        "pendaftaran_hamil_ke": "",
+        "pendaftaran_aborsi_ke": "",
+        "pendaftaran_persalinan_ke": "",
+        "pendaftaran_terakhir_mens": "",
+        "m_shift_id": "",
+        "pendaftaran_cetak_kartu": "y = ya, t = tidak",
+        "pendaftaran_flag_call": "",
+        "pendaftaran_flag_recall": "",
+        "pendaftaran_verifikasi": "y = ya, t = tidak",
+        "pendaftaran_penjamin_id": "",
+        "pendaftaran_approved_by": "",
+        "pendaftaran_approved_date": "",
+        "pendaftaran_rencana_pulang_aktif": "",
+        "pendaftaran_rencana_pulang_tanggal": "",
+        "pendaftaran_departemen": "",
+        "pendaftaran_kartu_bayar_id": "",
+        "pendaftaran_kartu_perusahaan_id": "",
+        "pendaftaran_kontrol_ulang": "",
+        "pendaftaran_flag_warna": "Utk flag warna di kasir",
+        "pendaftaran_kartu_diskon": "",
+        "pendaftaran_kartu_diskon_persen": "",
+        "pendaftaran_kartu_diskon_jenis": "",
+        "pendaftaran_kartu_diskon_alasan": "",
+        "pendaftaran_flag_hutang": "Utk flag pembayaran hutang; y = ya, t = tidak;",
+        "pendaftaran_include_tarif_masuk": "Utk mendeteksi apakah pendaftaran include tarif masuk atau tidak; y = ya, t = tidak",
+        "pendaftaran_penjualan_id": "Utk menyimpan id penjualan dari pendaftaran perawatan",
+        "pendaftaran_jual_ambil_flag": "Sebagai flag apakah penjualan atau pengambilan perawatan; 1=penjualan, 0=pengambilan, NULL=bukan penjualan atau pengambilan",
+        "pendaftaran_tgl_rencanakontrol": "",
+        "pendaftaran_flag_hutang_tanggal": "",
+        "pendaftaran_departemendetail_id": "",
+        "pendaftaran_lrs": "",
+        "pendaftaran_uuid": "",
+        "pendaftaran_biaya_admin_akhir": "Utk menyimpan biaya admin akhir di kasir",
+        "pendaftaran_odc": "",
+        "pendaftaran_id_parent": "Untuk menyimpan id pendaftaran yg disambungkan (ibu & anak)",
+        "pendaftaran_flag_hutang_user": "",
+        "pendaftaran_mcu_tujuan_negara": "Utk penyimpan tujuan_negara jika pengaturan form mcu tujuan negara aktif",
+        "pendaftaran_cob": ""
+      },
+      "foreign_keys": []
+    }
+  },
+  "domainMappings": {
+    "patient_identification": {
+      "keywords": [
+        "patient",
+        "pasien",
+        "patient name",
+        "patient data",
+        "norm",
+        "mr",
+        "medical record",
+        "medical record number",
+        "no rm",
+        "person name",
+        "demographic"
+      ],
+      "target_table": "m_pasien",
+      "primary_key": "pasien_id",
+      "display_column": "pasien_nama",
+      "identifier_column": "pasien_norm",
+      "sql_pattern": "m_pasien.pasien_nama ILIKE '%{value}%' OR m_pasien.pasien_norm = '{value}'",
+      "rule": "ALWAYS use m_pasien for any query mentioning 'patient'. Use pasien_norm for exact identification searches."
+    },
+    "doctor_identification": {
+      "keywords": [
+        "doctor",
+        "dokter",
+        "dr.",
+        "doctor on duty",
+        "doctor schedule",
+        "specialist",
+        "medical specialist",
+        "doctor name",
+        "polyclinic doctor",
+        "unit doctor"
+      ],
+      "target_table": "m_pegawai",
+      "primary_key": "pegawai_id",
+      "display_column": "pegawai_nama",
+      "sql_pattern": "m_pegawai.pegawai_nama ILIKE '%{value}%'",
+      "rule": "You MUST ensure the condition WHERE m_pegawai.pegawai_dokter_pelayanan = 1 to filter only doctors who provide services."
+    },
+    "unit_identification": {
+      "keywords": [
+        "unit",
+        "poli",
+        "polyclinic",
+        "clinic",
+        "ward",
+        "inpatient",
+        "igd",
+        "ugd",
+        "emergency",
+        "er",
+        "installation",
+        "room",
+        "department"
+      ],
+      "target_table": "m_unit",
+      "primary_key": "unit_id",
+      "display_column": "unit_nama",
+      "sql_pattern": "m_unit.unit_nama ILIKE '%{value}%'"
+    },
+    "registration_event": {
+      "keywords": [
+        "registration",
+        "pendaftaran",
+        "daftar",
+        "visit",
+        "kunjungan",
+        "admission",
+        "admisi",
+        "polyclinic visit",
+        "unit visit"
+      ],
+      "target_table": "t_pendaftaran",
+      "primary_key": "pendaftaran_id",
+      "foreign_keys": {
+        "patient": "m_pasien_id",
+        "unit": "m_unit_id",
+        "doctor": "m_pegawai_id"
+      },
+      "sql_pattern": "t_pendaftaran.tanggal_daftar BETWEEN '{start_date}' AND '{end_date}'",
+      "rule": "FOR ALL REGISTRATION QUERIES, YOU MUST JOIN to m_pasien and m_unit. Use t_pendaftaran.tanggal_daftar for any date filtering."
+    },
+    "doctor_schedule_event": {
+      "keywords": [
+        "schedule",
+        "doctor schedule",
+        "jadwal",
+        "practice hours",
+        "doctor on duty",
+        "duty schedule",
+        "polyclinic schedule"
+      ],
+      "target_table": "t_jadwal_dokter",
+      "primary_key": "tjadwaldokter_id",
+      "foreign_keys": {
+        "doctor": "tjadwaldokter_mdokter_id",
+        "unit": "tjadwaldokter_unit_id"
+      },
+      "sql_pattern": "t_jadwal_dokter.tjadwaldokter_tanggal = '{date}'",
+      "rule": "Always JOIN to m_pegawai and m_unit to display the doctor's name and unit name."
+    },
+    "pharmacy_medication": {
+      "keywords": [
+        "medicine",
+        "obat",
+        "medication",
+        "drug",
+        "prescription",
+        "resep",
+        "pharmacy",
+        "farmasi",
+        "apotek",
+        "pill",
+        "tablet",
+        "syrup",
+        "infusion"
+      ],
+      "target_table": "m_barang",
+      "primary_key": "barang_id",
+      "display_column": "barang_nama",
+      "sql_pattern": "m_barang.barang_jenis = 'obat' AND m_barang.barang_nama ILIKE '%{value}%'",
+      "rule": "Only items where barang_jenis = 'obat' (medicine) belong to this category."
+    },
+    "bpjs_insurance": {
+      "keywords": [
+        "bpjs",
+        "jkn",
+        "insurance",
+        "asuransi",
+        "jaminan",
+        "kis",
+        "bpjs participant",
+        "bpjs number",
+        "bpjs card",
+        "health insurance"
+      ],
+      "target_table": "t_asuransi",
+      "primary_key": "tasuransi_id",
+      "identifier_column": "asuransi_no",
+      "sql_pattern": "t_asuransi.asuransi_no = '{value}' OR t_asuransi.asuransi_jenis ILIKE '%bpjs%'",
+      "rule": "Insurance data is usually tied to a specific registration. JOIN to t_pendaftaran using tasuransi_pendaftaran_id."
+    },
+    "queue_information": {
+      "keywords": [
+        "queue",
+        "antrian",
+        "queue number",
+        "panggil antrian",
+        "call queue",
+        "waiting list",
+        "urut",
+        "queue status",
+        "being served",
+        "dilayani",
+        "selesai",
+        "done"
+      ],
+      "target_table": "t_noantrian",
+      "primary_key": "noantrian_id",
+      "display_column": "noantrian_urut",
+      "foreign_keys": {
+        "registration": "noantrian_pendaftaran_id"
+      },
+      "sql_pattern": "t_noantrian.noantrian_status = '{status}'",
+      "rule": "Queue status must match existing codes: 'menunggu' (waiting), 'dipanggil' (called), 'dilayani' (served), 'selesai' (done), 'batal' (canceled)."
+    },
+    "inpatient_event": {
+      "keywords": [
+        "inpatient",
+        "rawat inap",
+        "ranap",
+        "inap",
+        "room",
+        "kamar",
+        "bed",
+        "tempat tidur",
+        "inpatient room",
+        "ward",
+        "bangsal"
+      ],
+      "target_table": "t_kamar_pasien",
+      "primary_key": "kamarpasien_id",
+      "foreign_keys": {
+        "registration": "t_pendaftaran_id"
+      },
+      "sql_pattern": "t_kamar_pasien.kamarpasien_status = 'isi' AND t_kamar_pasien.kamarpasien_keluar IS NULL",
+      "rule": "For patients who are still admitted (inpatient), kamarpasien_keluar MUST BE NULL."
+    },
+    "hemodialysis_event": {
+      "keywords": [
+        "hemodialysis",
+        "hemodialisa",
+        "hd",
+        "cuci darah",
+        "dialysis"
+      ],
+      "target_table": "t_kamar_pasien_hemodialisa",
+      "primary_key": "kamarpasienhemodialisa_id",
+      "foreign_keys": {
+        "registration": "t_pendaftaran_id"
+      },
+      "sql_pattern": "t_kamar_pasien_hemodialisa.kamarpasienhemodialisa_tanggal = '{date}'"
+    },
+    "date_time_queries": {
+      "keywords": [
+        "today",
+        "hari ini",
+        "tomorrow",
+        "besok",
+        "yesterday",
+        "kemarin",
+        "this week",
+        "minggu ini",
+        "this month",
+        "bulan ini",
+        "this year",
+        "tahun ini",
+        "january",
+        "february",
+        "2024",
+        "2025"
+      ],
+      "column_mapping": "tanggal_daftar",
+      "patterns": {
+        "today": "t_pendaftaran.tanggal_daftar::DATE = CURRENT_DATE",
+        "january": "EXTRACT(MONTH FROM t_pendaftaran.tanggal_daftar) = 1 AND EXTRACT(YEAR FROM t_pendaftaran.tanggal_daftar) = EXTRACT(YEAR FROM CURRENT_DATE)",
+        "january 2025": "EXTRACT(MONTH FROM t_pendaftaran.tanggal_daftar) = 1 AND EXTRACT(YEAR FROM t_pendaftaran.tanggal_daftar) = 2025",
+        "this week": "t_pendaftaran.tanggal_daftar >= DATE_TRUNC('week', CURRENT_DATE) AND t_pendaftaran.tanggal_daftar < DATE_TRUNC('week', CURRENT_DATE) + INTERVAL '1 week'"
+      }
+    }
+  },
+  "relationships": {
+    "patient_registrations": {
+      "description": "Patients can have multiple registration records",
+      "join_pattern": "m_pasien.pasien_id = t_pendaftaran.m_pasien_id",
+      "cardinality": "one-to-many"
+    },
+    "registration_orders": {
+      "description": "Each registration can have multiple medical orders",
+      "join_pattern": "t_pendaftaran.pendaftaran_id = t_order.t_pendaftaran_id",
+      "cardinality": "one-to-many"
+    },
+    "order_details": {
+      "description": "Each order contains multiple order details",
+      "join_pattern": "t_order.order_id = t_orderdet.orderdet_order_id",
+      "cardinality": "one-to-many"
+    },
+    "registration_queues": {
+      "description": "Each registration can have queue records",
+      "join_pattern": "t_pendaftaran.pendaftaran_id = t_noantrian.noantrian_pendaftaran_id",
+      "cardinality": "one-to-many"
+    },
+    "unit_schedules": {
+      "description": "Each unit can have multiple doctor schedules",
+      "join_pattern": "m_unit.unit_id = t_jadwal_dokter.tjadwaldokter_unit_id",
+      "cardinality": "one-to-many"
+    },
+    "doctor_schedules": {
+      "description": "Each doctor can have multiple schedules",
+      "join_pattern": "m_pegawai.pegawai_id = t_jadwal_dokter.tjadwaldokter_mdokter_id",
+      "cardinality": "one-to-many"
+    },
+    "patient_insurance": {
+      "description": "Each patient can have multiple insurance policies",
+      "join_pattern": "m_pasien.pasien_id = m_asuransi.m_pasien_id",
+      "cardinality": "one-to-many"
+    },
+    "registration_insurance": {
+      "description": "Each registration can use insurance",
+      "join_pattern": "t_pendaftaran.pendaftaran_id = t_asuransi.tasuransi_pendaftaran_id",
+      "cardinality": "one-to-many"
+    },
+    "hemodialysis_room_patient_admission": {
+      "description": "Links hemodialysis room stays to patient admissions",
+      "join_pattern": "t_kamar_pasien_hemodialisa.t_pendaftaran_id = t_pendaftaran.pendaftaran_id",
+      "cardinality": "many-to-one"
+    },
+    "hemodialysis_room_bed": {
+      "description": "Links hemodialysis room stays to specific hemodialysis beds",
+      "join_pattern": "t_kamar_pasien_hemodialisa.m_bedhemodialisa_id = m_bedhemodialisa.bedhemodialisa_id",
+      "cardinality": "many-to-one"
+    },
+    "hemodialysis_room_doctor": {
+      "description": "Links hemodialysis room stays to the overseeing doctor",
+      "join_pattern": "t_kamar_pasien_hemodialisa.m_pegawai_id_dokter = m_pegawai.pegawai_id",
+      "cardinality": "many-to-many"
+    }
+  }
+}

@@ -1,0 +1,1095 @@
+;
+; Archive created at 2024-03-12 02:00:01 +07
+;     dbname: cloud_hospital
+;     TOC Entries: 10693
+;     Compression: gzip
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 12.17 (Ubuntu 12.17-1.pgdg22.04+1)
+;     Dumped by pg_dump version: 12.17 (Ubuntu 12.17-1.pgdg22.04+1)
+;
+;
+; Selected TOC Entries:
+;
+2939; 1247 16397 TYPE public aktif trustmedis
+2580; 1255 16401 FUNCTION public autoupdatestatusbayar() trustmedis
+2617; 1255 32891 FUNCTION public bantuan() trustmedis
+2581; 1255 16402 FUNCTION public bayarsebelumnya(integer, timestamp without time zone) trustmedis
+2582; 1255 16403 FUNCTION public count_elements(text[]) trustmedis
+2583; 1255 16404 FUNCTION public delete_usergroup_detail() trustmedis
+2584; 1255 16405 FUNCTION public f_s_role_default(integer) trustmedis
+2585; 1255 16406 FUNCTION public f_s_role_default (integer) trustmedis
+2586; 1255 16407 FUNCTION public f_s_roleinv_default(integer) trustmedis
+2587; 1255 16408 FUNCTION public function_t_barangtrans_copy() trustmedis
+2600; 1255 16409 FUNCTION public function_t_mutasidet_copy() trustmedis
+2601; 1255 16410 FUNCTION public getpendaftaranpalingawal(integer) trustmedis
+2616; 1255 33510 FUNCTION public hoho() trustmedis
+2602; 1255 16411 FUNCTION public insert_counter_booking() trustmedis
+2603; 1255 16412 FUNCTION public isnumeric(text) trustmedis
+2604; 1255 16413 FUNCTION public jadwal() trustmedis
+2605; 1255 16414 FUNCTION public loop_tarif() trustmedis
+2577; 1255 16415 FUNCTION public looptarifrj() trustmedis
+2578; 1255 16416 FUNCTION public rekap_administrasi() trustmedis
+2579; 1255 16417 FUNCTION public rekap_biaya_surat() trustmedis
+2606; 1255 16418 FUNCTION public rekap_bmhp() trustmedis
+2607; 1255 16419 FUNCTION public rekap_tagihan_jualobat() trustmedis
+2608; 1255 16420 FUNCTION public rekapoperasipasien() trustmedis
+2609; 1255 16421 FUNCTION public rekappenunjangpasien() trustmedis
+2610; 1255 16422 FUNCTION public rekappenunjangpasiendelete() trustmedis
+2614; 1255 16423 FUNCTION public rekaptagihankamarpasien() trustmedis
+2611; 1255 16424 FUNCTION public rekaptagihantindakanpasien() trustmedis
+2615; 1255 32895 FUNCTION public setup_harga_jual() trustmedis
+2612; 1255 16425 FUNCTION public tarif_tnd() trustmedis
+2613; 1255 16426 FUNCTION public umur(text, text) trustmedis
+2576; 1259 61709 TABLE public a_nomenklatur trustmedis
+2515; 1259 44176 TABLE public a_profit_rsmu trustmedis
+21213; 0 0 ACL public TABLE a_profit_rsmu trustmedis
+2491; 1259 34030 TABLE public bg_kamar trustmedis
+21214; 0 0 ACL public TABLE bg_kamar trustmedis
+2528; 1259 50455 TABLE public bg_master_obat trustmedis
+2553; 1259 57020 TABLE public bg_master_obat_6566 trustmedis
+2531; 1259 52032 TABLE public bg_master_penunjang30124 trustmedis
+2513; 1259 43719 TABLE public bg_noasu trustmedis
+21215; 0 0 ACL public TABLE bg_noasu trustmedis
+2498; 1259 39872 TABLE public bg_obat_master_hna trustmedis
+21216; 0 0 ACL public TABLE bg_obat_master_hna trustmedis
+2493; 1259 39588 TABLE public bg_pasien trustmedis
+21217; 0 0 ACL public TABLE bg_pasien trustmedis
+2502; 1259 39945 TABLE public bg_pasien_tambah trustmedis
+21218; 0 0 ACL public TABLE bg_pasien_tambah trustmedis
+2500; 1259 39919 TABLE public bg_penunjang trustmedis
+21219; 0 0 ACL public TABLE bg_penunjang trustmedis
+2492; 1259 39559 TABLE public bg_profit_rsmu trustmedis
+21220; 0 0 ACL public TABLE bg_profit_rsmu trustmedis
+2529; 1259 50639 TABLE public bg_stok_obat_tambahan trustmedis
+2504; 1259 42540 TABLE public bg_tarif_master trustmedis
+21221; 0 0 ACL public TABLE bg_tarif_master trustmedis
+2506; 1259 42561 TABLE public bg_tarif_penunjang trustmedis
+21222; 0 0 ACL public TABLE bg_tarif_penunjang trustmedis
+2507; 1259 42577 TABLE public bg_tarif_tindakan trustmedis
+21223; 0 0 ACL public TABLE bg_tarif_tindakan trustmedis
+2505; 1259 42555 TABLE public bg_tarif_tindakan_ok trustmedis
+21224; 0 0 ACL public TABLE bg_tarif_tindakan_ok trustmedis
+2497; 1259 39837 TABLE public bg_tindakan trustmedis
+21225; 0 0 ACL public TABLE bg_tindakan trustmedis
+2518; 1259 45757 TABLE public bg_tindakan_baru trustmedis
+21226; 0 0 ACL public TABLE bg_tindakan_baru trustmedis
+2546; 1259 54257 TABLE public bg_tindakan_ok trustmedis
+2547; 1259 54888 TABLE public bg_tindakan_ok_nokamus trustmedis
+2503; 1259 42530 TABLE public bg_tindakan_ok_non trustmedis
+21227; 0 0 ACL public TABLE bg_tindakan_ok_non trustmedis
+2525; 1259 46406 TABLE public bg_update_tarif_penunjang trustmedis
+21228; 0 0 ACL public TABLE bg_update_tarif_penunjang trustmedis
+2526; 1259 48893 TABLE public bg_update_tarif_ri trustmedis
+2524; 1259 46398 TABLE public bg_update_tarif_rj trustmedis
+21229; 0 0 ACL public TABLE bg_update_tarif_rj trustmedis
+202; 1259 16427 TABLE public ci_sessions trustmedis
+21230; 0 0 ACL public TABLE ci_sessions trustmedis
+2462; 1259 33402 TABLE public gwd_barang_gizi trustmedis
+21231; 0 0 ACL public TABLE gwd_barang_gizi trustmedis
+2514; 1259 44170 TABLE public gwd_barang_obat trustmedis
+21232; 0 0 ACL public TABLE gwd_barang_obat trustmedis
+2508; 1259 43414 TABLE public gwd_barang_stok trustmedis
+21233; 0 0 ACL public TABLE gwd_barang_stok trustmedis
+2421; 1259 32521 TABLE public gwd_pasien trustmedis
+21234; 0 0 ACL public TABLE gwd_pasien trustmedis
+2420; 1259 32448 TABLE public gwd_pegawai trustmedis
+21235; 0 0 ACL public TABLE gwd_pegawai trustmedis
+2422; 1259 32604 TABLE public gwd_perusahaan trustmedis
+21236; 0 0 ACL public TABLE gwd_perusahaan trustmedis
+2456; 1259 32924 TABLE public gwd_supp trustmedis
+21237; 0 0 ACL public TABLE gwd_supp trustmedis
+2459; 1259 33267 TABLE public gwd_tindakan trustmedis
+21238; 0 0 ACL public TABLE gwd_tindakan trustmedis
+2461; 1259 33313 TABLE public gwd_tindakan_ok trustmedis
+21239; 0 0 ACL public TABLE gwd_tindakan_ok trustmedis
+2460; 1259 33273 TABLE public gwd_tindakan_tarif_umum trustmedis
+21240; 0 0 ACL public TABLE gwd_tindakan_tarif_umum trustmedis
+2463; 1259 33432 TABLE public gwd_user trustmedis
+21241; 0 0 ACL public TABLE gwd_user trustmedis
+203; 1259 16438 TABLE public hasillis trustmedis
+21242; 0 0 ACL public TABLE hasillis trustmedis
+204; 1259 16444 TABLE public hist_payroll_init trustmedis
+21243; 0 0 ACL public TABLE hist_payroll_init trustmedis
+205; 1259 16461 SEQUENCE public hist_payroll_init_hist_payroll_id_seq trustmedis
+21244; 0 0 SEQUENCE OWNED BY public hist_payroll_init_hist_payroll_id_seq trustmedis
+206; 1259 16463 SEQUENCE public m_icd_id_seq trustmedis
+207; 1259 16465 TABLE public m_icd trustmedis
+21245; 0 0 COMMENT public TABLE m_icd trustmedis
+21246; 0 0 COMMENT public COLUMN m_icd.m_unit_id trustmedis
+21247; 0 0 COMMENT public COLUMN m_icd.icd_kode trustmedis
+21248; 0 0 ACL public TABLE m_icd trustmedis
+208; 1259 16474 SEQUENCE public m_kondisi_id_seq trustmedis
+209; 1259 16476 TABLE public m_kondisi trustmedis
+21249; 0 0 COMMENT public TABLE m_kondisi trustmedis
+21250; 0 0 COMMENT public COLUMN m_kondisi.kondisi_kode trustmedis
+21251; 0 0 COMMENT public COLUMN m_kondisi.kondisi_nama trustmedis
+21252; 0 0 ACL public TABLE m_kondisi trustmedis
+210; 1259 16484 SEQUENCE public m_kota_id_seq trustmedis
+211; 1259 16486 TABLE public m_kota trustmedis
+21253; 0 0 COMMENT public TABLE m_kota trustmedis
+21254; 0 0 COMMENT public COLUMN m_kota.kota_kode trustmedis
+21255; 0 0 COMMENT public COLUMN m_kota.m_propinsi_id trustmedis
+21256; 0 0 COMMENT public COLUMN m_kota.kota_nama trustmedis
+21257; 0 0 ACL public TABLE m_kota trustmedis
+212; 1259 16494 SEQUENCE public m_pegawai_id_seq trustmedis
+213; 1259 16496 TABLE public m_pegawai trustmedis
+21258; 0 0 COMMENT public TABLE m_pegawai trustmedis
+21259; 0 0 COMMENT public COLUMN m_pegawai.pegawai_no trustmedis
+21260; 0 0 COMMENT public COLUMN m_pegawai.m_jenis_pegawai_id trustmedis
+21261; 0 0 COMMENT public COLUMN m_pegawai.pegawai_nama trustmedis
+21262; 0 0 COMMENT public COLUMN m_pegawai.pegawai_kelamin trustmedis
+21263; 0 0 COMMENT public COLUMN m_pegawai.pegawai_tgllahir trustmedis
+21264; 0 0 COMMENT public COLUMN m_pegawai.pegawai_alamat trustmedis
+21265; 0 0 COMMENT public COLUMN m_pegawai.m_kota_id trustmedis
+21266; 0 0 COMMENT public COLUMN m_pegawai.m_kota_id_tempatlahir trustmedis
+21267; 0 0 COMMENT public COLUMN m_pegawai.pegawai_penanggungjawab trustmedis
+21268; 0 0 COMMENT public COLUMN m_pegawai.pegawai_tglmasakerja trustmedis
+21269; 0 0 COMMENT public COLUMN m_pegawai.pegawai_statusnikah trustmedis
+21270; 0 0 COMMENT public COLUMN m_pegawai.pegawai_str_berlaku trustmedis
+21271; 0 0 COMMENT public COLUMN m_pegawai.pegawai_kontrak trustmedis
+21272; 0 0 COMMENT public COLUMN m_pegawai.pegawai_bpjs_kesehatan trustmedis
+21273; 0 0 COMMENT public COLUMN m_pegawai.pegawai_bpjs_ketenagakerjaan trustmedis
+21274; 0 0 COMMENT public COLUMN m_pegawai.pegawai_dokter_pelayanan trustmedis
+21275; 0 0 ACL public TABLE m_pegawai trustmedis
+214; 1259 16511 SEQUENCE public m_pasien_pasien_id_seq trustmedis
+21276; 0 0 SEQUENCE OWNED BY public m_pasien_pasien_id_seq trustmedis
+215; 1259 16513 TABLE public m_pasien trustmedis
+21277; 0 0 COMMENT public TABLE m_pasien trustmedis
+21278; 0 0 COMMENT public COLUMN m_pasien.pasien_norm trustmedis
+21279; 0 0 COMMENT public COLUMN m_pasien.pasien_nik trustmedis
+21280; 0 0 COMMENT public COLUMN m_pasien.pasien_sebut trustmedis
+21281; 0 0 COMMENT public COLUMN m_pasien.pasien_nama trustmedis
+21282; 0 0 COMMENT public COLUMN m_pasien.pasien_kelamin trustmedis
+21283; 0 0 COMMENT public COLUMN m_pasien.pasien_alamat trustmedis
+21284; 0 0 COMMENT public COLUMN m_pasien.m_kecamatan_id trustmedis
+21285; 0 0 COMMENT public COLUMN m_pasien.m_kota_id trustmedis
+21286; 0 0 COMMENT public COLUMN m_pasien.m_propinsi_id trustmedis
+21287; 0 0 COMMENT public COLUMN m_pasien.m_negara_id trustmedis
+21288; 0 0 COMMENT public COLUMN m_pasien.pasien_notelp trustmedis
+21289; 0 0 COMMENT public COLUMN m_pasien.pasien_goldarah trustmedis
+21290; 0 0 COMMENT public COLUMN m_pasien.pasien_bb trustmedis
+21291; 0 0 COMMENT public COLUMN m_pasien.pasien_tb trustmedis
+21292; 0 0 COMMENT public COLUMN m_pasien.m_kota_id_tempatlahir trustmedis
+21293; 0 0 COMMENT public COLUMN m_pasien.pasien_tanggallahir trustmedis
+21294; 0 0 COMMENT public COLUMN m_pasien.m_kelurahan_id trustmedis
+21295; 0 0 COMMENT public COLUMN m_pasien.m_jenispasien_id trustmedis
+21296; 0 0 COMMENT public COLUMN m_pasien.pasien_norm_aktif trustmedis
+21297; 0 0 COMMENT public COLUMN m_pasien.pasien_jabatan trustmedis
+21298; 0 0 COMMENT public COLUMN m_pasien.pasien_karyawan trustmedis
+21299; 0 0 COMMENT public COLUMN m_pasien.pasien_jenis_layanan trustmedis
+21300; 0 0 COMMENT public COLUMN m_pasien.pasien_identitas trustmedis
+21301; 0 0 COMMENT public COLUMN m_pasien.pasien_m_id trustmedis
+21302; 0 0 COMMENT public COLUMN m_pasien.pasien_domisili_json trustmedis
+21303; 0 0 COMMENT public COLUMN m_pasien.pasien_fhir_nama trustmedis
+21304; 0 0 ACL public TABLE m_pasien trustmedis
+216; 1259 16531 SEQUENCE public m_status_id_seq trustmedis
+217; 1259 16533 TABLE public m_status trustmedis
+21305; 0 0 COMMENT public COLUMN m_status.status_kode trustmedis
+21306; 0 0 COMMENT public COLUMN m_status.status_nama trustmedis
+21307; 0 0 ACL public TABLE m_status trustmedis
+218; 1259 16539 TABLE public t_diagnosa_pasien trustmedis
+21308; 0 0 COMMENT public COLUMN t_diagnosa_pasien.diagnosapasien_jenis trustmedis
+21309; 0 0 COMMENT public COLUMN t_diagnosa_pasien.diagnosapasien_kamarpasien_id trustmedis
+21310; 0 0 COMMENT public COLUMN t_diagnosa_pasien.diagnosapasien_verified trustmedis
+21311; 0 0 ACL public TABLE t_diagnosa_pasien trustmedis
+219; 1259 16549 TABLE public t_pendaftaran trustmedis
+21312; 0 0 COMMENT public COLUMN t_pendaftaran.m_bayar_id trustmedis
+21313; 0 0 COMMENT public COLUMN t_pendaftaran.m_asuransi_id trustmedis
+21314; 0 0 COMMENT public COLUMN t_pendaftaran.m_kondisi_id trustmedis
+21315; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_darurat trustmedis
+21316; 0 0 COMMENT public COLUMN t_pendaftaran.m_status_id trustmedis
+21317; 0 0 COMMENT public COLUMN t_pendaftaran.m_rujuk_id_keluar trustmedis
+21318; 0 0 COMMENT public COLUMN t_pendaftaran.m_kondisi_id_keluar trustmedis
+21319; 0 0 COMMENT public COLUMN t_pendaftaran.m_status_id_masuk trustmedis
+21320; 0 0 COMMENT public COLUMN t_pendaftaran.m_status_id_pelayanan trustmedis
+21321; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_status_kunjungan trustmedis
+21322; 0 0 COMMENT public COLUMN t_pendaftaran.m_kondisi_id_masuk trustmedis
+21323; 0 0 COMMENT public COLUMN t_pendaftaran.m_rujukan_id trustmedis
+21324; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_jenis trustmedis
+21325; 0 0 COMMENT public COLUMN t_pendaftaran.status_history_rm_icd_9 trustmedis
+21326; 0 0 COMMENT public COLUMN t_pendaftaran.status_history_rm_icd_10 trustmedis
+21327; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_biaya_administrasi trustmedis
+21328; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_cito trustmedis
+21329; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_cetak_kartu trustmedis
+21330; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_verifikasi trustmedis
+21331; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_flag_warna trustmedis
+21332; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_flag_hutang trustmedis
+21333; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_include_tarif_masuk trustmedis
+21334; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_penjualan_id trustmedis
+21335; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_jual_ambil_flag trustmedis
+21336; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_biaya_admin_akhir trustmedis
+21337; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_id_parent trustmedis
+21338; 0 0 COMMENT public COLUMN t_pendaftaran.pendaftaran_mcu_tujuan_negara trustmedis
+21339; 0 0 ACL public TABLE t_pendaftaran trustmedis
+220; 1259 16603 VIEW public insight_diagnosa_view trustmedis
+221; 1259 16608 TABLE public m_barang trustmedis
+21340; 0 0 COMMENT public COLUMN m_barang.barang_kode trustmedis
+21341; 0 0 COMMENT public COLUMN m_barang.barang_nama trustmedis
+21342; 0 0 COMMENT public COLUMN m_barang.barang_satuan_id trustmedis
+21343; 0 0 COMMENT public COLUMN m_barang.barang_keterangan trustmedis
+21344; 0 0 COMMENT public COLUMN m_barang.barang_racikan trustmedis
+21345; 0 0 COMMENT public COLUMN m_barang.barang_kategori_id trustmedis
+21346; 0 0 COMMENT public COLUMN m_barang.barang_group trustmedis
+21347; 0 0 COMMENT public COLUMN m_barang.barang_hk trustmedis
+21348; 0 0 COMMENT public COLUMN m_barang.barang_bhp trustmedis
+21349; 0 0 COMMENT public COLUMN m_barang.barang_qrcode trustmedis
+21350; 0 0 COMMENT public COLUMN m_barang.m_perusahaan_id trustmedis
+21351; 0 0 COMMENT public COLUMN m_barang.barang_repack trustmedis
+21352; 0 0 COMMENT public COLUMN m_barang.barang_ecatalog trustmedis
+21353; 0 0 ACL public TABLE m_barang trustmedis
+222; 1259 16632 TABLE public t_resep trustmedis
+21354; 0 0 COMMENT public COLUMN t_resep.resep_status trustmedis
+21355; 0 0 COMMENT public COLUMN t_resep.resep_jenis trustmedis
+21356; 0 0 COMMENT public COLUMN t_resep.m_unitorder_id trustmedis
+21357; 0 0 COMMENT public COLUMN t_resep.resep_no_urut trustmedis
+21358; 0 0 COMMENT public COLUMN t_resep.resep_iterasi_aktif trustmedis
+21359; 0 0 COMMENT public COLUMN t_resep.resep_iterasi_opsi trustmedis
+21360; 0 0 COMMENT public COLUMN t_resep.resep_iterasi_jumlah trustmedis
+21361; 0 0 COMMENT public COLUMN t_resep.resep_template trustmedis
+21362; 0 0 COMMENT public COLUMN t_resep.resep_antrian_no trustmedis
+21363; 0 0 COMMENT public COLUMN t_resep.resep_antrian_panggil trustmedis
+21364; 0 0 COMMENT public COLUMN t_resep.resep_antrian_waktu trustmedis
+21365; 0 0 COMMENT public COLUMN t_resep.resep_kategori trustmedis
+21366; 0 0 ACL public TABLE t_resep trustmedis
+223; 1259 16649 TABLE public t_resepdet trustmedis
+21367; 0 0 COMMENT public COLUMN t_resepdet.m_barang_dosis trustmedis
+21368; 0 0 COMMENT public COLUMN t_resepdet.resepdet_dosis_diinginkan trustmedis
+21369; 0 0 COMMENT public COLUMN t_resepdet.resepdet_barang_nilai trustmedis
+21370; 0 0 COMMENT public COLUMN t_resepdet.resepdetracikan_resepdet_id trustmedis
+21371; 0 0 COMMENT public COLUMN t_resepdet.resepdet_barang_kekuatan trustmedis
+21372; 0 0 COMMENT public COLUMN t_resepdet.resepdet_barang_qty trustmedis
+21373; 0 0 COMMENT public COLUMN t_resepdet.resepdet_satuan_racikan trustmedis
+21374; 0 0 COMMENT public COLUMN t_resepdet.resepdet_iterasi_jumlah trustmedis
+21375; 0 0 ACL public TABLE t_resepdet trustmedis
+224; 1259 16663 VIEW public insight_farmasi_view trustmedis
+225; 1259 16668 SEQUENCE public m_icd9_id_seq trustmedis
+226; 1259 16670 TABLE public m_icd9 trustmedis
+21376; 0 0 ACL public TABLE m_icd9 trustmedis
+227; 1259 16681 SEQUENCE public t_diagnosa9_id_seq trustmedis
+228; 1259 16683 TABLE public t_diagnosa9 trustmedis
+21377; 0 0 COMMENT public COLUMN t_diagnosa9.diagnosa9_verified trustmedis
+21378; 0 0 ACL public TABLE t_diagnosa9 trustmedis
+229; 1259 16692 VIEW public insight_icd9_view trustmedis
+230; 1259 16697 SEQUENCE public m_bayar_id_seq trustmedis
+231; 1259 16699 TABLE public m_bayar trustmedis
+21379; 0 0 COMMENT public TABLE m_bayar trustmedis
+21380; 0 0 COMMENT public COLUMN m_bayar.bayar_kode trustmedis
+21381; 0 0 COMMENT public COLUMN m_bayar.bayar_nama trustmedis
+21382; 0 0 COMMENT public COLUMN m_bayar.bayar_jenis_nilai_komisi_ppt trustmedis
+21383; 0 0 COMMENT public COLUMN m_bayar.bayar_penjamin_id trustmedis
+21384; 0 0 COMMENT public COLUMN m_bayar.bayar_batas_plafon trustmedis
+21385; 0 0 ACL public TABLE m_bayar trustmedis
+232; 1259 16712 SEQUENCE public m_jenislayanan_jenislayanan_id_seq trustmedis
+233; 1259 16714 TABLE public m_jenislayanan trustmedis
+21386; 0 0 ACL public TABLE m_jenislayanan trustmedis
+234; 1259 16721 SEQUENCE public m_kecamatan_id_seq trustmedis
+235; 1259 16723 TABLE public m_kecamatan trustmedis
+21387; 0 0 COMMENT public TABLE m_kecamatan trustmedis
+21388; 0 0 COMMENT public COLUMN m_kecamatan.kecamatan_kode trustmedis
+21389; 0 0 COMMENT public COLUMN m_kecamatan.m_kota_id trustmedis
+21390; 0 0 COMMENT public COLUMN m_kecamatan.kecamatan_nama trustmedis
+21391; 0 0 ACL public TABLE m_kecamatan trustmedis
+236; 1259 16731 SEQUENCE public m_kelas_id_seq trustmedis
+237; 1259 16733 TABLE public m_kelas trustmedis
+21392; 0 0 COMMENT public TABLE m_kelas trustmedis
+21393; 0 0 COMMENT public COLUMN m_kelas.kelas_kode trustmedis
+21394; 0 0 COMMENT public COLUMN m_kelas.kelas_nama trustmedis
+21395; 0 0 COMMENT public COLUMN m_kelas.kelas_keterangan trustmedis
+21396; 0 0 ACL public TABLE m_kelas trustmedis
+238; 1259 16744 SEQUENCE public m_propinsi_id_seq trustmedis
+239; 1259 16746 TABLE public m_propinsi trustmedis
+21397; 0 0 COMMENT public TABLE m_propinsi trustmedis
+21398; 0 0 COMMENT public COLUMN m_propinsi.propinsi_kode trustmedis
+21399; 0 0 COMMENT public COLUMN m_propinsi.propinsi_nama trustmedis
+21400; 0 0 ACL public TABLE m_propinsi trustmedis
+240; 1259 16752 TABLE public m_rujukan trustmedis
+21401; 0 0 ACL public TABLE m_rujukan trustmedis
+241; 1259 16761 SEQUENCE public m_unit_id_seq trustmedis
+242; 1259 16763 TABLE public m_unit trustmedis
+21402; 0 0 COMMENT public COLUMN m_unit.unit_kepalaunit_id trustmedis
+21403; 0 0 COMMENT public COLUMN m_unit.unit_kehamilan trustmedis
+21404; 0 0 COMMENT public COLUMN m_unit.unit_administrator trustmedis
+21405; 0 0 COMMENT public COLUMN m_unit.unit_utama trustmedis
+21406; 0 0 COMMENT public COLUMN m_unit.unit_tujuanresep trustmedis
+21407; 0 0 COMMENT public COLUMN m_unit.unit_tujuanbhp trustmedis
+21408; 0 0 COMMENT public COLUMN m_unit.unit_perawatan trustmedis
+21409; 0 0 COMMENT public COLUMN m_unit.unit_booking_online trustmedis
+21410; 0 0 COMMENT public COLUMN m_unit.unit_pengaturan_pengambilan_stok trustmedis
+21411; 0 0 COMMENT public COLUMN m_unit.unit_pilih_rencana_tindakan trustmedis
+21412; 0 0 COMMENT public COLUMN m_unit.unit_durasi_diagramok trustmedis
+21413; 0 0 COMMENT public COLUMN m_unit.unit_kode_antrian trustmedis
+21414; 0 0 ACL public TABLE m_unit trustmedis
+243; 1259 16785 VIEW public insight_pendaftaran_view trustmedis
+244; 1259 16790 TABLE public m_jenis_penunjangmedis trustmedis
+21415; 0 0 COMMENT public COLUMN m_jenis_penunjangmedis.jenispenunjangmedis_kode trustmedis
+21416; 0 0 COMMENT public COLUMN m_jenis_penunjangmedis.jenispenunjangmedis_nama trustmedis
+21417; 0 0 COMMENT public COLUMN m_jenis_penunjangmedis.jenispenunjangmedis_laporan trustmedis
+21418; 0 0 COMMENT public COLUMN m_jenis_penunjangmedis.jenispenunjangmedis_integrasi trustmedis
+21419; 0 0 ACL public TABLE m_jenis_penunjangmedis trustmedis
+245; 1259 16802 TABLE public m_penunjang_medis trustmedis
+21420; 0 0 COMMENT public TABLE m_penunjang_medis trustmedis
+21421; 0 0 COMMENT public COLUMN m_penunjang_medis.penunjangmedis_kode trustmedis
+21422; 0 0 COMMENT public COLUMN m_penunjang_medis.m_pmedis_jenis_id trustmedis
+21423; 0 0 COMMENT public COLUMN m_penunjang_medis.penunjangmedis_nama trustmedis
+21424; 0 0 COMMENT public COLUMN m_penunjang_medis.penunjangmedis_keterangan trustmedis
+21425; 0 0 COMMENT public COLUMN m_penunjang_medis.penunjangmedis_label trustmedis
+21426; 0 0 COMMENT public COLUMN m_penunjang_medis.penunjangmedis_kegiatan trustmedis
+21427; 0 0 COMMENT public COLUMN m_penunjang_medis.penunjangmedis_lama_pengerjaan trustmedis
+21428; 0 0 COMMENT public COLUMN m_penunjang_medis.penunjangmedis_m_group trustmedis
+21429; 0 0 ACL public TABLE m_penunjang_medis trustmedis
+246; 1259 16812 TABLE public t_penunjangmedis_pasien trustmedis
+21430; 0 0 COMMENT public COLUMN t_penunjangmedis_pasien.m_pegawai_id_dokter trustmedis
+21431; 0 0 COMMENT public COLUMN t_penunjangmedis_pasien.pmedispasien_bayar trustmedis
+21432; 0 0 COMMENT public COLUMN t_penunjangmedis_pasien.pmedispasien_status_resume trustmedis
+21433; 0 0 COMMENT public COLUMN t_penunjangmedis_pasien.t_orderdet_pm_id trustmedis
+21434; 0 0 COMMENT public COLUMN t_penunjangmedis_pasien.pmedispasien_order_lis_order_no trustmedis
+21435; 0 0 COMMENT public COLUMN t_penunjangmedis_pasien.pmedispasien_order_lis_registrasi_no trustmedis
+21436; 0 0 COMMENT public COLUMN t_penunjangmedis_pasien.pmedispasien_order_lis_status_simpan trustmedis
+21437; 0 0 COMMENT public COLUMN t_penunjangmedis_pasien.pmedispasien_order_lis_waktu_simpan trustmedis
+21438; 0 0 ACL public TABLE t_penunjangmedis_pasien trustmedis
+247; 1259 16832 VIEW public insight_penunjang_medis_view trustmedis
+248; 1259 16837 TABLE public kirimlis trustmedis
+21439; 0 0 ACL public TABLE kirimlis trustmedis
+249; 1259 16844 TABLE public l_jualdetail trustmedis
+21440; 0 0 COMMENT public COLUMN l_jualdetail.ljualdetail_bayarstatus trustmedis
+21441; 0 0 COMMENT public COLUMN l_jualdetail.ljualdetail_noresep trustmedis
+21442; 0 0 ACL public TABLE l_jualdetail trustmedis
+250; 1259 16856 SEQUENCE public l_jualdetail_ljualdetail_id_seq trustmedis
+21443; 0 0 SEQUENCE OWNED BY public l_jualdetail_ljualdetail_id_seq trustmedis
+251; 1259 16858 TABLE public l_jualrekap trustmedis
+21444; 0 0 COMMENT public COLUMN l_jualrekap.ljualrekap_bayarstatus trustmedis
+21445; 0 0 COMMENT public COLUMN l_jualrekap.ljualrekap_noresep trustmedis
+21446; 0 0 ACL public TABLE l_jualrekap trustmedis
+252; 1259 16870 SEQUENCE public l_jualrekap_ljualrekap_id_seq trustmedis
+21447; 0 0 SEQUENCE OWNED BY public l_jualrekap_ljualrekap_id_seq trustmedis
+253; 1259 16872 TABLE public l_kartustock trustmedis
+21448; 0 0 ACL public TABLE l_kartustock trustmedis
+254; 1259 16886 SEQUENCE public l_kartustock_kartustock_id_seq trustmedis
+21449; 0 0 SEQUENCE OWNED BY public l_kartustock_kartustock_id_seq trustmedis
+255; 1259 16888 TABLE public l_mutasi trustmedis
+21450; 0 0 ACL public TABLE l_mutasi trustmedis
+256; 1259 16900 SEQUENCE public l_mutasi_lmutasi_id_seq trustmedis
+21451; 0 0 SEQUENCE OWNED BY public l_mutasi_lmutasi_id_seq trustmedis
+257; 1259 16902 TABLE public l_obatkeluar trustmedis
+21452; 0 0 ACL public TABLE l_obatkeluar trustmedis
+258; 1259 16913 SEQUENCE public l_obatkeluar_lobatkeluar_id_seq trustmedis
+21453; 0 0 SEQUENCE OWNED BY public l_obatkeluar_lobatkeluar_id_seq trustmedis
+259; 1259 16915 TABLE public l_obatkeluardetail trustmedis
+21454; 0 0 ACL public TABLE l_obatkeluardetail trustmedis
+260; 1259 16928 SEQUENCE public l_obatkeluardetail_lobatkeluardetail_id_seq trustmedis
+21455; 0 0 SEQUENCE OWNED BY public l_obatkeluardetail_lobatkeluardetail_id_seq trustmedis
+261; 1259 16930 TABLE public l_returjual trustmedis
+21456; 0 0 COMMENT public COLUMN l_returjual.lreturjual_bayarstatus trustmedis
+21457; 0 0 ACL public TABLE l_returjual trustmedis
+262; 1259 16942 SEQUENCE public l_returjual_lreturjual_id_seq trustmedis
+21458; 0 0 SEQUENCE OWNED BY public l_returjual_lreturjual_id_seq trustmedis
+263; 1259 16944 TABLE public l_returjualdetail trustmedis
+21459; 0 0 COMMENT public COLUMN l_returjualdetail.lreturjualdetail_bayarstatus trustmedis
+21460; 0 0 ACL public TABLE l_returjualdetail trustmedis
+264; 1259 16956 SEQUENCE public l_returjualdetail_lreturjualdetail_id_seq trustmedis
+21461; 0 0 SEQUENCE OWNED BY public l_returjualdetail_lreturjualdetail_id_seq trustmedis
+265; 1259 16958 SEQUENCE public l_returjualrekap_lreturjualrekap_id_seq trustmedis
+266; 1259 16960 TABLE public l_returjualrekap trustmedis
+21462; 0 0 COMMENT public COLUMN l_returjualrekap.lreturjualrekap_bayarstatus trustmedis
+21463; 0 0 ACL public TABLE l_returjualrekap trustmedis
+267; 1259 16973 TABLE public l_saldopersediaan trustmedis
+21464; 0 0 ACL public TABLE l_saldopersediaan trustmedis
+268; 1259 16993 SEQUENCE public l_saldopersediaan_saldopersediaan_id_seq trustmedis
+21465; 0 0 SEQUENCE OWNED BY public l_saldopersediaan_saldopersediaan_id_seq trustmedis
+269; 1259 16995 TABLE public l_stockopname trustmedis
+21466; 0 0 ACL public TABLE l_stockopname trustmedis
+270; 1259 17006 SEQUENCE public l_stockopname_lstockopname_id_seq trustmedis
+21467; 0 0 SEQUENCE OWNED BY public l_stockopname_lstockopname_id_seq trustmedis
+271; 1259 17008 TABLE public l_stokobat trustmedis
+21468; 0 0 ACL public TABLE l_stokobat trustmedis
+272; 1259 17019 SEQUENCE public l_stokobat_lstokobat_id_seq trustmedis
+21469; 0 0 SEQUENCE OWNED BY public l_stokobat_lstokobat_id_seq trustmedis
+273; 1259 17021 TABLE public listChatRoom trustmedis
+21470; 0 0 ACL public TABLE "listChatRoom" trustmedis
+274; 1259 17027 SEQUENCE public listChatRoom_idRoom_seq trustmedis
+21471; 0 0 SEQUENCE OWNED BY public listChatRoom_idRoom_seq trustmedis
+275; 1259 17029 TABLE public log_activity trustmedis
+21472; 0 0 ACL public TABLE log_activity trustmedis
+276; 1259 17035 SEQUENCE public log_activity_transaction_log_id_seq trustmedis
+21473; 0 0 SEQUENCE OWNED BY public log_activity_transaction_log_id_seq trustmedis
+277; 1259 17037 TABLE public login_logs trustmedis
+21474; 0 0 COMMENT public COLUMN login_logs.s_user_id trustmedis
+21475; 0 0 COMMENT public COLUMN login_logs.loginlogs_username trustmedis
+21476; 0 0 COMMENT public COLUMN login_logs.loginlogs_ip_address trustmedis
+21477; 0 0 COMMENT public COLUMN login_logs.loginlogs_time trustmedis
+21478; 0 0 COMMENT public COLUMN login_logs.loginlogs_pegawai_nama trustmedis
+21479; 0 0 ACL public TABLE login_logs trustmedis
+278; 1259 17043 SEQUENCE public login_logs_loginlogs_id_seq trustmedis
+21480; 0 0 SEQUENCE OWNED BY public login_logs_loginlogs_id_seq trustmedis
+2527; 1259 49940 TABLE public lutfi_akun trustmedis
+279; 1259 17045 TABLE public m_absen_pegawai trustmedis
+21481; 0 0 ACL public TABLE m_absen_pegawai trustmedis
+280; 1259 17053 SEQUENCE public m_absen_pegawai_absenpegawai_id_seq trustmedis
+21482; 0 0 SEQUENCE OWNED BY public m_absen_pegawai_absenpegawai_id_seq trustmedis
+281; 1259 17055 TABLE public m_absen_template trustmedis
+21483; 0 0 ACL public TABLE m_absen_template trustmedis
+282; 1259 17063 SEQUENCE public m_absen_template_absentemplate_id_seq trustmedis
+21484; 0 0 SEQUENCE OWNED BY public m_absen_template_absentemplate_id_seq trustmedis
+283; 1259 17065 TABLE public m_activity trustmedis
+21485; 0 0 ACL public TABLE m_activity trustmedis
+284; 1259 17079 SEQUENCE public m_activity_activity_id_seq trustmedis
+21486; 0 0 SEQUENCE OWNED BY public m_activity_activity_id_seq trustmedis
+285; 1259 17081 TABLE public m_adime_template trustmedis
+21487; 0 0 ACL public TABLE m_adime_template trustmedis
+286; 1259 17089 SEQUENCE public m_adime_template_adimetemplate_id_seq trustmedis
+21488; 0 0 SEQUENCE OWNED BY public m_adime_template_adimetemplate_id_seq trustmedis
+287; 1259 17091 TABLE public m_agama trustmedis
+21489; 0 0 COMMENT public TABLE m_agama trustmedis
+21490; 0 0 COMMENT public COLUMN m_agama.agama_id trustmedis
+21491; 0 0 COMMENT public COLUMN m_agama.agama_nama trustmedis
+21492; 0 0 COMMENT public COLUMN m_agama.agama_keterangan trustmedis
+21493; 0 0 ACL public TABLE m_agama trustmedis
+288; 1259 17097 SEQUENCE public m_agama_agama_id_seq trustmedis
+21494; 0 0 SEQUENCE OWNED BY public m_agama_agama_id_seq trustmedis
+289; 1259 17099 SEQUENCE public m_agama_id_seq trustmedis
+290; 1259 17101 TABLE public m_akreditasi trustmedis
+21495; 0 0 ACL public TABLE m_akreditasi trustmedis
+291; 1259 17106 SEQUENCE public m_akreditasi_akreditasi_id_seq trustmedis
+21496; 0 0 SEQUENCE OWNED BY public m_akreditasi_akreditasi_id_seq trustmedis
+292; 1259 17108 TABLE public m_akreditasi_tahap trustmedis
+21497; 0 0 ACL public TABLE m_akreditasi_tahap trustmedis
+293; 1259 17113 SEQUENCE public m_akreditasi_tahap_akreditasitahap_id_seq trustmedis
+21498; 0 0 SEQUENCE OWNED BY public m_akreditasi_tahap_akreditasitahap_id_seq trustmedis
+294; 1259 17115 TABLE public m_akses_sirkulasi trustmedis
+21499; 0 0 COMMENT public TABLE m_akses_sirkulasi trustmedis
+21500; 0 0 COMMENT public COLUMN m_akses_sirkulasi.aksessirkulasi_id trustmedis
+21501; 0 0 COMMENT public COLUMN m_akses_sirkulasi.aksessirkulasi_nama trustmedis
+21502; 0 0 COMMENT public COLUMN m_akses_sirkulasi.aksessirkulasi_keterangan trustmedis
+21503; 0 0 ACL public TABLE m_akses_sirkulasi trustmedis
+295; 1259 17125 SEQUENCE public m_akses_sirkulasi_aksessirkulasi_id_seq trustmedis
+21504; 0 0 SEQUENCE OWNED BY public m_akses_sirkulasi_aksessirkulasi_id_seq trustmedis
+296; 1259 17127 TABLE public m_akun trustmedis
+21505; 0 0 COMMENT public COLUMN m_akun.akun_kelompok trustmedis
+21506; 0 0 COMMENT public COLUMN m_akun.akun_activity_id trustmedis
+21507; 0 0 ACL public TABLE m_akun trustmedis
+297; 1259 17151 SEQUENCE public m_akun_akun_id_seq trustmedis
+21508; 0 0 SEQUENCE OWNED BY public m_akun_akun_id_seq trustmedis
+298; 1259 17153 TABLE public m_akun_integrasi_jkn trustmedis
+21509; 0 0 COMMENT public COLUMN m_akun_integrasi_jkn.jkn_url trustmedis
+21510; 0 0 COMMENT public COLUMN m_akun_integrasi_jkn.jkn_url_his trustmedis
+21511; 0 0 COMMENT public COLUMN m_akun_integrasi_jkn.jkn_minimal_booking trustmedis
+21512; 0 0 ACL public TABLE m_akun_integrasi_jkn trustmedis
+299; 1259 17161 SEQUENCE public m_akun_integrasi_jkn_jkn_id_seq trustmedis
+21513; 0 0 SEQUENCE OWNED BY public m_akun_integrasi_jkn_jkn_id_seq trustmedis
+300; 1259 17163 TABLE public m_akun_integrasi_jkn_pcare trustmedis
+21514; 0 0 COMMENT public COLUMN m_akun_integrasi_jkn_pcare.jknpcare_url_his trustmedis
+21515; 0 0 COMMENT public COLUMN m_akun_integrasi_jkn_pcare.jknpcare_pilih_dokter_jenis trustmedis
+21516; 0 0 ACL public TABLE m_akun_integrasi_jkn_pcare trustmedis
+301; 1259 17173 SEQUENCE public m_akun_integrasi_jkn_pcare_jknpcare_id_seq trustmedis
+21517; 0 0 SEQUENCE OWNED BY public m_akun_integrasi_jkn_pcare_jknpcare_id_seq trustmedis
+302; 1259 17175 TABLE public m_akun_klasifikasi trustmedis
+21518; 0 0 ACL public TABLE m_akun_klasifikasi trustmedis
+303; 1259 17190 SEQUENCE public m_akun_klasifikasi_akunklasifikasi_id_seq trustmedis
+21519; 0 0 SEQUENCE OWNED BY public m_akun_klasifikasi_akunklasifikasi_id_seq trustmedis
+304; 1259 17192 TABLE public m_akun_lap_detail trustmedis
+21520; 0 0 ACL public TABLE m_akun_lap_detail trustmedis
+305; 1259 17206 SEQUENCE public m_akun_lap_detail_akunlapdet_id_seq trustmedis
+21521; 0 0 SEQUENCE OWNED BY public m_akun_lap_detail_akunlapdet_id_seq trustmedis
+306; 1259 17208 TABLE public m_akun_lap_master trustmedis
+21522; 0 0 COMMENT public COLUMN m_akun_lap_master.akunlap_label trustmedis
+21523; 0 0 COMMENT public COLUMN m_akun_lap_master.akunlap_kode trustmedis
+21524; 0 0 COMMENT public COLUMN m_akun_lap_master.akunlap_jenis trustmedis
+21525; 0 0 COMMENT public COLUMN m_akun_lap_master.akunlap_baris trustmedis
+21526; 0 0 COMMENT public COLUMN m_akun_lap_master.akunlap_lokasi trustmedis
+21527; 0 0 COMMENT public COLUMN m_akun_lap_master.akunlap_tampak trustmedis
+21528; 0 0 COMMENT public COLUMN m_akun_lap_master.akunlap_posisi trustmedis
+21529; 0 0 ACL public TABLE m_akun_lap_master trustmedis
+307; 1259 17226 SEQUENCE public m_akun_lap_master_akunlap_id_seq trustmedis
+21530; 0 0 SEQUENCE OWNED BY public m_akun_lap_master_akunlap_id_seq trustmedis
+308; 1259 17228 TABLE public m_akun_map trustmedis
+21531; 0 0 ACL public TABLE m_akun_map trustmedis
+309; 1259 17244 SEQUENCE public m_akun_map_map_id_seq trustmedis
+21532; 0 0 SEQUENCE OWNED BY public m_akun_map_map_id_seq trustmedis
+310; 1259 17246 TABLE public m_akun_nojurnal trustmedis
+21533; 0 0 COMMENT public COLUMN m_akun_nojurnal.akunnojurnal_jurnal trustmedis
+21534; 0 0 ACL public TABLE m_akun_nojurnal trustmedis
+311; 1259 17254 SEQUENCE public m_akun_nojurnal_akunnojurnal_id_seq trustmedis
+21535; 0 0 SEQUENCE OWNED BY public m_akun_nojurnal_akunnojurnal_id_seq trustmedis
+312; 1259 17256 TABLE public m_akun_rekanan trustmedis
+21536; 0 0 ACL public TABLE m_akun_rekanan trustmedis
+313; 1259 17264 SEQUENCE public m_akun_rekanan_akunrekanan_id_seq trustmedis
+21537; 0 0 SEQUENCE OWNED BY public m_akun_rekanan_akunrekanan_id_seq trustmedis
+314; 1259 17266 TABLE public m_akun_saldo trustmedis
+21538; 0 0 ACL public TABLE m_akun_saldo trustmedis
+315; 1259 17280 SEQUENCE public m_akun_saldo_akunsal_id_seq trustmedis
+21539; 0 0 SEQUENCE OWNED BY public m_akun_saldo_akunsal_id_seq trustmedis
+316; 1259 17282 TABLE public m_akun_setup trustmedis
+21540; 0 0 ACL public TABLE m_akun_setup trustmedis
+317; 1259 17308 SEQUENCE public m_akun_setup_setup_id_seq trustmedis
+21541; 0 0 SEQUENCE OWNED BY public m_akun_setup_setup_id_seq trustmedis
+318; 1259 17310 TABLE public m_alat_bayar trustmedis
+21542; 0 0 ACL public TABLE m_alat_bayar trustmedis
+319; 1259 17315 SEQUENCE public m_alat_bayar_alat_bayar_id_seq trustmedis
+21543; 0 0 SEQUENCE OWNED BY public m_alat_bayar_alat_bayar_id_seq trustmedis
+320; 1259 17317 TABLE public m_ambulance trustmedis
+21544; 0 0 ACL public TABLE m_ambulance trustmedis
+321; 1259 17325 SEQUENCE public m_ambulance_ambulance_id_seq trustmedis
+21545; 0 0 SEQUENCE OWNED BY public m_ambulance_ambulance_id_seq trustmedis
+2555; 1259 57486 TABLE public m_ambulance_pengemudi trustmedis
+2554; 1259 57484 SEQUENCE public m_ambulance_pengemudi_ambulancepengemudi_id_seq trustmedis
+21546; 0 0 SEQUENCE OWNED BY public m_ambulance_pengemudi_ambulancepengemudi_id_seq trustmedis
+322; 1259 17327 TABLE public m_ambulance_tujuan trustmedis
+21547; 0 0 ACL public TABLE m_ambulance_tujuan trustmedis
+323; 1259 17335 SEQUENCE public m_ambulance_tujuan_ambulancetujuan_id_seq trustmedis
+21548; 0 0 SEQUENCE OWNED BY public m_ambulance_tujuan_ambulancetujuan_id_seq trustmedis
+324; 1259 17337 TABLE public m_ambulance_tujuandet trustmedis
+21549; 0 0 ACL public TABLE m_ambulance_tujuandet trustmedis
+325; 1259 17342 SEQUENCE public m_ambulance_tujuandet_ambulancetujuandet_id_seq trustmedis
+21550; 0 0 SEQUENCE OWNED BY public m_ambulance_tujuandet_ambulancetujuandet_id_seq trustmedis
+326; 1259 17344 TABLE public m_aplicare_kelas trustmedis
+21551; 0 0 ACL public TABLE m_aplicare_kelas trustmedis
+327; 1259 17349 SEQUENCE public m_aplicare_kelas_aplicarekelas_id_seq trustmedis
+21552; 0 0 SEQUENCE OWNED BY public m_aplicare_kelas_aplicarekelas_id_seq trustmedis
+328; 1259 17351 TABLE public m_asal_tujuan_memo trustmedis
+21553; 0 0 ACL public TABLE m_asal_tujuan_memo trustmedis
+329; 1259 17358 SEQUENCE public m_asal_tujuan_memo_asaltujuanmemo_id_seq trustmedis
+21554; 0 0 SEQUENCE OWNED BY public m_asal_tujuan_memo_asaltujuanmemo_id_seq trustmedis
+330; 1259 17360 TABLE public m_asuransi trustmedis
+21555; 0 0 COMMENT public TABLE m_asuransi trustmedis
+21556; 0 0 COMMENT public COLUMN m_asuransi.asuransi_no trustmedis
+21557; 0 0 COMMENT public COLUMN m_asuransi.m_perusahaan_id trustmedis
+21558; 0 0 COMMENT public COLUMN m_asuransi.m_pasien_id trustmedis
+21559; 0 0 COMMENT public COLUMN m_asuransi.asuransi_kadaluarsa trustmedis
+21560; 0 0 COMMENT public COLUMN m_asuransi.asuransi_jenis trustmedis
+21561; 0 0 ACL public TABLE m_asuransi trustmedis
+331; 1259 17369 SEQUENCE public m_asuransi_asuransi_id_seq trustmedis
+21562; 0 0 SEQUENCE OWNED BY public m_asuransi_asuransi_id_seq trustmedis
+332; 1259 17371 TABLE public m_audiometri_ambang trustmedis
+21563; 0 0 COMMENT public COLUMN m_audiometri_ambang.audioambang_gangguan trustmedis
+21564; 0 0 ACL public TABLE m_audiometri_ambang trustmedis
+333; 1259 17379 SEQUENCE public m_audiometri_ambang_audioambang_id_seq trustmedis
+21565; 0 0 SEQUENCE OWNED BY public m_audiometri_ambang_audioambang_id_seq trustmedis
+334; 1259 17381 TABLE public m_bagian trustmedis
+21566; 0 0 ACL public TABLE m_bagian trustmedis
+335; 1259 17391 SEQUENCE public m_bagian_bagian_id_seq trustmedis
+21567; 0 0 SEQUENCE OWNED BY public m_bagian_bagian_id_seq trustmedis
+336; 1259 17393 TABLE public m_bahan trustmedis
+21568; 0 0 COMMENT public COLUMN m_bahan.bahan_jenis trustmedis
+21569; 0 0 COMMENT public COLUMN m_bahan.bahan_kategori trustmedis
+21570; 0 0 ACL public TABLE m_bahan trustmedis
+337; 1259 17405 SEQUENCE public m_bahan_bahan_id_seq trustmedis
+21571; 0 0 SEQUENCE OWNED BY public m_bahan_bahan_id_seq trustmedis
+338; 1259 17407 TABLE public m_bahasa trustmedis
+21572; 0 0 COMMENT public TABLE m_bahasa trustmedis
+21573; 0 0 COMMENT public COLUMN m_bahasa.bahasa_id trustmedis
+21574; 0 0 COMMENT public COLUMN m_bahasa.bahasa_nama trustmedis
+21575; 0 0 COMMENT public COLUMN m_bahasa.bahasa_keterangan trustmedis
+21576; 0 0 ACL public TABLE m_bahasa trustmedis
+339; 1259 17413 SEQUENCE public m_bahasa_bahasa_id_seq trustmedis
+21577; 0 0 SEQUENCE OWNED BY public m_bahasa_bahasa_id_seq trustmedis
+340; 1259 17415 SEQUENCE public m_bank_id_seq trustmedis
+341; 1259 17417 TABLE public m_bank trustmedis
+21578; 0 0 ACL public TABLE m_bank trustmedis
+342; 1259 17424 TABLE public m_bank_perusahaan trustmedis
+21579; 0 0 ACL public TABLE m_bank_perusahaan trustmedis
+343; 1259 17432 SEQUENCE public m_bank_perusahaan_bankperusahaan_id_seq trustmedis
+21580; 0 0 SEQUENCE OWNED BY public m_bank_perusahaan_bankperusahaan_id_seq trustmedis
+344; 1259 17434 TABLE public m_bank_rekening trustmedis
+21581; 0 0 ACL public TABLE m_bank_rekening trustmedis
+345; 1259 17442 SEQUENCE public m_bank_rekening_bankrekening_id_seq trustmedis
+21582; 0 0 SEQUENCE OWNED BY public m_bank_rekening_bankrekening_id_seq trustmedis
+346; 1259 17444 SEQUENCE public m_barang_barang_id_seq trustmedis
+21583; 0 0 SEQUENCE OWNED BY public m_barang_barang_id_seq trustmedis
+347; 1259 17446 TABLE public m_barang_bentuk_sediaan_ihs trustmedis
+21584; 0 0 ACL public TABLE m_barang_bentuk_sediaan_ihs trustmedis
+348; 1259 17454 SEQUENCE public m_barang_bentuk_sediaan_ihs_barangbentuksediaanihs_id_seq trustmedis
+21585; 0 0 SEQUENCE OWNED BY public m_barang_bentuk_sediaan_ihs_barangbentuksediaanihs_id_seq trustmedis
+349; 1259 17456 TABLE public m_barang_carapakai trustmedis
+21586; 0 0 ACL public TABLE m_barang_carapakai trustmedis
+350; 1259 17463 SEQUENCE public m_barang_carapakai_barangcarapakai_id_seq trustmedis
+21587; 0 0 SEQUENCE OWNED BY public m_barang_carapakai_barangcarapakai_id_seq trustmedis
+351; 1259 17465 TABLE public m_barang_cvx_group trustmedis
+21588; 0 0 ACL public TABLE m_barang_cvx_group trustmedis
+352; 1259 17473 SEQUENCE public m_barang_cvx_group_barangcvxgroup_id_seq trustmedis
+21589; 0 0 SEQUENCE OWNED BY public m_barang_cvx_group_barangcvxgroup_id_seq trustmedis
+353; 1259 17475 TABLE public m_barang_generik trustmedis
+21590; 0 0 ACL public TABLE m_barang_generik trustmedis
+354; 1259 17480 SEQUENCE public m_barang_generik_generik_id_seq trustmedis
+21591; 0 0 SEQUENCE OWNED BY public m_barang_generik_generik_id_seq trustmedis
+355; 1259 17482 TABLE public m_barang_het trustmedis
+21592; 0 0 ACL public TABLE m_barang_het trustmedis
+356; 1259 17490 SEQUENCE public m_barang_het_baranghet_id_seq trustmedis
+21593; 0 0 SEQUENCE OWNED BY public m_barang_het_baranghet_id_seq trustmedis
+357; 1259 17492 TABLE public m_barang_hna trustmedis
+21594; 0 0 ACL public TABLE m_barang_hna trustmedis
+358; 1259 17500 SEQUENCE public m_barang_hna_baranghna_id_seq trustmedis
+21595; 0 0 SEQUENCE OWNED BY public m_barang_hna_baranghna_id_seq trustmedis
+359; 1259 17502 TABLE public m_barang_ihs trustmedis
+21596; 0 0 ACL public TABLE m_barang_ihs trustmedis
+360; 1259 17510 SEQUENCE public m_barang_ihs_barangihs_id_seq trustmedis
+21597; 0 0 SEQUENCE OWNED BY public m_barang_ihs_barangihs_id_seq trustmedis
+361; 1259 17512 TABLE public m_barang_jasa trustmedis
+21598; 0 0 ACL public TABLE m_barang_jasa trustmedis
+362; 1259 17521 SEQUENCE public m_barang_jasa_barangjasa_id_seq trustmedis
+21599; 0 0 SEQUENCE OWNED BY public m_barang_jasa_barangjasa_id_seq trustmedis
+363; 1259 17523 TABLE public m_barang_jenis trustmedis
+21600; 0 0 ACL public TABLE m_barang_jenis trustmedis
+364; 1259 17532 SEQUENCE public m_barang_jenis_barangjenis_id_seq trustmedis
+21601; 0 0 SEQUENCE OWNED BY public m_barang_jenis_barangjenis_id_seq trustmedis
+365; 1259 17534 SEQUENCE public m_barang_jual_barangjual_id_seq trustmedis
+366; 1259 17536 TABLE public m_barang_jual trustmedis
+21602; 0 0 COMMENT public COLUMN m_barang_jual.barangjual_barang_id trustmedis
+21603; 0 0 COMMENT public COLUMN m_barang_jual.barangjual_hj trustmedis
+21604; 0 0 ACL public TABLE m_barang_jual trustmedis
+367; 1259 17555 TABLE public m_barang_kategori trustmedis
+21605; 0 0 ACL public TABLE m_barang_kategori trustmedis
+368; 1259 17563 SEQUENCE public m_barang_kategori_barangkategori_id_seq trustmedis
+21606; 0 0 SEQUENCE OWNED BY public m_barang_kategori_barangkategori_id_seq trustmedis
+369; 1259 17565 TABLE public m_barang_lain trustmedis
+21607; 0 0 ACL public TABLE m_barang_lain trustmedis
+370; 1259 17572 SEQUENCE public m_barang_lain_baranglain_id_seq trustmedis
+21608; 0 0 SEQUENCE OWNED BY public m_barang_lain_baranglain_id_seq trustmedis
+371; 1259 17574 TABLE public m_barang_nama_history trustmedis
+21609; 0 0 ACL public TABLE m_barang_nama_history trustmedis
+372; 1259 17581 SEQUENCE public m_barang_nama_history_namabaranghistory_id_seq trustmedis
+21610; 0 0 SEQUENCE OWNED BY public m_barang_nama_history_namabaranghistory_id_seq trustmedis
+373; 1259 17583 TABLE public m_barang_obat trustmedis
+21611; 0 0 COMMENT public COLUMN m_barang_obat.barangobat_indikasi trustmedis
+21612; 0 0 COMMENT public COLUMN m_barang_obat.barangobat_kontraindikasi trustmedis
+21613; 0 0 COMMENT public COLUMN m_barang_obat.barangobat_efeksamping trustmedis
+21614; 0 0 COMMENT public COLUMN m_barang_obat.barangobat_carapakai trustmedis
+21615; 0 0 COMMENT public COLUMN m_barang_obat.barangobat_penyimpanan trustmedis
+21616; 0 0 COMMENT public COLUMN m_barang_obat.barangobat_tanda trustmedis
+21617; 0 0 COMMENT public COLUMN m_barang_obat.barangobat_kemasan_id trustmedis
+21618; 0 0 COMMENT public COLUMN m_barang_obat.barangobat_bentuk trustmedis
+21619; 0 0 COMMENT public COLUMN m_barang_obat.barangobat_dso trustmedis
+21620; 0 0 ACL public TABLE m_barang_obat trustmedis
+374; 1259 17592 SEQUENCE public m_barang_obat_barangobat_id_seq trustmedis
+21621; 0 0 SEQUENCE OWNED BY public m_barang_obat_barangobat_id_seq trustmedis
+375; 1259 17594 TABLE public m_barang_perusahaan trustmedis
+21622; 0 0 COMMENT public TABLE m_barang_perusahaan trustmedis
+21623; 0 0 COMMENT public COLUMN m_barang_perusahaan.barangperusahaan_diskon trustmedis
+21624; 0 0 COMMENT public COLUMN m_barang_perusahaan.barangperusahaan_harga trustmedis
+21625; 0 0 COMMENT public COLUMN m_barang_perusahaan.barangperusahaan_satuanbeli_id trustmedis
+21626; 0 0 COMMENT public COLUMN m_barang_perusahaan.barangperusahaan_default trustmedis
+21627; 0 0 ACL public TABLE m_barang_perusahaan trustmedis
+376; 1259 17603 SEQUENCE public m_barang_perusahaan_barangperusahaan_id_seq trustmedis
+21628; 0 0 SEQUENCE OWNED BY public m_barang_perusahaan_barangperusahaan_id_seq trustmedis
+377; 1259 17605 TABLE public m_barang_spesifikasi trustmedis
+21629; 0 0 ACL public TABLE m_barang_spesifikasi trustmedis
+378; 1259 17610 SEQUENCE public m_barang_spesifikasi_barangspek_id_seq trustmedis
+21630; 0 0 SEQUENCE OWNED BY public m_barang_spesifikasi_barangspek_id_seq trustmedis
+379; 1259 17612 TABLE public m_barang_supplier trustmedis
+21631; 0 0 ACL public TABLE m_barang_supplier trustmedis
+380; 1259 17617 SEQUENCE public m_barang_supplier_barangsupplier_id_seq trustmedis
+21632; 0 0 SEQUENCE OWNED BY public m_barang_supplier_barangsupplier_id_seq trustmedis
+381; 1259 17619 TABLE public m_barang_varian_ihs trustmedis
+21633; 0 0 ACL public TABLE m_barang_varian_ihs trustmedis
+382; 1259 17627 SEQUENCE public m_barang_varian_ihs_barangvarian_ihs_id_seq trustmedis
+21634; 0 0 SEQUENCE OWNED BY public m_barang_varian_ihs_barangvarian_ihs_id_seq trustmedis
+383; 1259 17629 TABLE public m_barang_waktu_pakai_ihs trustmedis
+21635; 0 0 ACL public TABLE m_barang_waktu_pakai_ihs trustmedis
+384; 1259 17637 SEQUENCE public m_barang_waktu_pakai_ihs_barangwaktupakaiihs_id_seq trustmedis
+21636; 0 0 SEQUENCE OWNED BY public m_barang_waktu_pakai_ihs_barangwaktupakaiihs_id_seq trustmedis
+385; 1259 17639 TABLE public m_barang_zataktif trustmedis
+21637; 0 0 COMMENT public COLUMN m_barang_zataktif.barangzataktif_nama trustmedis
+21638; 0 0 ACL public TABLE m_barang_zataktif trustmedis
+386; 1259 17647 SEQUENCE public m_barang_zataktif_barangzataktif_id_seq trustmedis
+21639; 0 0 SEQUENCE OWNED BY public m_barang_zataktif_barangzataktif_id_seq trustmedis
+387; 1259 17649 TABLE public m_barang_zataktif_ihs trustmedis
+21640; 0 0 ACL public TABLE m_barang_zataktif_ihs trustmedis
+388; 1259 17657 SEQUENCE public m_barang_zataktif_ihs_barangzataktifihs_id_seq trustmedis
+21641; 0 0 SEQUENCE OWNED BY public m_barang_zataktif_ihs_barangzataktifihs_id_seq trustmedis
+389; 1259 17659 TABLE public m_barangdet trustmedis
+21642; 0 0 ACL public TABLE m_barangdet trustmedis
+390; 1259 17667 SEQUENCE public m_barangdet_barangdet_id_seq trustmedis
+21643; 0 0 SEQUENCE OWNED BY public m_barangdet_barangdet_id_seq trustmedis
+391; 1259 17669 TABLE public m_barangdosis_pakai trustmedis
+21644; 0 0 COMMENT public COLUMN m_barangdosis_pakai.barangdosis_umur trustmedis
+21645; 0 0 ACL public TABLE m_barangdosis_pakai trustmedis
+392; 1259 17678 SEQUENCE public m_barangdosis_pakai_barangdosis_id_seq trustmedis
+21646; 0 0 SEQUENCE OWNED BY public m_barangdosis_pakai_barangdosis_id_seq trustmedis
+393; 1259 17680 TABLE public m_baranghj trustmedis
+21647; 0 0 COMMENT public COLUMN m_baranghj.baranghj_default trustmedis
+21648; 0 0 ACL public TABLE m_baranghj trustmedis
+394; 1259 17693 SEQUENCE public m_baranghj_baranghj_id_seq trustmedis
+21649; 0 0 SEQUENCE OWNED BY public m_baranghj_baranghj_id_seq trustmedis
+395; 1259 17695 TABLE public m_baranghpp trustmedis
+21650; 0 0 ACL public TABLE m_baranghpp trustmedis
+396; 1259 17705 SEQUENCE public m_baranghpp_baranghpp_id_seq trustmedis
+21651; 0 0 SEQUENCE OWNED BY public m_baranghpp_baranghpp_id_seq trustmedis
+397; 1259 17707 TABLE public m_barangjenispasien trustmedis
+21652; 0 0 ACL public TABLE m_barangjenispasien trustmedis
+398; 1259 17715 SEQUENCE public m_barangjenispasien_barangjenispasien_id_seq trustmedis
+21653; 0 0 SEQUENCE OWNED BY public m_barangjenispasien_barangjenispasien_id_seq trustmedis
+399; 1259 17717 TABLE public m_barangkategori_penyusutan trustmedis
+21654; 0 0 ACL public TABLE m_barangkategori_penyusutan trustmedis
+400; 1259 17723 SEQUENCE public m_barangkategori_penyusutan_barangkategori_penyusutan_id_seq trustmedis
+21655; 0 0 SEQUENCE OWNED BY public m_barangkategori_penyusutan_barangkategori_penyusutan_id_seq trustmedis
+401; 1259 17725 SEQUENCE public m_barangrepack_detail_barangrepackdet_id_seq trustmedis
+402; 1259 17727 TABLE public m_barangrepack_detail trustmedis
+21656; 0 0 ACL public TABLE m_barangrepack_detail trustmedis
+403; 1259 17738 TABLE public m_batih trustmedis
+21657; 0 0 COMMENT public COLUMN m_batih.batih_kelamin trustmedis
+21658; 0 0 COMMENT public COLUMN m_batih.batih_hubungan trustmedis
+21659; 0 0 ACL public TABLE m_batih trustmedis
+404; 1259 17747 SEQUENCE public m_batih_batih_id_seq trustmedis
+21660; 0 0 SEQUENCE OWNED BY public m_batih_batih_id_seq trustmedis
+405; 1259 17749 TABLE public m_bed trustmedis
+21661; 0 0 COMMENT public TABLE m_bed trustmedis
+21662; 0 0 COMMENT public COLUMN m_bed.bed_no trustmedis
+21663; 0 0 COMMENT public COLUMN m_bed.m_kamar_id trustmedis
+21664; 0 0 COMMENT public COLUMN m_bed.m_pasien_id trustmedis
+21665; 0 0 COMMENT public COLUMN m_bed.bed_kondisi trustmedis
+21666; 0 0 COMMENT public COLUMN m_bed.bed_aktif trustmedis
+21667; 0 0 COMMENT public COLUMN m_bed.bed_tampil trustmedis
+21668; 0 0 COMMENT public COLUMN m_bed.bed_status trustmedis
+21669; 0 0 ACL public TABLE m_bed trustmedis
+406; 1259 17762 SEQUENCE public m_bed_bed_id_seq trustmedis
+21670; 0 0 SEQUENCE OWNED BY public m_bed_bed_id_seq trustmedis
+407; 1259 17764 TABLE public m_bed_hemodialisa trustmedis
+21671; 0 0 COMMENT public TABLE m_bed_hemodialisa trustmedis
+21672; 0 0 COMMENT public COLUMN m_bed_hemodialisa.bedhemodialisa_no trustmedis
+21673; 0 0 COMMENT public COLUMN m_bed_hemodialisa.m_kamar_id trustmedis
+21674; 0 0 COMMENT public COLUMN m_bed_hemodialisa.m_pasien_id trustmedis
+21675; 0 0 COMMENT public COLUMN m_bed_hemodialisa.bedhemodialisa_kondisi trustmedis
+21676; 0 0 COMMENT public COLUMN m_bed_hemodialisa.bedhemodialisa_aktif trustmedis
+21677; 0 0 COMMENT public COLUMN m_bed_hemodialisa.bedhemodialisa_tampil trustmedis
+21678; 0 0 COMMENT public COLUMN m_bed_hemodialisa.bedhemodialisa_status trustmedis
+21679; 0 0 ACL public TABLE m_bed_hemodialisa trustmedis
+408; 1259 17777 SEQUENCE public m_bed_hemodialisa_bedhemodialisa_id_seq trustmedis
+21680; 0 0 SEQUENCE OWNED BY public m_bed_hemodialisa_bedhemodialisa_id_seq trustmedis
+409; 1259 17779 SEQUENCE public m_bed_id_seq trustmedis
+410; 1259 17781 TABLE public m_benefit trustmedis
+21681; 0 0 ACL public TABLE m_benefit trustmedis
+411; 1259 17791 SEQUENCE public m_benefit_benefit_id_seq trustmedis
+21682; 0 0 SEQUENCE OWNED BY public m_benefit_benefit_id_seq trustmedis
+412; 1259 17793 TABLE public m_bentuk trustmedis
+21683; 0 0 ACL public TABLE m_bentuk trustmedis
+413; 1259 17803 SEQUENCE public m_bentuk_bentuk_id_seq trustmedis
+21684; 0 0 SEQUENCE OWNED BY public m_bentuk_bentuk_id_seq trustmedis
+414; 1259 17805 TABLE public m_bentuk_jadi_ihs trustmedis
+21685; 0 0 ACL public TABLE m_bentuk_jadi_ihs trustmedis
+415; 1259 17813 SEQUENCE public m_bentuk_jadi_ihs_bentukjadi_ihs_id_seq trustmedis
+21686; 0 0 SEQUENCE OWNED BY public m_bentuk_jadi_ihs_bentukjadi_ihs_id_seq trustmedis
+416; 1259 17815 TABLE public m_bhp_template trustmedis
+21687; 0 0 ACL public TABLE m_bhp_template trustmedis
+417; 1259 17825 SEQUENCE public m_bhp_template_bhptemplate_id_seq trustmedis
+21688; 0 0 SEQUENCE OWNED BY public m_bhp_template_bhptemplate_id_seq trustmedis
+418; 1259 17827 TABLE public m_bhp_template_detail trustmedis
+21689; 0 0 ACL public TABLE m_bhp_template_detail trustmedis
+419; 1259 17837 SEQUENCE public m_bhp_template_detail_bhptemplatedet_id_seq trustmedis
+21690; 0 0 SEQUENCE OWNED BY public m_bhp_template_detail_bhptemplatedet_id_seq trustmedis
+420; 1259 17839 SEQUENCE public m_biaya_biaya_id_seq trustmedis
+421; 1259 17841 TABLE public m_biaya trustmedis
+21691; 0 0 COMMENT public COLUMN m_biaya.biaya_kunjungan trustmedis
+21692; 0 0 COMMENT public COLUMN m_biaya.biaya_setting trustmedis
+21693; 0 0 COMMENT public COLUMN m_biaya.biaya_data_permanen trustmedis
+21694; 0 0 COMMENT public COLUMN m_biaya.biaya_kategori trustmedis
+21695; 0 0 ACL public TABLE m_biaya trustmedis
+422; 1259 17852 TABLE public m_bonus_kecantikan trustmedis
+21696; 0 0 ACL public TABLE m_bonus_kecantikan trustmedis
+423; 1259 17859 SEQUENCE public m_bonus_kecantikan_bonuskecantikan_id_seq trustmedis
+21697; 0 0 SEQUENCE OWNED BY public m_bonus_kecantikan_bonuskecantikan_id_seq trustmedis
+424; 1259 17861 TABLE public m_bpjs_akomodasi trustmedis
+21698; 0 0 ACL public TABLE m_bpjs_akomodasi trustmedis
+425; 1259 17866 SEQUENCE public m_bpjs_akomodasi_bpjsakomodasi_id_seq trustmedis
+21699; 0 0 SEQUENCE OWNED BY public m_bpjs_akomodasi_bpjsakomodasi_id_seq trustmedis
+426; 1259 17868 TABLE public m_bpjs_carakeluar trustmedis
+21700; 0 0 ACL public TABLE m_bpjs_carakeluar trustmedis
+427; 1259 17873 SEQUENCE public m_bpjs_carakeluar_bpjscarakeluar_id_seq trustmedis
+21701; 0 0 SEQUENCE OWNED BY public m_bpjs_carakeluar_bpjscarakeluar_id_seq trustmedis
+428; 1259 17875 TABLE public m_bpjs_dokter trustmedis
+21702; 0 0 ACL public TABLE m_bpjs_dokter trustmedis
+429; 1259 17882 SEQUENCE public m_bpjs_dokter_bpjsdokter_id_seq trustmedis
+21703; 0 0 SEQUENCE OWNED BY public m_bpjs_dokter_bpjsdokter_id_seq trustmedis
+430; 1259 17884 TABLE public m_bpjs_faskes trustmedis
+21704; 0 0 COMMENT public COLUMN m_bpjs_faskes.bpjsfaskes_tingkat trustmedis
+21705; 0 0 ACL public TABLE m_bpjs_faskes trustmedis
+431; 1259 17893 SEQUENCE public m_bpjs_faskes_bpjsfaskes_id_seq trustmedis
+21706; 0 0 SEQUENCE OWNED BY public m_bpjs_faskes_bpjsfaskes_id_seq trustmedis
+432; 1259 17895 TABLE public m_bpjs_icd trustmedis
+21707; 0 0 COMMENT public COLUMN m_bpjs_icd.bpjsicd_m_icd_id trustmedis
+21708; 0 0 COMMENT public COLUMN m_bpjs_icd.bpjsicd_spesialis trustmedis
+21709; 0 0 ACL public TABLE m_bpjs_icd trustmedis
+433; 1259 17901 TABLE public m_bpjs_icd9 trustmedis
+21710; 0 0 COMMENT public COLUMN m_bpjs_icd9.bpjsicd9_m_icd9_id trustmedis
+21711; 0 0 ACL public TABLE m_bpjs_icd9 trustmedis
+434; 1259 17906 SEQUENCE public m_bpjs_icd9_bpjsicd9_id_seq trustmedis
+21712; 0 0 SEQUENCE OWNED BY public m_bpjs_icd9_bpjsicd9_id_seq trustmedis
+435; 1259 17908 SEQUENCE public m_bpjs_icd_bpjsicd_id_seq trustmedis
+21713; 0 0 SEQUENCE OWNED BY public m_bpjs_icd_bpjsicd_id_seq trustmedis
+436; 1259 17910 TABLE public m_bpjs_kecamatan trustmedis
+21714; 0 0 COMMENT public COLUMN m_bpjs_kecamatan.bpjskec_kecamatan_id trustmedis
+21715; 0 0 ACL public TABLE m_bpjs_kecamatan trustmedis
+437; 1259 17918 SEQUENCE public m_bpjs_kecamatan_bpjskec_id_seq trustmedis
+21716; 0 0 SEQUENCE OWNED BY public m_bpjs_kecamatan_bpjskec_id_seq trustmedis
+438; 1259 17920 TABLE public m_bpjs_kelas trustmedis
+21717; 0 0 ACL public TABLE m_bpjs_kelas trustmedis
+439; 1259 17925 SEQUENCE public m_bpjs_kelas_bpjskelas_id_seq trustmedis
+21718; 0 0 SEQUENCE OWNED BY public m_bpjs_kelas_bpjskelas_id_seq trustmedis
+440; 1259 17927 TABLE public m_bpjs_kondisi trustmedis
+21719; 0 0 ACL public TABLE m_bpjs_kondisi trustmedis
+441; 1259 17932 SEQUENCE public m_bpjs_kondisi_bpjskondisi_id_seq trustmedis
+21720; 0 0 SEQUENCE OWNED BY public m_bpjs_kondisi_bpjskondisi_id_seq trustmedis
+442; 1259 17934 TABLE public m_bpjs_kota trustmedis
+21721; 0 0 COMMENT public COLUMN m_bpjs_kota.bpjskota_kota_id trustmedis
+21722; 0 0 ACL public TABLE m_bpjs_kota trustmedis
+443; 1259 17941 SEQUENCE public m_bpjs_kota_bpjskota_id_seq trustmedis
+21723; 0 0 SEQUENCE OWNED BY public m_bpjs_kota_bpjskota_id_seq trustmedis
+444; 1259 17943 TABLE public m_bpjs_penunjang trustmedis
+21724; 0 0 ACL public TABLE m_bpjs_penunjang trustmedis
+445; 1259 17947 SEQUENCE public m_bpjs_penunjang_bpjspm_id_seq trustmedis
+21725; 0 0 SEQUENCE OWNED BY public m_bpjs_penunjang_bpjspm_id_seq trustmedis
+446; 1259 17949 TABLE public m_bpjs_propinsi trustmedis
+21726; 0 0 COMMENT public COLUMN m_bpjs_propinsi.bpjsprop_propinsi_id trustmedis
+21727; 0 0 ACL public TABLE m_bpjs_propinsi trustmedis
+447; 1259 17958 SEQUENCE public m_bpjs_propinsi_bpjsprop_id_seq trustmedis
+21728; 0 0 SEQUENCE OWNED BY public m_bpjs_propinsi_bpjsprop_id_seq trustmedis
+448; 1259 17960 TABLE public m_bpjs_ruang trustmedis
+21729; 0 0 ACL public TABLE m_bpjs_ruang trustmedis
+449; 1259 17968 SEQUENCE public m_bpjs_ruang_bpjsruang_id_seq trustmedis
+21730; 0 0 SEQUENCE OWNED BY public m_bpjs_ruang_bpjsruang_id_seq trustmedis
+450; 1259 17970 TABLE public m_bpjs_sadar trustmedis
+21731; 0 0 ACL public TABLE m_bpjs_sadar trustmedis
+451; 1259 17975 SEQUENCE public m_bpjs_sadar_bpjssadar_id_seq trustmedis
+21732; 0 0 SEQUENCE OWNED BY public m_bpjs_sadar_bpjssadar_id_seq trustmedis
+452; 1259 17977 TABLE public m_bpjs_setup trustmedis
+21733; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_kodecabang trustmedis
+21734; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_kodeprovider trustmedis
+21735; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_namaprovider trustmedis
+21736; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_jenis trustmedis
+21737; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_ppkid trustmedis
+21738; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_sepver trustmedis
+21739; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_sepuser trustmedis
+21740; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_seppasswd trustmedis
+21741; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_sepurl trustmedis
+21742; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_sepport trustmedis
+21743; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_pcarever trustmedis
+21744; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_pcareuser trustmedis
+21745; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_pcarepasswd trustmedis
+21746; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_pcareurl trustmedis
+21747; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_pcareport trustmedis
+21748; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_inacbgver trustmedis
+21749; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_inacbguser trustmedis
+21750; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_inacbgpasswd trustmedis
+21751; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_inacbgurl trustmedis
+21752; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_inacbgport trustmedis
+21753; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_namacabang trustmedis
+21754; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_pcareusername trustmedis
+21755; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_pcarepassword trustmedis
+21756; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_pcarekdapp trustmedis
+21757; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_aplicare_link trustmedis
+21758; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_user_key trustmedis
+21759; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_pcare_user_key trustmedis
+21760; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_jenis_cetakan_sep trustmedis
+21761; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_mandatory_jam_praktek_ku trustmedis
+21762; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_otorisasi_fp trustmedis
+21763; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_otorisasi_user_approval trustmedis
+21764; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_pendaftaran_rj_jkn trustmedis
+21765; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_aplicare_aktif trustmedis
+21766; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_icare_link trustmedis
+21767; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_icare_aktif trustmedis
+21768; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_otomatis_terdaftar_rj trustmedis
+21769; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_add_antrol_ku trustmedis
+21770; 0 0 COMMENT public COLUMN m_bpjs_setup.bpjssetup_add_antrol_admisi trustmedis
+21771; 0 0 ACL public TABLE m_bpjs_setup trustmedis
+453; 1259 17994 SEQUENCE public m_bpjs_setup_bpjssetup_id_seq trustmedis
+21772; 0 0 SEQUENCE OWNED BY public m_bpjs_setup_bpjssetup_id_seq trustmedis
+454; 1259 17996 TABLE public m_bpjs_spesialis trustmedis
+21773; 0 0 ACL public TABLE m_bpjs_spesialis trustmedis
+455; 1259 18004 SEQUENCE public m_bpjs_spesialis_bpjsspesialis_id_seq trustmedis
+21774; 0 0 SEQUENCE OWNED BY public m_bpjs_spesialis_bpjsspesialis_id_seq trustmedis
+456; 1259 18006 TABLE public m_bpjs_tindakan trustmedis
+21775; 0 0 ACL public TABLE m_bpjs_tindakan trustmedis
+457; 1259 18010 SEQUENCE public m_bpjs_tindakan_bpjstindakan_id_seq trustmedis
+21776; 0 0 SEQUENCE OWNED BY public m_bpjs_tindakan_bpjstindakan_id_seq trustmedis
+458; 1259 18012 TABLE public m_bpjs_unit trustmedis
+21777; 0 0 COMMENT public COLUMN m_bpjs_unit.bpjsunit_kode trustmedis
+21778; 0 0 COMMENT public COLUMN m_bpjs_unit.bpjsunit_pcare_kode trustmedis
+21779; 0 0 COMMENT public COLUMN m_bpjs_unit.bpjsunit_pcare_nama trustmedis
+21780; 0 0 COMMENT public COLUMN m_bpjs_unit.bpjsunit_pcare_status_faskes trustmedis
+21781; 0 0 ACL public TABLE m_bpjs_unit trustmedis
+459; 1259 18020 SEQUENCE public m_bpjs_unit_bpjsunit_id_seq trustmedis
+21782; 0 0 SEQUENCE OWNED BY public m_bpjs_unit_bpjsunit_id_seq trustmedis
+460; 1259 18022 TABLE public m_cabang_faskes trustmedis
+21783; 0 0 COMMENT public TABLE m_cabang_faskes trustmedis
+21784; 0 0 COMMENT public COLUMN m_cabang_faskes.cabang_faskes_id trustmedis
+21785; 0 0 COMMENT public COLUMN m_cabang_faskes.cabang_faskes_nama trustmedis
+21786; 0 0 COMMENT public COLUMN m_cabang_faskes.cabang_faskes_keterangan trustmedis
+21787; 0 0 ACL public TABLE m_cabang_faskes trustmedis
+461; 1259 18031 SEQUENCE public m_cabang_faskes_cabang_faskes_id_seq trustmedis
+21788; 0 0 SEQUENCE OWNED BY public m_cabang_faskes_cabang_faskes_id_seq trustmedis
+462; 1259 18033 TABLE public m_checklist_alur_mcu trustmedis
+21789; 0 0 COMMENT public COLUMN m_checklist_alur_mcu.checklistalurmcu_nourut trustmedis
+21790; 0 0 ACL public TABLE m_checklist_alur_mcu trustmedis
+463; 1259 18041 SEQUENCE public m_checklist_alur_mcu_checklistalurmcu_id_seq trustmedis
+21791; 0 0 SEQUENCE OWNED BY public m_checklist_alur_mcu_checklistalurmcu_id_seq trustmedis
+464; 1259 18043 TABLE public m_checklist_alur_mcu_subgroup trustmedis
+21792; 0 0 ACL public TABLE m_checklist_alur_mcu_subgroup trustmedis
+465; 1259 18052 SEQUENCE public m_checklist_alur_mcu_subgroup_checklistalurmcu_subgroup_id_seq trustmedis
+21793; 0 0 SEQUENCE OWNED BY public m_checklist_alur_mcu_subgroup_checklistalurmcu_subgroup_id_seq trustmedis
+466; 1259 18054 TABLE public m_checklist_pemeriksaan trustmedis
+21794; 0 0 COMMENT public COLUMN m_checklist_pemeriksaan.checklist_pemeriksaan_posisi trustmedis
+21795; 0 0 ACL public TABLE m_checklist_pemeriksaan trustmedis
+467; 1259 18060 SEQUENCE public m_checklist_pemeriksaan_checklist_pemeriksaan_id_seq trustmedis
+21796; 0 0 SEQUENCE OWNED BY public m_checklist_pemeriksaan_checklist_pemeriksaan_id_seq trustmedis
+468; 1259 18062 TABLE public m_cuti trustmedis
+21797; 0 0 ACL public TABLE m_cuti trustmedis
+469; 1259 18081 SEQUENCE public m_cuti_cuti_id_seq trustmedis
+21798; 0 0 SEQUENCE OWNED BY public m_cuti_cuti_id_seq trustmedis
+470; 1259 18083 TABLE public m_cuti_dokter_rj trustmedis
+21799; 0 0 ACL public TABLE m_cuti_dokter_rj trustmedis
+471; 1259 18087 SEQUENCE public m_cuti_dokter_rj_cutidokterrj_id_seq trustmedis
+21800; 0 0 SEQUENCE OWNED BY public m_cuti_dokter_rj_cutidokterrj_id_seq trustmedis
+472; 1259 18089 TABLE public m_cuti_dokterrj_det trustmedis
+21801; 0 0 ACL public TABLE m_cuti_dokterrj_det trustmedis
+473; 1259 18096 SEQUENCE public m_cuti_dokterrj_det_cutidokterrjdet_id_seq trustmedis
+21802; 0 0 SEQUENCE OWNED BY public m_cuti_dokterrj_det_cutidokterrjdet_id_seq trustmedis
+474; 1259 18098 TABLE public m_data_barang_all_unit trustmedis
+21803; 0 0 ACL public TABLE m_data_barang_all_unit trustmedis
+475; 1259 18104 SEQUENCE public m_data_barang_all_unit_id_seq trustmedis
+21804; 0 0 SEQUENCE OWNED BY public m_data_barang_all_unit_id_seq trustmedis
+476; 1259 18106 TABLE public m_data_obat_all_unit trustmedis
+21805; 0 0 ACL public TABLE m_data_obat_all_unit trustmedis
+477; 1259 18112 SEQUENCE public m_data_obat_all_unit_id_seq trustmedis
+21806; 0 0 SEQUENCE OWNED BY public m_data_obat_all_unit_id_seq trustmedis
+478; 1259 18114 TABLE public m_departemen trustmedis
+21807; 0 0 COMMENT public TABLE m_departemen trustmedis
+21808; 0 0 COMMENT public COLUMN m_departemen.departemen_id trustmedis
+21809; 0 0 COMMENT public COLUMN m_departemen.departemen_nama trustmedis
+21810; 0 0 COMMENT public COLUMN m_departemen.departemen_keterangan trustmedis
+21811; 0 0 COMMENT public COLUMN m_departemen.m_perusahaan_id trustmedis
+21812; 0 0 ACL public TABLE m_departemen trustmedis
+479; 1259 18123 SEQUENCE public m_departemen_departemen_id_seq trustmedis
+21813; 0 0 SEQUENCE OWNED BY public m_departemen_departemen_id_seq trustmedis
+480; 1259 18125 TABLE public m_departemen_detail trustmedis
+21814; 0 0 ACL public TABLE m_departemen_detail trustmedis
+481; 1259 18134 SEQUENCE public m_departemen_detail_departemendetail_id_seq trustmedis
+21815; 0 0 SEQUENCE OWNED BY public m_departemen_detail_departemendetail_id_seq trustmedis
+482; 1259 18136 TABLE public m_depo trustmedis
+21816; 0 0 ACL public TABLE m_depo trustmedis
+483; 1259 18152 SEQUENCE public m_depo_depo_id_seq trustmedis
+21817; 0 0 SEQUENCE OWNED BY public m_depo_depo_id_seq trustmedis
+484; 1259 18154 TABLE public m_depokategori trustmedis
+21818; 0 0 ACL public TABLE m_depokategori trustmedis
+485; 1259 18160 SEQUENCE public m_depokategori_depokategori_id_seq trustmedis
+21819; 0 0 SEQUENCE OWNED BY public m_depokategori_depokategori_id_seq trustmedis
+486; 1259 18162 SEQUENCE public m_det_icd_id_seq trustmedis
+487; 1259 18164 TABLE public m_diagnosa_mata_visus_mcu trustmedis
+21820; 0 0 COMMENT public COLUMN m_diagnosa_mata_visus_mcu.diag_visus_posisi_mata trustmedis
+21821; 0 0 COMMENT public COLUMN m_diagnosa_mata_visus_mcu.diag_visus_jarak_mata trustmedis
+21822; 0 0 COMMENT public COLUMN m_diagnosa_mata_visus_mcu.diag_visus_batas_min trustmedis
+21823; 0 0 COMMENT public COLUMN m_diagnosa_mata_visus_mcu.diag_visus_batas_max trustmedis
+21824; 0 0 ACL public TABLE m_diagnosa_mata_visus_mcu trustmedis
+488; 1259 18173 SEQUENCE public m_diagnosa_mata_visus_mcu_diag_visus_id_seq trustmedis
+21825; 0 0 SEQUENCE OWNED BY public m_diagnosa_mata_visus_mcu_diag_visus_id_seq trustmedis
+489; 1259 18175 TABLE public m_diagnosa_tensi_mcu trustmedis
+21826; 0 0 ACL public TABLE m_diagnosa_tensi_mcu trustmedis
+490; 1259 18184 SEQUENCE public m_diagnosa_tensi_mcu_m_tensi_id_seq trustmedis
+21827; 0 0 SEQUENCE OWNED BY public m_diagnosa_tensi_mcu_m_tensi_id_seq trustmedis
+491; 1259 18186 TABLE public m_diagnosis_perawat trustmedis
+21828; 0 0 ACL public TABLE m_diagnosis_perawat trustmedis
+492; 1259 18198 SEQUENCE public m_diagnosis_perawat_diagnosisperawat_id_seq trustmedis
+21829; 0 0 SEQUENCE OWNED BY public m_diagnosis_perawat_diagnosisperawat_id_seq trustmedis
+493; 1259 18200 TABLE public m_diagnosisperawat_siki trustmedis
+21830; 0 0 COMMENT public TABLE m_diagnosisperawat_siki trustmedis
+21831; 0 0 ACL public TABLE m_diagnosisperawat_siki trustmedis
+494; 1259 18205 SEQUENCE public m_diagnosisperawat_siki_diagnosisperawat_siki_id_seq trustmedis
+21832; 0 0 SEQUENCE OWNED BY public m_diagnosisperawat_siki_diagnosisperawat_siki_id_seq trustmedis
+495; 1259 18207 TABLE public m_diagnosisperawat_slki trustmedis
+21833; 0 0 COMMENT public TABLE m_diagnosisperawat_slki trustmedis
+21834; 0 0 ACL public TABLE m_diagnosisperawat_slki trustmedis
+496; 1259 18212 SEQUENCE public m_diagnosisperawat_slki_diagnosisperawat_slki_id_seq trustmedis
+21835; 0 0 SEQUENCE OWNED BY public m_diagnosisperawat_slki_diagnosisperawat_slki_id_seq trustmedis
+497; 1259 18214 TABLE public m_diagper_gejala trustmedis
+21836; 0 0 COMMENT public TABLE m_diagper_gejala trustmedis
+21837; 0 0 ACL public TABLE m_diagper_gejala trustmedis
+498; 1259 18224 SEQUENCE public m_diagper_gejala_diagper_gejala_id_seq trustmedis
+21838; 0 0 SEQUENCE OWNED BY public m_diagper_gejala_diagper_gejala_id_seq trustmedis
+499; 1259 18226 TABLE public m_diagper_klinisterkait trustmedis
+21839; 0 0 COMMENT public TABLE m_diagper_klinisterkait trustmedis
+21840; 0 0 ACL public TABLE m_diagper_klinisterkait trustmedis
+500; 1259 18234 SEQUENCE public m_diagper_klinisterkait_diagper_klinisterkait_id_seq trustmedis
+21841; 0 0 SEQUENCE OWNED BY public m_diagper_klinisterkait_diagper_klinisterkait_id_seq trustmedis
+501; 1259 18236 TABLE public m_diagper_penyebab trustmedis
+21842; 0 0 COMMENT public TABLE m_diagper_penyebab trustmedis
+21843; 0 0 ACL public TABLE m_diagper_penyebab trustmedis
+502; 1259 18244 SEQUENCE public m_diagper_penyebab_diagper_penyebab_id_seq trustmedis
+21844; 0 0 SEQUENCE OWNED BY public m_diagper_penyebab_diagper_penyebab_id_seq trustmedis
+503; 1259 18246 TABLE public m_diagper_resiko trustmedis
+21845; 0 0 COMMENT public TABLE m_diagper_resiko trustmedis
+21846; 0 0 ACL public TABLE m_diagper_resiko trustmedis
+504; 1259 18254 SEQUENCE public m_diagper_resiko_diagper_resiko_id_seq trustmedis
+21847; 0 0 SEQUENCE OWNED BY public m_diagper_resiko_diagper_resiko_id_seq trustmedis
+505; 1259 18256 TABLE public m_dialisat trustmedis
+21848; 0 0 COMMENT public TABLE m_dialisat trustmedis
+21849; 0 0 COMMENT public COLUMN m_dialisat.dialisat_id trustmedis
+21850; 0 0 COMMENT public COLUMN m_dialisat.dialisat_nama trustmedis
+21851; 0 0 COMMENT public COLUMN m_dialisat.dialisat_keterangan trustmedis
+21852; 0 0 ACL public TABLE m_dialisat trustmedis
+506; 1259 18266 SEQUENCE public m_dialisat_dialisat_id_seq trustmedis
+21853; 0 0 SEQUENCE OWNED BY public m_dialisat_dialisat_id_seq trustmedis
+507; 1259 18268 TABLE public m_dialiser trustmedis
+21854; 0 0 COMMENT public TABLE m_dialiser trustmedis
+21855; 0 0 COMMENT public COLUMN m_dialiser.dialiser_id trustmedis
+21856; 0 0 COMMENT public COLUMN m_dialiser.dialiser_nama trustmedis
+21857; 0 0 COMMENT public COLUMN m_dialiser.dialiser_keterangan trustmedis
+21858; 0 0 ACL public TABLE m_dialiser trustmedis
+508; 1259 18278 SEQUENCE public m_dialiser_dialiser_id_seq trustmedis
+21859; 0 0 SEQUENCE OWNED BY public m_dialiser_dialiser_id_seq trustmedis
+509; 1259 18280 SEQUENCE public m_diet_id_seq trustmedis
+510; 1259 18282 TABLE public m_diet trustmedis
+21860; 0 0 ACL public TABLE m_diet trustmedis
+511; 1259 18290 TABLE public m_display_antrian trustmedis
+21861; 0 0 ACL public TABLE m_display_antrian trustmedis
+512; 1259 18296 SEQUENCE public m_display_antrian_displayantrian_id_seq trustmedis
+21862; 0 0 SEQUENCE OWNED BY public m_display_antrian_displayantrian_id_seq trustmedis
+513; 1259 18298 TABLE public m_dokumen_jenis trustmedis
+21863; 0 0 ACL public TABLE m_dokumen_jenis trustmedis
+514; 1259 18305 SEQUENCE public m_dokumen_jenis_dokumenjenis_id_seq trustmedis
+21864; 0 0 SEQUENCE OWNED BY public m_dokumen_jenis_dokumenjenis_id_seq trustmedis
+515; 1259 18307 TABLE public m_dosis_instruksi_ihs trustmedis
+21865; 0 0 ACL public TABLE m_dosis_instruksi_ihs trustmedis
+516; 1259 18315 SEQUENCE public m_dosis_instruksi_ihs_dosisinstruksiihs_id_seq trustmedis
+21866; 0 0 SEQUENCE OWNED BY public m_dosis_instruksi_ihs_dosisinstruksiihs_id_seq trustmedis
+517; 1259 18317 TABLE public m_dtd trustmedis
+21867; 0 0 ACL public TABLE m_dtd trustmedis
+518; 1259 18325 SEQUENCE public m_dtd_dtd_id_seq trustmedis
+21868; 0 0 SEQUENCE OWNED BY public m_dtd_dtd_id_seq trustmedis
+519; 1259 18327 SEQUENCE public m_edc_id_seq trustmedis
+520; 1259 18329 TABLE public m_edc trustmedis
+21869; 0 0 ACL public TABLE m_edc trustmedis
+521; 1259 18336 TABLE public m_embalase_service trustmedis
+21870; 0 0 COMMENT public COLUMN m_embalase_service.nilai_non_racikan trustmedis
+21871; 0 0 COMMENT public COLUMN m_embalase_service.tuslah trustmedis
+21872; 0 0 COMMENT public COLUMN m_embalase_service.tuslah_non_racikan trustmedis
+21873; 0 0 COMMENT public COLUMN m_embalase_service.opsi_tuslah_racikan trustmedis
+21874; 0 0 COMMENT public COLUMN m_embalase_service.kelipatan_jumlah_jadi trustmedis
+21875; 0 0 ACL public TABLE m_embalase_service trustmedis
+522; 1259 18343 SEQUENCE public m_embalase_service_embalase_id_seq trustmedis
+21876; 0 0 SEQUENCE OWNED BY public m_embalase_service_embalase_id_seq trustmedis
+523; 1259 18345 TABLE public m_estimasi trustmedis
+21877; 0 0 COMMENT public COLUMN m_estimasi.estimasi_antrian trustmedis
+21878; 0 0 COMMENT public COLUMN m_estimasi.estimasi_hari trustmedis
+21879; 0 0 COMMENT public COLUMN m_estimasi.estimasi_pergroup trustmedis
+21880; 0 0 ACL public TABLE m_estimasi trustmedis
+524; 1259 18354 SEQUENCE public m_estimasi_estimasi_id_seq trustmedis
+21881; 0 0 SEQUENCE OWNED BY public m_estimasi_estimasi_id_seq trustmedis
+525; 1259 18356 TABLE public m_etiket_template trustmedis
+21882; 0 0 ACL public TABLE m_etiket_template trustmedis
+526; 1259 18364 SEQUENCE public m_etiket_template_etiket_template_id_seq trustmedis
+21883; 0 0 SEQUENCE OWNED BY public m_etiket_template_etiket_template_id_seq trustmedis
+527; 1259 18366 TABLE public m_export_data trustmedis
+21884; 0 0 ACL public TABLE m_export_data trustmedis
+528; 1259 18373 SEQUENCE public m_export_data_exportdata_id_seq trustmedis
+21885; 0 0 SEQUENCE OWNED BY public m_export_data_exportdata_id_seq trustmedis
+529; 1259 18375 TABLE public m_far_fhir_dump trustmedis
+21886; 0 0 ACL public TABLE m_far_fhir_dump trustmedis
+530; 1259 18384 SEQUENCE public m_far_fhir_dump_fhirdump_id_seq trustmedis
+21887; 0 0 SEQUENCE OWNED BY public m_far_fhir_dump_fhirdump_id_seq trustmedis
+531; 1259 18386 TABLE public m_far_fhir_imun_log trustmedis
+21888; 0 0 ACL public TABLE m_far_fhir_imun_log trustmedis
+532; 1259 18395 SEQUENCE public m_far_fhir_imun_log_fhirimunlog_id_seq trustmedis
+21889; 0 0 SEQUENCE OWNED BY public m_far_fhir_imun_log_fhirimunlog_id_seq trustmedis
+533; 1259 18397 TABLE public m_far_fhir_lab_log trustmedis
+21890; 0 0 ACL public TABLE m_far_fhir_lab_log trustmedis
+534; 1259 18406 SEQUENCE public m_far_fhir_l

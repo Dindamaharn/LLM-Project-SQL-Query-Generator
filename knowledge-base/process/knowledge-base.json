@@ -1,0 +1,644 @@
+{
+  "database_info": {
+    "name": "Healthcare Management System",
+    "description": "Comprehensive Indonesian healthcare database for managing patient registration, medical records, appointments, medications, and healthcare operations",
+    "version": "1.0",
+    "domain": "Healthcare/Medical - Indonesian Hospital System"
+  },
+  "tables": {
+    "t_pendaftaran": {
+      "description": "Patient registration and admission records - central table for all patient visits",
+      "business_context": "This is the core transactional table that connects patients to their healthcare visits.",
+      "common_queries": [
+        "Monthly registration reports by service type",
+        "Average length of stay calculations",
+        "Patient readmission analysis within 30 days",
+        "Registration trends by insurance type"
+      ],
+      "key_columns": {
+        "pendaftaran_id": "Primary key",
+        "pendaftaran_no": "Unique registration number",
+        "m_pasien_id": "Patient identity - foreign key to m_pasien.pasien_id",
+        "m_unit_id": "Patient's destination service unit - foreign key to m_unit.unit_id",
+        "pendaftaran_mrs": "Hospital admission date",
+        "pendaftaran_krs": "Hospital discharge date",
+        "pendaftaran_jenis": "Type of registration (Outpatient/Inpatient, etc.)",
+        "m_asuransi_id": "Patient's insurance - foreign key to m_asuransi.asuransi_id",
+        "m_bayar_id": "Patient's payment type - foreign key to m_bayar.bayar_id",
+        "pendaftaran_no_sep": "SEP number (Eligibility Letter for Participants)",
+        "pendaftaran_created_date": "Date and time when the registration data was created",
+        "m_status_id": "Patient registration status - foreign key to m_status.status_id",
+        "pendaftaran_status_kunjungan": "Patient visit status (New/Old)",
+        "pendaftaran_dokter": "Attending doctor",
+        "pendaftaran_tarif": "Registration fee",
+        "pendaftaran_darurat": "Emergency status"
+      },
+      "foreign_keys": [
+        "pendaftaran_id",
+        "m_unit_id",
+        "m_pasien_id",
+        "m_bayar_id",
+        "m_asuransi_id",
+        "m_kondisi_id",
+        "m_status_id",
+        "m_rujukan_id",
+        "pendaftaran_jenislayanan_id",
+        "reg_company_id",
+        "m_shift_id",
+        "pendaftaran_penjamin_id",
+        "pendaftaran_kartu_bayar_id",
+        "pendaftaran_kartu_perusahaan_id",
+        "pendaftaran_penjualan_id",
+        "pendaftaran_departemendetail_id",
+        "pendaftaran_uuid"
+      ]
+    },
+    "m_pasien": {
+      "description": "Master patient demographics and personal information",
+      "business_context": "Central patient registry containing all patient personal data and contact information.",
+      "common_queries": [
+        "Patient search by name or medical record number",
+        "Age-based demographic analysis",
+        "Patient contact information updates",
+        "Geographic distribution of patients"
+      ],
+      "key_columns": {
+        "pasien_id": "Primary key",
+        "pasien_norm": "Medical Record Number (NoRM)",
+        "pasien_nik": "National Identity Number (NIK)",
+        "pasien_nama": "Patient's full name",
+        "pasien_kelamin": "Gender (M/F)",
+        "pasien_tanggallahir": "Date of birth",
+        "pasien_alamat": "Patient's full address",
+        "pasien_notelp": "Phone number",
+        "pasien_nohp": "Mobile number",
+        "pasien_email": "Email address",
+        "pasien_goldarah": "Blood type",
+        "pasien_alergi": "Allergy history",
+        "m_kota_id": "City ID - foreign key to m_kota.kota_id",
+        "pasien_aktif": "Patient's active status",
+        "pasien_created_date": "Date and time when the patient data was created"
+      },
+      "foreign_keys": [
+        "pasien_id",
+        "m_kecamatan_id",
+        "m_kota_id",
+        "m_propinsi_id",
+        "m_negara_id",
+        "m_kelurahan_id",
+        "m_jenispasien_id",
+        "m_status_id",
+        "pasien_valid",
+        "pasien_rfid",
+        "m_agama_id",
+        "m_pendidikan_id",
+        "m_pekerjaan_id",
+        "reg_company_id",
+        "pasien_departemen_id",
+        "pasien_sehatq_patient_id",
+        "pasien_m_id",
+        "pasien_fhir_id",
+        "pasien_pegawai_id",
+        "pasien_departemen_detail_id"
+      ]
+    },
+    "m_barang": {
+      "description": "Master medication and medical supplies catalog",
+      "business_context": "Complete inventory of medications, medical supplies, and equipment available in the healthcare facility.",
+      "common_queries": [
+        "Most prescribed medications analysis",
+        "Medication cost analysis per patient",
+        "Drug interaction checking",
+        "Inventory management by category"
+      ],
+      "key_columns": {
+        "barang_id": "Primary key",
+        "barang_kode": "Unique code for the item/drug",
+        "barang_nama": "Name of the item/drug",
+        "barang_jenis": "Type of item (drug, medical device, etc.)",
+        "barang_kategori_id": "Drug category ID - foreign key to m_kategoriobat.kategoriobat_id",
+        "barang_het": "Highest Retail Price (HET)",
+        "barang_ecatalog": "Indicates if the item is in the BPJS E-Catalog",
+        "barang_aktif": "Active status of the item",
+        "barang_kronis": "Drug for chronic diseases",
+        "barang_formularium_nasional": "National formulary",
+        "barang_obatjkn": "JKN drug"
+      },
+      "foreign_keys": [
+        "barang_id",
+        "barang_jenis_id",
+        "barang_satuan_id",
+        "barang_kategori_id",
+        "reg_company_id",
+        "m_perusahaan_id",
+        "barang_repack_satuan_id",
+        "m_barangihs_id",
+        "m_barangvarianihs_id",
+        "m_barang_satuandenomihs_id",
+        "m_vaksinihs_id",
+        "m_vaksincvxihs_id",
+        "m_kategoriimunisasiihs_id"
+      ]
+    },
+    "t_order": {
+      "description": "Medical order headers - prescriptions and medical orders",
+      "business_context": "Main transaction header for all medical orders including prescriptions and treatments.",
+      "common_queries": [
+        "Monthly revenue analysis",
+        "Average order value per patient",
+        "Order history for specific patients",
+        "Most expensive treatments analysis"
+      ],
+      "key_columns": {
+        "order_id": "Primary key",
+        "order_no": "Order number",
+        "order_tanggal": "Order date",
+        "order_total": "Order total",
+        "t_pendaftaran_id": "Foreign key (assumed) to link with the patient registration event",
+        "order_status": "Order status",
+        "order_created_date": "Date and time when the order was created",
+        "order_barang_jenis": "Type of item"
+      },
+      "foreign_keys": [
+        "order_id",
+        "order_perusahaan_id",
+        "order_bayar_id",
+        "order_ttd_id",
+        "reg_company_id",
+        "order_barangjenis_id",
+        "m_pegawaivalidasi_id",
+        "order_unit_id",
+        "order_jenis_id",
+        "order_format_cetakan_id"
+      ]
+    },
+    "t_orderdet": {
+      "description": "Medical order details - individual items in prescriptions/orders",
+      "business_context": "Detailed line items for each medical order, linking orders to specific medications or supplies.",
+      "common_queries": [
+        "Top prescribed medications by quantity",
+        "Drug utilization analysis",
+        "Patient medication history",
+        "Revenue by medication type"
+      ],
+      "key_columns": {
+        "orderdet_id": "Primary key",
+        "orderdet_order_id": "Order ID - foreign key to t_order.order_id",
+        "orderdet_barang_id": "Item ID - foreign key to m_barang.barang_id",
+        "orderdet_barang_nama": "Item name",
+        "orderdet_jumlah": "Item quantity",
+        "orderdet_harga": "Item price",
+        "orderdet_subtotal": "Subtotal",
+        "orderdet_created_date": "Date and time created"
+      },
+      "foreign_keys": [
+        "orderdet_id",
+        "orderdet_order_id",
+        "orderdet_barang_id",
+        "orderdet_satuan_id",
+        "reg_company_id",
+        "orderdet_satuan_besar_id",
+        "t_usulan_id",
+        "t_usulandet_id",
+        "orderdet_pabrik_id"
+      ]
+    },
+    "t_noantrian": {
+      "description": "Patient queue management system",
+      "business_context": "Complete queue management system tracking patient flow and wait times.",
+      "common_queries": [
+        "Daily queue analysis by unit",
+        "Average waiting time calculations",
+        "Patient flow optimization",
+        "Queue status monitoring"
+      ],
+      "key_columns": {
+        "noantrian_id": "Primary key",
+        "noantrian_urut": "Queue number",
+        "noantrian_nama": "Patient name",
+        "noantrian_norm": "Patient's Medical Record Number (NoRM)",
+        "noantrian_tanggal": "Queue date",
+        "noantrian_unit_id": "Destination unit/poly ID - foreign key to m_unit.unit_id",
+        "noantrian_status": "Queue status (e.g., Booked, Called, Done)",
+        "noantrian_created_date": "Date and time when the queue was created",
+        "noantrian_panggil": "Time when the queue was called",
+        "noantrian_estimasi": "Estimated service time",
+        "noantrian_pendaftaran_id": "Related registration ID - foreign key to t_pendaftaran.pendaftaran_id"
+      },
+      "foreign_keys": [
+        "noantrian_id",
+        "noantrian_pendaftaran_id",
+        "reg_company_id",
+        "noantrian_pegawai_id",
+        "noantrian_unit_id",
+        "nonantrian_tjadwaldokter_id"
+      ]
+    },
+    "t_jadwal_dokter": {
+      "description": "Doctor scheduling and availability management",
+      "business_context": "Complete doctor scheduling system managing availability and patient quotas.",
+      "common_queries": [
+        "Daily doctor schedules by unit",
+        "Doctor availability checking",
+        "Appointment capacity analysis",
+        "Schedule conflicts identification"
+      ],
+      "key_columns": {
+        "tjadwaldokter_id": "Primary key",
+        "tjadwaldokter_tanggal": "Practice schedule date",
+        "tjadwaldokter_hari": "Practice schedule day",
+        "tjadwaldokter_mdokter_id": "Doctor ID - foreign key to m_pegawai.pegawai_id",
+        "tjadwaldokter_unit_id": "Practice unit/poly ID - foreign key to m_unit.unit_id",
+        "tjadwaldokter_jam_awal": "Practice start time",
+        "tjadwaldokter_jam_akhir": "Practice end time",
+        "tjadwaldokter_kuota": "Patient quota for this schedule",
+        "tjadwaldokter_aktif": "Active status of the schedule"
+      },
+      "foreign_keys": [
+        "tjadwaldokter_id",
+        "tjadwaldokter_unit_id",
+        "tjadwaldokter_dokter_id",
+        "tjadwaldokter_mdokter_id"
+      ]
+    },
+    "m_pegawai": {
+      "description": "Healthcare staff and employee master data",
+      "business_context": "Complete employee registry including medical staff credentials and organizational structure.",
+      "common_queries": [
+        "Active medical staff directory",
+        "Doctor specialization lookup",
+        "Staff organizational charts",
+        "Medical license tracking"
+      ],
+      "key_columns": {
+        "pegawai_id": "Primary key",
+        "pegawai_nama": "Employee's full name",
+        "pegawai_kelamin": "Employee's gender",
+        "pegawai_aktif": "Active status of the employee",
+        "pegawai_medis": "Flag indicating if the employee is medical staff (1=Yes, 0=No)",
+        "pegawai_dokter_pelayanan": "Flag indicating if the employee is a servicing doctor (1=Yes, 0=No)",
+        "pegawai_unit_id": "Employee's unit/department ID - foreign key to m_unit.unit_id",
+        "pegawai_jabatan_nama": "Employee's job title",
+        "pegawai_nosip": "Practice License Number (SIP)",
+        "pegawai_nostr": "Registration Certificate Number (STR)",
+        "pegawai_email": "Employee's email address"
+      },
+      "foreign_keys": [
+        "pegawai_id",
+        "m_jenis_pegawai_id",
+        "m_kota_id",
+        "pegawai_unit_id",
+        "pegawai_pendidikan_id",
+        "reg_company_id",
+        "pegawai_jabatan_id",
+        "pegawai_agama_id",
+        "pegawai_golongan_id",
+        "pegawai_cabang_id",
+        "pegawai_unit_struktural_id",
+        "pegawai_bank_id",
+        "pegawai_depo_id",
+        "pegawai_pasien_id",
+        "pegawai_fhir_id"
+      ]
+    },
+    "m_unit": {
+      "description": "Healthcare service units and departments",
+      "business_context": "Complete organizational structure of healthcare service units.",
+      "common_queries": [
+        "Active service units listing",
+        "Department-wise patient registration analysis",
+        "Unit capacity and utilization reports",
+        "Organizational hierarchy views"
+      ],
+      "key_columns": {
+        "unit_id": "Primary key",
+        "unit_kode": "Unique unit code",
+        "unit_nama": "Unit name (e.g., General Poly, ER, Inpatient)",
+        "unit_kategori": "Unit category (e.g., Outpatient, Inpatient, Medical Support)",
+        "unit_aktif": "Active status of the unit (y/n)",
+        "unit_kepalaunit_id": "Head of unit ID - foreign key to m_pegawai.pegawai_id",
+        "unit_alamat": "Physical address of the unit",
+        "unit_gedung": "Unit's building name",
+        "unit_lantai": "Unit's floor"
+      },
+      "foreign_keys": [
+        "unit_id",
+        "unit_jenislayanan_id",
+        "reg_company_id",
+        "unit_kepalaunit_id",
+        "unit_cabang_faskes_id",
+        "unit_fhir_id",
+        "unit_strukturorganisasi_id"
+      ]
+    },
+    "m_asuransi": {
+      "description": "Patient insurance information master data",
+      "business_context": "Master insurance data for patients including policy numbers and coverage details.",
+      "common_queries": [
+        "Active insurance policies by patient",
+        "Insurance coverage analysis",
+        "Expiring insurance policies tracking",
+        "Insurance provider utilization reports"
+      ],
+      "key_columns": {
+        "asuransi_id": "Primary key",
+        "asuransi_no": "Insurance policy number",
+        "m_perusahaan_id": "Insurance company ID - foreign key to m_perusahaan.perusahaan_id",
+        "m_pasien_id": "ID of the patient who owns this insurance - foreign key to m_pasien.pasien_id",
+        "asuransi_kadaluarsa": "Insurance expiration date",
+        "asuransi_aktif": "Active status of the insurance (y/n)",
+        "asuransi_jenis": "Type of insurance (e.g., BPJS, Private)",
+        "asuransi_sjp_no": "Service Guarantee Letter Number (SJP)"
+      },
+      "foreign_keys": [
+        "asuransi_id",
+        "m_perusahaan_id",
+        "m_pasien_id",
+        "reg_company_id",
+        "asuransi_kelas_id"
+      ]
+    },
+    "t_asuransi": {
+      "description": "Insurance transaction records for patient visits",
+      "business_context": "Transactional insurance usage records linking patient visits to insurance coverage.",
+      "common_queries": [
+        "Insurance claim amounts by provider",
+        "Patient insurance utilization tracking",
+        "Insurance coverage analysis by service type",
+        "Monthly insurance transaction reports"
+      ],
+      "key_columns": {
+        "tasuransi_id": "Primary key",
+        "tasuransi_pendaftaran_id": "Related registration ID - foreign key to t_pendaftaran.pendaftaran_id",
+        "tasuransi_asuransi_no": "Insurance number used in the transaction",
+        "tasuransi_asuransi_perusahaan": "Name of the insurance company used",
+        "tasuransi_total": "Total amount covered by insurance for this transaction",
+        "tasuransi_aktif": "Active status of the insurance transaction (y/n)",
+        "tasuransi_jenis": "Type of insurance used",
+        "tasuransi_created_date": "Date and time when the insurance transaction data was created"
+      },
+      "foreign_keys": [
+        "tasuransi_id",
+        "tasuransi_pendaftaran_id",
+        "tasuransi_perusahaan_id",
+        "reg_company_id",
+        "tasuransi_kelas_id",
+        "tasuransi_bayar_id"
+      ]
+    },
+    "t_kamar_pasien": {
+      "description": "Patient room and bed allocation records for inpatient services",
+      "business_context": "Manages patient assignments to specific rooms and beds during their hospital stay. This table is crucial for tracking patient location, managing bed availability, and calculating accommodation charges.",
+      "common_queries": [
+        "Current bed occupancy report",
+        "Patient room transfer history",
+        "Average length of stay in specific wards",
+        "Billing calculations for room charges"
+      ],
+      "key_columns": {
+        "kamarpasien_id": "Primary key",
+        "t_pendaftaran_id": "Foreign key to t_pendaftaran, linking the room stay to a specific hospital admission",
+        "m_bed_id": "Foreign key to m_bed, identifying the specific bed assigned to the patient",
+        "m_pasien_id": "Foreign key to m_pasien, identifying the patient",
+        "kamarpasien_masuk": "Timestamp for when the patient was admitted to the room/bed",
+        "kamarpasien_keluar": "Timestamp for when the patient was discharged from the room/bed",
+        "kamarpasien_biaya": "Cost of the room stay",
+        "kamarpasien_aktif": "Status of the room stay record (y/n)",
+        "m_ruang_id": "Foreign key to m_ruang, identifying the ward or room area",
+        "m_kelas_id": "Foreign key to m_kelas, identifying the class of the room (e.g., VIP, Class 1)",
+        "m_kamar_id": "Foreign key to m_kamar, identifying the specific room"
+      },
+      "foreign_keys": [
+        "kamarpasien_id",
+        "t_pendaftaran_id",
+        "m_bed_id",
+        "m_pasien_id",
+        "m_ruang_id",
+        "m_kelas_id",
+        "m_kamar_id",
+        "kamarpasien_pindah_id",
+        "reg_company_id",
+        "kamarpasien_kembali_id",
+        "kamarpasien_bayar_id",
+        "kamarpasien_perusahaan_id"
+      ]
+    },
+    "t_kamar_pasien_hemodialisa": {
+      "description": "Patient room and bed allocation records specifically for hemodialysis patients.",
+      "business_context": "Manages patient assignments to specific rooms and beds within the hemodialysis unit. This table tracks patient location, bed availability, and charges related to hemodialysis room stays.",
+      "common_queries": [
+        "Current hemodialysis bed occupancy",
+        "Hemodialysis patient room transfer history",
+        "Billing calculations for hemodialysis room charges"
+      ],
+      "key_columns": {
+        "kamarpasienhemodialisa_id": "Primary key",
+        "t_pendaftaran_id": "Foreign key to t_pendaftaran, linking the hemodialysis room stay to a specific hospital admission",
+        "m_bedhemodialisa_id": "Foreign key to m_bedhemodialisa, identifying the specific hemodialysis bed assigned to the patient",
+        "m_pasien_id": "Foreign key to m_pasien, identifying the patient",
+        "kamarpasienhemodialisa_masuk": "Timestamp for when the patient was admitted to the hemodialysis room/bed",
+        "kamarpasienhemodialisa_keluar": "Timestamp for when the patient was discharged from the hemodialysis room/bed",
+        "kamarpasienhemodialisa_biaya": "Cost of the hemodialysis room stay",
+        "kamarpasienhemodialisa_aktif": "Status of the hemodialysis room stay record (y/n)",
+        "m_ruang_id": "Foreign key to m_ruang, identifying the hemodialysis ward or room area",
+        "m_kelas_id": "Foreign key to m_kelas, identifying the class of the room (e.g., VIP, Class 1)",
+        "m_kamarhemodialisa_id": "Foreign key to m_kamarhemodialisa, identifying the specific hemodialysis room",
+        "m_pegawai_id_dokter": "Foreign key to m_pegawai, identifying the doctor overseeing the hemodialysis session"
+      },
+      "foreign_keys": [
+        "kamarpasienhemodialisa_id",
+        "t_pendaftaran_id",
+        "m_bedhemodialisa_id",
+        "m_pasien_id",
+        "m_ruang_id",
+        "m_kelas_id",
+        "m_kamarhemodialisa_id",
+        "kamarpasienhemodialisa_pindah_id",
+        "reg_company_id"
+      ]
+    },
+    "m_status": {
+      "description": "Master data for various status types used throughout the healthcare system.",
+      "business_context": "Defines and categorizes different statuses (e.g., patient status, registration status, order status) with unique codes and names. This table is crucial for standardizing status definitions and enabling consistent filtering and reporting across the system.",
+      "common_queries": [
+        "List all active statuses",
+        "Find status by code or name",
+        "Filter records by specific status types"
+      ],
+      "key_columns": {
+        "status_id": "Primary key",
+        "status_kode": "Unique code for the status (e.g., 'ACTIVE', 'PENDING', 'COMPLETED')",
+        "status_nama": "Human-readable name of the status (e.g., 'Active', 'Waiting', 'Completed')",
+        "status_aktif": "Indicates if the status is currently active ('y'/'n')",
+        "status_filter": "Category or group for filtering statuses (e.g., 'REGISTRATION', 'ORDER', 'PATIENT')"
+      },
+      "foreign_keys": [
+        "status_id",
+        "reg_company_id"
+      ]
+    }
+  },
+"domainMappings": {
+    "patient_identification": {
+      "keywords": ["patient", "pasien", "patient name", "patient data", "norm", "mr", "medical record", "medical record number", "no rm", "person name", "demographic"],
+      "target_table": "m_pasien",
+      "primary_key": "pasien_id",
+      "display_column": "pasien_nama",
+      "identifier_column": "pasien_norm",
+      "sql_pattern": "m_pasien.pasien_nama ILIKE '%{value}%' OR m_pasien.pasien_norm = '{value}'",
+      "rule": "ALWAYS use m_pasien for any query mentioning 'patient'. Use pasien_norm for exact identification searches."
+    },
+    "doctor_identification": {
+      "keywords": ["doctor", "dokter", "dr.", "doctor on duty", "doctor schedule", "specialist", "medical specialist", "doctor name", "polyclinic doctor", "unit doctor"],
+      "target_table": "m_pegawai",
+      "primary_key": "pegawai_id",
+      "display_column": "pegawai_nama",
+      "sql_pattern": "m_pegawai.pegawai_nama ILIKE '%{value}%'",
+      "rule": "You MUST ensure the condition WHERE m_pegawai.pegawai_dokter_pelayanan = 1 to filter only doctors who provide services."
+    },
+    "unit_identification": {
+      "keywords": ["unit", "poli", "polyclinic", "clinic", "ward", "inpatient", "igd", "ugd", "emergency", "er", "installation", "room", "department"],
+      "target_table": "m_unit",
+      "primary_key": "unit_id",
+      "display_column": "unit_nama",
+      "sql_pattern": "m_unit.unit_nama ILIKE '%{value}%'"
+    },
+    "registration_event": {
+      "keywords": ["registration", "pendaftaran", "daftar", "visit", "kunjungan", "admission", "admisi", "polyclinic visit", "unit visit"],
+      "target_table": "t_pendaftaran",
+      "primary_key": "pendaftaran_id",
+      "foreign_keys": {
+        "patient": "m_pasien_id",
+        "unit": "m_unit_id",
+        "doctor": "m_pegawai_id"
+      },
+      "sql_pattern": "t_pendaftaran.tanggal_daftar BETWEEN '{start_date}' AND '{end_date}'",
+      "rule": "FOR ALL REGISTRATION QUERIES, YOU MUST JOIN to m_pasien and m_unit. Use t_pendaftaran.tanggal_daftar for any date filtering."
+    },
+    "doctor_schedule_event": {
+      "keywords": ["schedule", "doctor schedule", "jadwal", "practice hours", "doctor on duty", "duty schedule", "polyclinic schedule"],
+      "target_table": "t_jadwal_dokter",
+      "primary_key": "tjadwaldokter_id",
+      "foreign_keys": {
+        "doctor": "tjadwaldokter_mdokter_id",
+        "unit": "tjadwaldokter_unit_id"
+      },
+      "sql_pattern": "t_jadwal_dokter.tjadwaldokter_tanggal = '{date}'",
+      "rule": "Always JOIN to m_pegawai and m_unit to display the doctor's name and unit name."
+    },
+    "pharmacy_medication": {
+      "keywords": ["medicine", "obat", "medication", "drug", "prescription", "resep", "pharmacy", "farmasi", "apotek", "pill", "tablet", "syrup", "infusion"],
+      "target_table": "m_barang",
+      "primary_key": "barang_id",
+      "display_column": "barang_nama",
+      "sql_pattern": "m_barang.barang_jenis = 'obat' AND m_barang.barang_nama ILIKE '%{value}%'",
+      "rule": "Only items where barang_jenis = 'obat' (medicine) belong to this category."
+    },
+    "bpjs_insurance": {
+      "keywords": ["bpjs", "jkn", "insurance", "asuransi", "jaminan", "kis", "bpjs participant", "bpjs number", "bpjs card", "health insurance"],
+      "target_table": "t_asuransi",
+      "primary_key": "tasuransi_id",
+      "identifier_column": "asuransi_no",
+      "sql_pattern": "t_asuransi.asuransi_no = '{value}' OR t_asuransi.asuransi_jenis ILIKE '%bpjs%'",
+      "rule": "Insurance data is usually tied to a specific registration. JOIN to t_pendaftaran using tasuransi_pendaftaran_id."
+    },
+    "queue_information": {
+      "keywords": ["queue", "antrian", "queue number", "panggil antrian", "call queue", "waiting list", "urut", "queue status", "being served", "dilayani", "selesai", "done"],
+      "target_table": "t_noantrian",
+      "primary_key": "noantrian_id",
+      "display_column": "noantrian_urut",
+      "foreign_keys": {
+        "registration": "noantrian_pendaftaran_id"
+      },
+      "sql_pattern": "t_noantrian.noantrian_status = '{status}'",
+      "rule": "Queue status must match existing codes: 'menunggu' (waiting), 'dipanggil' (called), 'dilayani' (served), 'selesai' (done), 'batal' (canceled)."
+    },
+    "inpatient_event": {
+      "keywords": ["inpatient", "rawat inap", "ranap", "inap", "room", "kamar", "bed", "tempat tidur", "inpatient room", "ward", "bangsal"],
+      "target_table": "t_kamar_pasien",
+      "primary_key": "kamarpasien_id",
+      "foreign_keys": {
+        "registration": "t_pendaftaran_id"
+      },
+      "sql_pattern": "t_kamar_pasien.kamarpasien_status = 'isi' AND t_kamar_pasien.kamarpasien_keluar IS NULL",
+      "rule": "For patients who are still admitted (inpatient), kamarpasien_keluar MUST BE NULL."
+    },
+    "hemodialysis_event": {
+      "keywords": ["hemodialysis", "hemodialisa", "hd", "cuci darah", "dialysis"],
+      "target_table": "t_kamar_pasien_hemodialisa",
+      "primary_key": "kamarpasienhemodialisa_id",
+      "foreign_keys": {
+        "registration": "t_pendaftaran_id"
+      },
+      "sql_pattern": "t_kamar_pasien_hemodialisa.kamarpasienhemodialisa_tanggal = '{date}'"
+    },
+    "date_time_queries": {
+      "keywords": ["today", "hari ini", "tomorrow", "besok", "yesterday", "kemarin", "this week", "minggu ini", "this month", "bulan ini", "this year", "tahun ini", "january", "february", "2024", "2025"],
+      "column_mapping": "tanggal_daftar",
+      "patterns": {
+        "today": "t_pendaftaran.tanggal_daftar::DATE = CURRENT_DATE",
+        "january": "EXTRACT(MONTH FROM t_pendaftaran.tanggal_daftar) = 1 AND EXTRACT(YEAR FROM t_pendaftaran.tanggal_daftar) = EXTRACT(YEAR FROM CURRENT_DATE)",
+        "january 2025": "EXTRACT(MONTH FROM t_pendaftaran.tanggal_daftar) = 1 AND EXTRACT(YEAR FROM t_pendaftaran.tanggal_daftar) = 2025",
+        "this week": "t_pendaftaran.tanggal_daftar >= DATE_TRUNC('week', CURRENT_DATE) AND t_pendaftaran.tanggal_daftar < DATE_TRUNC('week', CURRENT_DATE) + INTERVAL '1 week'"
+      }
+    }
+  },
+
+  "relationships": {
+    "patient_registrations": {
+      "description": "Patients can have multiple registration records",
+      "join_pattern": "m_pasien.pasien_id = t_pendaftaran.m_pasien_id",
+      "cardinality": "one-to-many"
+    },
+    "registration_orders": {
+      "description": "Each registration can have multiple medical orders",
+      "join_pattern": "t_pendaftaran.pendaftaran_id = t_order.t_pendaftaran_id",
+      "cardinality": "one-to-many"
+    },
+    "order_details": {
+      "description": "Each order contains multiple order details",
+      "join_pattern": "t_order.order_id = t_orderdet.orderdet_order_id",
+      "cardinality": "one-to-many"
+    },
+    "registration_queues": {
+      "description": "Each registration can have queue records",
+      "join_pattern": "t_pendaftaran.pendaftaran_id = t_noantrian.noantrian_pendaftaran_id",
+      "cardinality": "one-to-many"
+    },
+    "unit_schedules": {
+      "description": "Each unit can have multiple doctor schedules",
+      "join_pattern": "m_unit.unit_id = t_jadwal_dokter.tjadwaldokter_unit_id",
+      "cardinality": "one-to-many"
+    },
+    "doctor_schedules": {
+      "description": "Each doctor can have multiple schedules",
+      "join_pattern": "m_pegawai.pegawai_id = t_jadwal_dokter.tjadwaldokter_mdokter_id",
+      "cardinality": "one-to-many"
+    },
+    "patient_insurance": {
+      "description": "Each patient can have multiple insurance policies",
+      "join_pattern": "m_pasien.pasien_id = m_asuransi.m_pasien_id",
+      "cardinality": "one-to-many"
+    },
+    "registration_insurance": {
+      "description": "Each registration can use insurance",
+      "join_pattern": "t_pendaftaran.pendaftaran_id = t_asuransi.tasuransi_pendaftaran_id",
+      "cardinality": "one-to-many"
+    },
+    "hemodialysis_room_patient_admission": {
+      "description": "Links hemodialysis room stays to patient admissions",
+      "join_pattern": "t_kamar_pasien_hemodialisa.t_pendaftaran_id = t_pendaftaran.pendaftaran_id",
+      "cardinality": "many-to-one"
+    },
+    "hemodialysis_room_bed": {
+      "description": "Links hemodialysis room stays to specific hemodialysis beds",
+      "join_pattern": "t_kamar_pasien_hemodialisa.m_bedhemodialisa_id = m_bedhemodialisa.bedhemodialisa_id",
+      "cardinality": "many-to-one"
+    },
+    "hemodialysis_room_doctor": {
+      "description": "Links hemodialysis room stays to the overseeing doctor",
+      "join_pattern": "t_kamar_pasien_hemodialisa.m_pegawai_id_dokter = m_pegawai.pegawai_id",
+      "cardinality": "many-to-many"
+    }
+  }
+}
