@@ -100,8 +100,7 @@ Executes SQL on PostgreSQL
 Returns query results to frontend in real-time
 
 🧠 System Flow
-text
-Salin kode
+
 User Query  →  Frontend (React)
              ↓
        Backend (NestJS)
