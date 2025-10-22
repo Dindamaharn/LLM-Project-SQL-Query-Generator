@@ -7,7 +7,7 @@ import * as path from 'path';
 @Injectable()
 export class QueryService {
   private readonly OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
-  private readonly OPENROUTER_MODEL = 'google/gemma-2-9b-it'; // ganti model disini
+  private readonly OPENROUTER_MODEL = 'google/gemma-2-9b-it';
 
   private readonly KNOWLEDGE_BASE_PATHS = [
     path.join(process.cwd(), '../knowledge-base'),
@@ -18,53 +18,56 @@ export class QueryService {
     private readonly embedService: UserEmbeddingService,
   ) {}
 
-  
   // Fungsi utama
-  async handleUserQuestion(question: string) {
+  async handleUserQuestion(question: string, hospitalCode: string) {
+    if (!hospitalCode) {
+      return { success: false, error: '⚠️ Harap pilih rumah sakit terlebih dahulu.' };
+    }
+
+    const dbName = `${hospitalCode}`; // contoh: rs_a_db, rs_b_db
+    console.log(`🏥 Menggunakan database: ${dbName}`);
+
     console.log('\n==================================================');
     console.log(`🧠 [Auto Query] Pertanyaan user: "${question}"`);
     console.log('==================================================');
 
-    // Buat embedding pertanyaan user
+    // [1] Buat embedding pertanyaan user
     console.log('⚙️  [1] Membuat embedding...');
-    const { vector: userEmbedding } = await this.embedService.generateEmbedding(question, 'bge-m3');// bisa ganti ke nomic-embed-text ATAU bge-m3
+    const { vector: userEmbedding } = await this.embedService.generateEmbedding(question, 'bge-m3');
     console.log(`✅  Embedding berhasil dibuat (${userEmbedding.length} dimensi)`);
 
-    // 2Deteksi domain paling relevan
+    // [2] Deteksi domain relevan
     console.log('\n⚙️  [2] Mendeteksi domain paling relevan...');
     const vectorString = `[${userEmbedding.join(',')}]`;
 
-    //bisa ganti ke Nomic / BGE
     const { rows: domainCandidates } = await this.db.query(
       `
       SELECT domain, MAX(1 - (embedding <=> $1::vector)) AS similarity
-      FROM rag."KnowledgeBaseEmbeddingBGE" 
+      FROM rag."KnowledgeBaseEmbeddingBGE"
       GROUP BY domain
       ORDER BY similarity DESC
       LIMIT 1;
       `,
       [vectorString],
+      dbName, // ⬅️ pake DB sesuai RS
     );
 
     if (domainCandidates.length === 0) {
-      console.log('❌  Tidak ada domain relevan ditemukan.');
-      return { success: false, error: '❌ Tidak ada domain relevan yang ditemukan.' };
+      return { success: false, error: '❌ Tidak ada domain relevan ditemukan.' };
     }
 
     const detectedDomain = domainCandidates[0].domain;
     console.log(`✅ Domain terdeteksi: ${detectedDomain}`);
 
-    // Load knowledge base domain
+    // [3] Load knowledge base domain
     console.log('\n⚙️  [3] Memuat knowledge base...');
     const kb = this.loadKnowledgeBase(detectedDomain);
     if (!kb) {
-      console.log(`❌  File knowledge base untuk "${detectedDomain}" tidak ditemukan.`);
-      return { success: false, error: `Knowledge base untuk domain "${detectedDomain}" tidak ditemukan.` };
+      return { success: false, error: `❌ Knowledge base "${detectedDomain}" tidak ditemukan.` };
     }
     console.log('✅  Knowledge base berhasil dimuat.');
 
-    // Ambil 3 konteks paling relevan
-     //bisa ganti ke Nomic / BGE
+    // [4] Ambil 3 konteks paling relevan
     console.log('\n⚙️  [4] Mengambil 3 konteks paling relevan...');
     const { rows: similarItems } = await this.db.query(
       `
@@ -75,25 +78,20 @@ export class QueryService {
       LIMIT 3;
       `,
       [vectorString, detectedDomain],
+      dbName, // ⬅️ pake DB sesuai RS
     );
-
-    console.log(
-      similarItems.length > 0
-        ? `✅  Ditemukan ${similarItems.length} konteks relevan.`
-        : '⚠️  Tidak ada konteks relevan ditemukan.',
-    );
-
-    // Siapkan prompt ke LLM
-    console.log('\n⚙️  [5] Menyusun prompt untuk LLM...');
-    let schemaDescription = JSON.stringify(kb.tables, null, 2);
-    if (schemaDescription.length > 4000)
-      schemaDescription = schemaDescription.slice(0, 4000) + '\n... [schema truncated]';
 
     const contextTexts = similarItems
       .map((i) => `(${i.similarity.toFixed(3)}) ${i.title}: ${i.content}`)
       .join('\n\n');
 
-    // Generate SQL via OpenRouter
+    // [5] Siapkan prompt
+    console.log('\n⚙️  [5] Menyusun prompt untuk LLM...');
+    let schemaDescription = JSON.stringify(kb.tables, null, 2);
+    if (schemaDescription.length > 4000)
+      schemaDescription = schemaDescription.slice(0, 4000) + '\n... [schema truncated]';
+
+    // [6] Kirim ke OpenRouter
     console.log('⚙️  [6] Mengirim prompt ke OpenRouter...');
     const response = await fetch(this.OPENROUTER_URL, {
       method: 'POST',
@@ -107,49 +105,39 @@ export class QueryService {
           {
             role: 'system',
             content: `
-      Kamu adalah asisten AI ahli SQL PostgreSQL. 
-      Tugasmu adalah membuat query SQL yang *benar, efisien, dan relevan* berdasarkan pertanyaan user.
-      Selalu gunakan sintaks SQL PostgreSQL yang valid dan hindari kesalahan sintaks.`,
+            Kamu adalah asisten AI ahli SQL PostgreSQL.
+            Buat query SQL valid berdasarkan schema dan konteks.
+            Gunakan JOIN yang sesuai jika dibutuhkan.
+            Jangan pernah memodifikasi data (hanya SELECT).
+            `,
           },
           {
             role: 'user',
             content: `
-      Berikut ini adalah schema dan konteks pengetahuan untuk membantu memahami struktur database.
+            🧱 SCHEMA DATABASE:
+            ${schemaDescription}
 
-      🧱 SCHEMA DATABASE:
-      ${schemaDescription}
+            📚 KONTEKS:
+            ${contextTexts}
 
-      📚 KONTEKS TAMBAHAN:
-      ${contextTexts}
+            Pertanyaan user:
+            "${question}"
 
-      Instruksi penting:
-      1. Pahami relasi antar tabel berdasarkan foreign key dan nama kolom.
-      2. Jika pertanyaan melibatkan beberapa tabel, gunakan JOIN yang sesuai (INNER JOIN, LEFT JOIN, dll).
-      3. Gunakan alias tabel agar query mudah dibaca.
-      4. Gunakan nama tabel dan kolom persis seperti yang ada di schema.
-      5. Jika ada keraguan, gunakan konteks untuk menebak tabel yang paling relevan.
-      6. Jangan gunakan kolom atau tabel yang tidak ada di schema.
-      7. Jangan ubah atau manipulasi data — hanya query SELECT yang aman.
-      8. Output **hanya** query SQL tanpa penjelasan, dalam format:
-        \`\`\`sql
-        SELECT ...
-        \`\`\`
-
-      Pertanyaan user:
-      "${question}"
-      `,
+            Format output:
+            \`\`\`sql
+            SELECT ...
+            \`\`\`
+            `,
           },
         ],
       }),
-
     });
 
     const rawText = await response.text();
     let data: any;
     try {
       data = JSON.parse(rawText);
-    } catch (err) {
-      console.log('❌  Gagal parse respons dari OpenRouter.');
+    } catch {
       return { success: false, sql: '-- Gagal parse respons model.' };
     }
 
@@ -157,10 +145,9 @@ export class QueryService {
     sql = sql.replace(/```(sql)?/g, '').trim();
     console.log(`\n🧾 [Generated SQL]\n${sql}`);
 
-    // Validasi agar aman
+    // [7] Jalankan query
     const dangerousKeywords = ['DROP', 'DELETE', 'ALTER', 'UPDATE', 'INSERT'];
     if (dangerousKeywords.some((kw) => sql.toUpperCase().includes(kw))) {
-      console.log('⚠️  Query mengandung kata berbahaya, tidak dijalankan otomatis.');
       return {
         success: true,
         sql,
@@ -168,13 +155,9 @@ export class QueryService {
       };
     }
 
-    // Jalankan query
     console.log('\n⚙️  [7] Menjalankan query di database...');
     try {
-      const result = await this.db.query(sql);
-      console.log(`✅  Query berhasil dijalankan (${result.rowCount ?? result.rows.length} baris).`);
-      console.log('==================================================\n');
-
+      const result = await this.db.query(sql, [], dbName);
       return {
         success: true,
         sql,
@@ -183,8 +166,6 @@ export class QueryService {
         usedModel: this.OPENROUTER_MODEL,
       };
     } catch (err) {
-      console.log(`❌  Gagal menjalankan query: ${err.message}`);
-      console.log('==================================================\n');
       return {
         success: false,
         sql,
@@ -192,8 +173,7 @@ export class QueryService {
       };
     }
   }
-  
-  // Load Knowledge Base
+
   private loadKnowledgeBase(domain: string) {
     for (const basePath of this.KNOWLEDGE_BASE_PATHS) {
       const filePath = path.join(basePath, `knowledge-base-${domain}.json`);
@@ -208,5 +188,4 @@ export class QueryService {
     }
     return null;
   }
-
 }
