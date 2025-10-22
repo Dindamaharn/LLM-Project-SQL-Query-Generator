@@ -9,10 +9,14 @@ generator client {
 }
 
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
-  schemas           = ["rag"]
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // dinamis, tergantung RS
+}
+
+datasource rag {
+  provider = "postgresql"
+  url      = env("RAG_DATABASE_URL") // fixed ke rag_db
+  schemas  = ["rag"]
 }
 
 model KnowledgeBaseEmbeddingBGE {

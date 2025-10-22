@@ -1,0 +1,9 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/rs-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // dinamis: tergantung RS
+}
