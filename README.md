@@ -1,47 +1,64 @@
-# 🧩 SQL Query Generator AI
+🧩 SQL Query Generator AI (Multi-Database Architecture)
 
-A full-stack AI-powered SQL Generator built using **NestJS**, **React (Vite)**, **PostgreSQL**, **Prisma**, and **Ollama** embeddings.  
-This project automatically generates SQL queries from natural language using **Gemma (via OpenRouter)** and executes them on a real PostgreSQL database.
+A full-stack AI-powered SQL Query Generator built using NestJS, React (Vite), PostgreSQL (multi-database), Prisma, and Ollama embeddings.
+Now supports dynamic connection switching between multiple hospital databases (e.g., rs_a_db, rs_b_db, rs_c_db, rs_d_db), each with its own schema and data.
 
----
+🚀 Tech Stack Overview
+🔹 Backend
 
-## 🚀 Tech Stack Overview
+NestJS — scalable backend framework using TypeScript
 
-### 🔹 Backend
-- **NestJS** — TypeScript-based backend framework  
-- **Prisma ORM** — database management and schema modeling  
-- **Docker + PostgreSQL** — containerized database  
-- **Ollama** — embedding generation (`nomic` and `bge` models)  
-- **OpenRouter (Gemma)** — LLM model for SQL query generation  
+Prisma ORM — for schema modeling and multi-database management
 
-### 🔹 Frontend
-- **React + Vite** — modern UI for generating and displaying queries  
-- **TailwindCSS** — fast and responsive styling  
+PostgreSQL (Docker) — containerized DB supporting multiple hospitals
 
----
+Ollama — local embedding model (nomic / bge)
 
-## ⚙️ Key Features
-✅ Generate SQL queries automatically from natural language  
-✅ Store and manage embedding knowledge base using Prisma  
-✅ Execute generated SQL queries on PostgreSQL  
-✅ Display query results directly in the frontend  
-✅ Modular architecture for easy development and scaling  
+OpenRouter (Gemma) — LLM for SQL generation
 
----
+🔹 Frontend
 
+React + Vite — modern UI for query input & results display
 
-## 🌍 Environment Setup
+TailwindCSS — responsive and fast UI styling
 
-Buat file **`.env`** di folder `backend/` dengan isi seperti ini 👇  
-(Jangan upload `.env` ke GitHub, upload hanya `.env.example`)
+⚙️ Key Features
 
-### 🔸 `.env.example`
-```env
+✅ AI-generated SQL queries from natural language
+✅ Dynamic Prisma Client per hospital database (e.g., rs_a_db, rs_b_db, etc.)
+✅ Schema separation (public, rag) for modular knowledge base
+✅ Real-time SQL execution and visualization
+✅ Integrated embedding system for context-aware query generation
+
+🧠 Architecture Overview
+User Query → Frontend (React)
+             ↓
+       Backend (NestJS)
+             ↓
+   Dynamic Database Selector
+             ↓
+      Prisma (multi-client)
+             ↓
+  Embedding Generator (Ollama)
+             ↓
+   Gemma via OpenRouter (SQL Gen)
+             ↓
+ PostgreSQL Databases (rs_a_db, rs_b_db, etc.)
+             ↓
+         Query Results → UI
+
+🌍 Environment Setup
+
+Create a file .env inside backend/:
+
 # ===============================
 # 🌐 DATABASE CONFIGURATION
 # ===============================
-DATABASE_URL="postgresql://postgres:postgres@localhost:5433/sql_generator_ai?schema=public"
-SHADOW_DATABASE_URL="postgresql://postgres:postgres@localhost:5433/sql_generator_ai_shadow?schema=public"
+# Default DB (system metadata)
+DATABASE_URL="postgresql://postgres:postgres@localhost:5433/rsmu_db?schema=public"
+
+# Used by Prisma Migrations
+SHADOW_DATABASE_URL="postgresql://postgres:postgres@localhost:5433/rsmu_shadow?schema=public"
 
 # ===============================
 # 🧠 AI + EMBEDDING CONFIG
@@ -54,63 +71,68 @@ OPENROUTER_API_KEY="your-openrouter-api-key-here"
 # ===============================
 PORT=3000
 FRONTEND_URL="http://localhost:5173"
+
+
+Each hospital database follows naming like:
+
+rs_a_db
+rs_b_db
+rs_c_db
+rs_d_db
+
+
+Each may contain schema:
+
+public  — general system data
+rag     — embedding knowledge base
+
 🐳 Running the Project
 1️⃣ Clone the Repository
 git clone https://github.com/Dindamaharn/LLM-Project-SQL-Query-Generator.git
 cd LLM-Project-SQL-Query-Generator
 
-2️⃣ Setup the Database (Docker)
+2️⃣ Start the Database (Docker)
 docker compose up -d
-Database runs on:
+
+
+Database available at:
 localhost:5433
 
 3️⃣ Backend Setup
 cd backend
 npm install
-
-Initialize Prisma:
 npx prisma migrate dev --name init
-
-Run the backend:
 npm run start:dev
-Backend should run at:
+
+
+Backend runs at:
 http://localhost:3000
 
 4️⃣ Frontend Setup
 cd ../frontend
 npm install
 npm run dev
-Frontend will start at:
+
+
+Frontend runs at:
 http://localhost:5173
 
-
 🧩 Example Workflow
-1️⃣ User inputs a natural language query, e.g.:
 
-“Show all patient in december 2023”
+1️⃣ User inputs:
 
-2️⃣ The system:
+“Tampilkan semua pasien yang dirawat bulan lalu di RS_C”
 
-Uses Ollama embeddings (nomic / bge) to understand schema and stored knowledge base
+2️⃣ System flow:
 
-Sends a prompt to Gemma (via OpenRouter) to generate the corresponding SQL
+Menentukan database aktif (rs_c_db)
 
-Executes SQL on PostgreSQL
+Menggunakan embedding model (Ollama BGE)
 
-Returns query results to frontend in real-time
+Mengirim prompt ke Gemma via OpenRouter
 
-🧠 System Flow
+Menghasilkan SQL otomatis
 
-User Query  →  Frontend (React)
-             ↓
-       Backend (NestJS)
-             ↓
-   Ollama Embedding Model
-             ↓
-     Gemma via OpenRouter
-             ↓
-   SQL Generation + Execution
-             ↓
-  PostgreSQL Database (Docker)
-             ↓
-        Results to UI
+Menjalankan query di schema yang sesuai (rag/public)
+
+Menampilkan hasil ke frontend
