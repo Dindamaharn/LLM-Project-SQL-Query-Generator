@@ -98,7 +98,7 @@ const dbUrl = `postgresql://postgres:postgres@localhost:5433/${cleanCode}_db`;
         schemaDescription = schemaDescription.slice(0, 4000) + '\n... [schema truncated]';
 
       // [6] Panggil OpenRouter
-      console.log('\n⚙️ [6] Mengirim prompt ke OpenRouter...');
+      console.log('⚙️  [6] Mengirim prompt ke OpenRouter...');
       const response = await fetch(this.OPENROUTER_URL, {
         method: 'POST',
         headers: {
@@ -111,29 +111,37 @@ const dbUrl = `postgresql://postgres:postgres@localhost:5433/${cleanCode}_db`;
             {
               role: 'system',
               content: `
-              Kamu adalah asisten AI ahli SQL PostgreSQL.
-              Buat query SQL valid berdasarkan schema dan konteks.
-              Gunakan JOIN jika perlu.
-              Jangan pernah melakukan perubahan data.
-              `,
+      Kamu adalah asisten AI ahli SQL PostgreSQL. 
+      Tugasmu adalah membuat query SQL yang *benar, efisien, dan relevan* berdasarkan pertanyaan user.
+      Selalu gunakan sintaks SQL PostgreSQL yang valid dan hindari kesalahan sintaks.`,
             },
             {
               role: 'user',
               content: `
-              🧱 SCHEMA DATABASE:
-              ${schemaDescription}
+      Berikut ini adalah schema dan konteks pengetahuan untuk membantu memahami struktur database.
 
-              📚 KONTEKS:
-              ${contextTexts}
+      🧱 SCHEMA DATABASE:
+      ${schemaDescription}
 
-              Pertanyaan user:
-              "${question}"
+      📚 KONTEKS TAMBAHAN:
+      ${contextTexts}
 
-              Format output:
-              \`\`\`sql
-              SELECT ...
-              \`\`\`
-              `,
+      Instruksi penting:
+      1. Pahami relasi antar tabel berdasarkan foreign key dan nama kolom.
+      2. Jika pertanyaan melibatkan beberapa tabel, gunakan JOIN yang sesuai (INNER JOIN, LEFT JOIN, dll).
+      3. Gunakan alias tabel agar query mudah dibaca.
+      4. Gunakan nama tabel dan kolom persis seperti yang ada di schema.
+      5. Jika ada keraguan, gunakan konteks untuk menebak tabel yang paling relevan.
+      6. Jangan gunakan kolom atau tabel yang tidak ada di schema.
+      7. Jangan ubah atau manipulasi data — hanya query SELECT yang aman.
+      8. Output **hanya** query SQL tanpa penjelasan, dalam format:
+        \`\`\`sql
+        SELECT ...
+        \`\`\`
+
+      Pertanyaan user:
+      "${question}"
+      `,
             },
           ],
         }),
