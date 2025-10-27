@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Database,
@@ -7,20 +7,51 @@ import {
   Table,
   ArrowLeft,
   ArrowRight,
-  Loader2, 
+  Loader2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function App() {
+  const [databases, setDatabases] = useState([]); // daftar database dari backend
+  const [selectedDb, setSelectedDb] = useState(""); // database yang dipilih user
   const [query, setQuery] = useState("");
   const [sql, setSql] = useState("");
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
   const scrollRef = useRef(null);
 
+  // 🔹 Ambil daftar database dari backend saat komponen pertama kali dimuat
+  useEffect(() => {
+  const fetchDatabases = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/databases");
+      const result = await res.json();
+
+      if (result.success && Array.isArray(result.data)) {
+        setDatabases(result.data);
+        if (result.data.length > 0) {
+          setSelectedDb(result.data[0]);
+        }
+      } else {
+        console.warn("Respons tidak sesuai:", result);
+      }
+    } catch (err) {
+      console.error("Gagal mengambil daftar database:", err);
+    }
+  };
+
+  fetchDatabases();
+}, []);
+
+  // 🔹 Jalankan query ke backend
   const handleSearch = async () => {
-    if (!query.trim()) return; 
+    if (!selectedDb) {
+      alert("Pilih database terlebih dahulu!");
+      return;
+    }
+    if (!query.trim()) return;
+
     setLoading(true);
     setSql("");
     setResults([]);
@@ -29,7 +60,10 @@ export default function App() {
       const response = await fetch("http://localhost:3000/query/run", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: query }),
+        body: JSON.stringify({
+          question: query,
+          dbName: selectedDb, // kirim nama database ke backend
+        }),
       });
 
       const data = await response.json();
@@ -39,10 +73,11 @@ export default function App() {
       console.error("Error fetching data:", err);
       setSql("Terjadi kesalahan koneksi ke backend.");
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
+  // 🔹 Scroll tabel hasil
   const scrollTable = (direction) => {
     if (!scrollRef.current) return;
     const scrollAmount = 300;
@@ -69,13 +104,41 @@ export default function App() {
       {/* MAIN */}
       <main className="flex-grow flex justify-center px-10 py-10 overflow-hidden">
         <div className="w-full max-w-[1600px] flex flex-col lg:flex-row items-start gap-10">
-          {/*KIRI: INPUT*/}
+          {/* KIRI: INPUT */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             className="bg-white/90 shadow-xl rounded-2xl p-8 border border-gray-100 flex flex-col justify-between h-fit w-full max-w-[480px]"
           >
             <div>
+              {/* Dropdown Database */}
+              <h2 className="flex items-center gap-2 text-lg font-medium text-gray-800 mb-2">
+                <Database className="w-5 h-5 text-sky-600" />
+                Pilih Database
+              </h2>
+              <select
+                value={selectedDb}
+                onChange={(e) => setSelectedDb(e.target.value)}
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 mb-5 
+                          text-gray-800 bg-white shadow-sm hover:border-sky-400 
+                          focus:ring-2 focus:ring-sky-500 focus:border-sky-500 
+                          focus:outline-none transition duration-150 appearance-none"
+              >
+                {databases.length > 0 ? (
+                  databases.map((db) => (
+                    <option key={db} value={db} className="bg-white text-gray-800">
+                      {db}
+                    </option>
+                  ))
+                ) : (
+                  <option className="bg-white text-gray-500 italic">
+                    Memuat database...
+                  </option>
+                )}
+              </select>
+
+
+              {/* Textarea Pertanyaan */}
               <h2 className="flex items-center gap-2 text-lg font-medium text-gray-800 mb-4">
                 <Search className="w-5 h-5 text-sky-600" />
                 Masukkan Pertanyaan Anda
@@ -93,7 +156,7 @@ export default function App() {
               <Button
                 className="bg-sky-600 hover:bg-sky-700 text-white px-6 py-3 text-base rounded-lg flex items-center"
                 onClick={handleSearch}
-                disabled={loading} 
+                disabled={loading}
               >
                 {loading ? (
                   <>
@@ -143,7 +206,9 @@ export default function App() {
               </h2>
 
               {loading ? (
-                <p className="text-sm text-gray-500 italic">🔍 Sedang mengambil data...</p>
+                <p className="text-sm text-gray-500 italic">
+                  🔍 Sedang mengambil data...
+                </p>
               ) : results.length > 0 ? (
                 <>
                   <p className="text-sm text-gray-500 mb-3">
