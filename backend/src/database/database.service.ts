@@ -38,4 +38,23 @@ export class DatabaseService {
     const pool = this.getPool(dbName);
     return pool.query(sql, params);
   }
+
+  /** 🌍 Dapatkan daftar semua database RS di server */
+async listAllDatabases(): Promise<string[]> {
+  const pool = new Pool({
+    ...this.baseConfig,
+    database: 'postgres', // konek ke DB utama PostgreSQL
+  });
+
+  const result = await pool.query(`
+    SELECT datname 
+    FROM pg_database 
+    WHERE datistemplate = false 
+      AND datname LIKE '%_db';  -- filter hanya database RS
+  `);
+
+  await pool.end();
+  return result.rows.map((r) => r.datname);
+}
+
 }
