@@ -11,7 +11,7 @@ export class DatabaseService {
     port: 5433,
   };
 
-  /** 🔁 Ambil pool untuk database tertentu */
+  /**  Ambil pool untuk database tertentu */
   getPool(dbName: string): Pool {
     if (!dbName) {
       throw new BadRequestException('Database belum dipilih.');
@@ -29,7 +29,7 @@ export class DatabaseService {
     return this.pools[dbName];
   }
 
-  /** 🧠 Jalankan query ke DB tertentu */
+  /** Jalankan query ke DB tertentu */
   async query(sql: string, params: any[] = [], dbName?: string) {
     if (!dbName) {
       throw new BadRequestException('Database belum dipilih.');
@@ -39,7 +39,7 @@ export class DatabaseService {
     return pool.query(sql, params);
   }
 
-  /** 🌍 Dapatkan daftar semua database RS di server */
+  /** Dapatkan daftar semua database RS di server */
 async listAllDatabases(): Promise<string[]> {
   const pool = new Pool({
     ...this.baseConfig,
