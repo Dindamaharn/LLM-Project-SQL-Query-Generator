@@ -176,40 +176,60 @@ export class QueryService {
       }
     }
   }
-
-  private buildReasoningPrompt(schemaDescription: string, contextTexts: string, question: string) {
+    
+  private buildReasoningPrompt(
+    schemaDescription: string,
+    contextTexts: string,
+    question: string,
+  ) {
     return [
       {
         role: 'system',
         content: `
-Kamu adalah AI reasoning assistant ahli SQL PostgreSQL.
-TUGAS: Berikan output JSON yang valid dengan 2 field: "reasoning" (ringkas) dan "sql" (query final).
-- "reasoning": singkat, menjelaskan asumsi utama dan tabel/kolom yang dipakai (max ~150 kata).
-- "sql": hanya query SELECT PostgreSQL yang valid. Jangan mengubah data.
-Format jawaban harus berupa JSON, contoh:
-{
-  "reasoning": "Saya memilih tabel A JOIN B ...",
-  "sql": "SELECT ... FROM ...;"
-}
-Jika kamu menempatkan code fences, wrapper, atau penjelasan lain, model pengambilan akan mencoba parsing; namun usahakan hanya JSON.
-        `,
+  You are an expert PostgreSQL reasoning engine.
+
+  Your output MUST be ONLY a valid JSON object with EXACTLY 2 fields:
+
+  {
+    "reasoning": "...",
+    "sql": "..."
+  }
+
+  ❗ STRICT RULES (READ CAREFULLY):
+
+  1. Understand table relationships based on foreign keys and column names.
+  2. If the question involves multiple tables, use the correct JOIN (INNER JOIN, LEFT JOIN, etc.).
+  3. Use table aliases for readability.
+  4. Use table and column names EXACTLY as they appear in the schema.
+  5. If unsure, use the provided CONTEXT to infer the most relevant tables.
+  6. NEVER use tables or columns not present in the schema.
+  7. NEVER modify data — only produce safe SELECT statements.
+  8. SQL must be syntactically correct PostgreSQL.
+  9. NO markdown, NO text outside JSON, NO commentary, NO code fences.
+  10. "reasoning" should summarize your logic in max 5 sentences.
+
+  If output is invalid JSON, the system will fail — so be precise.
+  `,
       },
+
       {
         role: 'user',
         content: `
-SCHEMA:
-${schemaDescription}
+  SCHEMA:
+  ${schemaDescription}
 
-KONTEKS:
-${contextTexts}
+  CONTEXT:
+  ${contextTexts}
 
-Pertanyaan user:
-"${question}"
-        `,
+  QUESTION:
+  ${question}
+
+  👉 Respond ONLY with the JSON object described above.
+  `,
       },
     ];
   }
-
+  
   /**
    * Call OpenRouter and return ModelResponse
    * We keep rawText to help debugging.
