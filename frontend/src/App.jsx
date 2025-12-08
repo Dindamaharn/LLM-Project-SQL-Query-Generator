@@ -13,38 +13,31 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function App() {
-  const [databases, setDatabases] = useState([]); // daftar database dari backend
-  const [selectedDb, setSelectedDb] = useState(""); // database yang dipilih user
+  const [databases, setDatabases] = useState([]);
+  const [selectedDb, setSelectedDb] = useState("");
   const [query, setQuery] = useState("");
   const [sql, setSql] = useState("");
+  const [reasoning, setReasoning] = useState(""); 
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef(null);
 
-  // 🔹 Ambil daftar database dari backend saat komponen pertama kali dimuat
   useEffect(() => {
-  const fetchDatabases = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/api/databases");
-      const result = await res.json();
-
-      if (result.success && Array.isArray(result.data)) {
-        setDatabases(result.data);
-        if (result.data.length > 0) {
-          setSelectedDb(result.data[0]);
+    const fetchDatabases = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/databases");
+        const result = await res.json();
+        if (result.success && Array.isArray(result.data)) {
+          setDatabases(result.data);
+          if (result.data.length > 0) setSelectedDb(result.data[0]);
         }
-      } else {
-        console.warn("Respons tidak sesuai:", result);
+      } catch (err) {
+        console.error("Gagal mengambil daftar database:", err);
       }
-    } catch (err) {
-      console.error("Gagal mengambil daftar database:", err);
-    }
-  };
+    };
+    fetchDatabases();
+  }, []);
 
-  fetchDatabases();
-}, []);
-
-  // 🔹 Jalankan query ke backend
   const handleSearch = async () => {
     if (!selectedDb) {
       alert("Pilih database terlebih dahulu!");
@@ -55,6 +48,7 @@ export default function App() {
     setLoading(true);
     setSql("");
     setResults([]);
+    setReasoning("");
 
     try {
       const response = await fetch("http://localhost:3000/query/run", {
@@ -62,13 +56,14 @@ export default function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: query,
-          dbName: selectedDb, // kirim nama database ke backend
+          dbName: selectedDb,
         }),
       });
 
       const data = await response.json();
       setSql(data.sql || "Tidak ada query yang dihasilkan.");
       setResults(data.data || []);
+      setReasoning(data.reasoning || "");   
     } catch (err) {
       console.error("Error fetching data:", err);
       setSql("Terjadi kesalahan koneksi ke backend.");
@@ -77,7 +72,6 @@ export default function App() {
     }
   };
 
-  // 🔹 Scroll tabel hasil
   const scrollTable = (direction) => {
     if (!scrollRef.current) return;
     const scrollAmount = 300;
@@ -89,21 +83,16 @@ export default function App() {
 
   return (
     <div className="min-h-screen w-full flex flex-col bg-gradient-to-b from-sky-50 to-white">
-      {/* HEADER */}
       <header className="w-full border-b bg-white/80 backdrop-blur-lg shadow-sm">
         <div className="flex items-center gap-3 py-4 px-6">
           <Database className="w-8 h-8 text-sky-600" />
-          <div>
-            <h1 className="text-2xl font-semibold text-gray-800">
-              Query Generator
-            </h1>
-          </div>
+          <h1 className="text-2xl font-semibold text-gray-800">Query Generator</h1>
         </div>
       </header>
 
-      {/* MAIN */}
       <main className="flex-grow flex justify-center px-10 py-10 overflow-hidden">
         <div className="w-full max-w-[1600px] flex flex-col lg:flex-row items-start gap-10">
+
           {/* KIRI: INPUT */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -172,9 +161,9 @@ export default function App() {
             </div>
           </motion.div>
 
-          {/* KANAN: SQL + HASIL */}
           <div className="flex flex-col gap-8 flex-1 min-w-0 overflow-hidden">
-            {/* QUERY SQL */}
+
+            {/* SQL */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -184,13 +173,25 @@ export default function App() {
                 <Code className="w-5 h-5 text-sky-600" />
                 Query SQL yang Dihasilkan
               </h2>
-
               <div className="bg-gray-50 p-4 rounded-md font-mono text-sm text-gray-700 border border-gray-200 min-h-[120px] overflow-x-auto">
+                {loading ? "⏳ Sedang memproses..." : sql || "Belum ada query"}
+              </div>
+            </motion.div>
+
+            {/* 🎯 REASONING (KOTAK BARU) */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-white/90 shadow-xl rounded-2xl p-8 border border-gray-100"
+            >
+              <h2 className="text-lg font-medium text-gray-800 mb-4">
+                🤖 Penjelasan Reasoning
+              </h2>
+
+              <div className="bg-gray-50 p-4 rounded-md text-sm text-gray-700 border border-gray-200 min-h-[120px] whitespace-pre-wrap">
                 {loading
-                  ? "⏳ Sedang memproses permintaan..."
-                  : sql
-                  ? sql
-                  : "Belum ada query. Silakan ketik pertanyaan dan klik Cari Data."}
+                  ? "⏳ sedang memproses reasoning..."
+                  : reasoning || "Belum ada reasoning."}
               </div>
             </motion.div>
 
@@ -269,6 +270,7 @@ export default function App() {
                 </p>
               )}
             </motion.div>
+
           </div>
         </div>
       </main>
