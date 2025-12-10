@@ -14,8 +14,8 @@ type ModelResponse = {
 @Injectable()
 export class QueryService {
   private readonly OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
-  private readonly OPENROUTER_MODEL = 'deepseek/deepseek-r1-distill-qwen-32b'; // ganti sesuai aksesmu
-  private readonly prismaRag = new PrismaRAG(); // koneksi ke rag_db
+  private readonly OPENROUTER_MODEL = 'deepseek/deepseek-r1-distill-qwen-32b'; // ganti dengan 'deepseek/deepseek-r1-distill-qwen-32b' atau 'deepseek/deepseek-r1-distill-llama-70b'
+  private readonly prismaRag = new PrismaRAG(); 
   private readonly KNOWLEDGE_BASE_PATHS = [
     path.join(process.cwd(), '../knowledge-base'),
   ];
@@ -40,7 +40,7 @@ export class QueryService {
 
       // [1] Embedding
       console.log('⚙️ [1] Membuat embedding...');
-      const { vector: userEmbedding } = await this.embedService.generateEmbedding(question, 'bge-m3');
+      const { vector: userEmbedding } = await this.embedService.generateEmbedding(question, 'nomic-embed-text'); // ganti dengan 'nomic-embed-text' atau 'bge-m3'
       console.log(`✅ Embedding berhasil dibuat (${userEmbedding.length} dimensi)`);
 
       const vectorLiteral = `'[${userEmbedding.join(',')}]'::vector`;
@@ -49,8 +49,9 @@ export class QueryService {
       console.log('\n⚙️ [2] Mendeteksi domain paling relevan...');
       await this.prismaRag.$executeRawUnsafe(`SET search_path TO rag, public;`);
       const domainCandidates: any[] = await this.prismaRag.$queryRawUnsafe(`
+        /* Bisa diganti KnowledgeBaseEmbeddingNomic atau KnowledgeBaseEmbeddingBGE */
         SELECT domain, MAX(1 - (embedding <=> ${vectorLiteral})) AS similarity
-        FROM "KnowledgeBaseEmbeddingBGE"
+        FROM "KnowledgeBaseEmbeddingNomic" 
         GROUP BY domain
         ORDER BY similarity DESC
         LIMIT 1;
@@ -72,12 +73,20 @@ export class QueryService {
       console.log('\n⚙️ [4] Mengambil 3 konteks paling relevan...');
       await this.prismaRag.$executeRawUnsafe(`SET search_path TO rag, public;`);
       const similarItems: any[] = await this.prismaRag.$queryRawUnsafe(`
+        /* Bisa diganti KnowledgeBaseEmbeddingNomic atau KnowledgeBaseEmbeddingBGE */
         SELECT id, title, content, 1 - (embedding <=> ${vectorLiteral}) AS similarity
-        FROM "KnowledgeBaseEmbeddingBGE"
+        FROM "KnowledgeBaseEmbeddingNomic"
         WHERE domain = '${detectedDomain}'
         ORDER BY similarity DESC
         LIMIT 3;
       `);
+      console.log('\n🔍 [Embedding Similarity Results]');
+      similarItems.forEach((item, idx) => {
+        console.log(
+          `Top ${idx + 1} → similarity=${item.similarity.toFixed(4)}, title="${item.title}"`
+        );
+      });
+
       const contextTexts = similarItems.map((i) => `(${i.similarity.toFixed(3)}) ${i.title}: ${i.content}`).join('\n\n');
 
       // [5] Schema
