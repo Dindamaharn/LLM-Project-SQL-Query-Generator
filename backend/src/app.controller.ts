@@ -4,6 +4,7 @@ import { DatabaseService } from './database/database.service';
 
 @Controller()
 export class AppController {
+  // Endpoint testing internal, tidak digunakan pada sistem produksi
   constructor(private readonly db: DatabaseService) {}
 
   @Get('test-db')
